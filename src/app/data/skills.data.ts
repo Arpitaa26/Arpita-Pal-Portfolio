@@ -71,7 +71,7 @@ export const DETAILED_SKILLS_DATA: SkillCategory[] = [
         proficiency: 94,
         badge: 'Modern Web',
         description: 'Pixel-perfect CSS Grid & Flexbox, fluid responsive design, modern SCSS design tokens, React components, and REST API integration.',
-        productionUse: 'Cribo Property Studio, SaaS Client Apps & Multi-Device Interfaces',
+        productionUse: 'OS Mining Hardware Hub, FinTech SaaS & Multi-Device Interfaces',
         subSkills: ['HTML5', 'CSS3 / SCSS', 'JavaScript (ES6+)', 'React', 'Bootstrap / Tailwind', 'REST APIs'],
         tags: ['HTML5', 'CSS3/SCSS', 'JavaScript', 'React', 'Bootstrap', 'REST APIs'],
         icon: 'code',

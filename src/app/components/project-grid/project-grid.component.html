@@ -225,27 +225,27 @@
       </div>
 
       <!-- ====================================================================
-           3. SUPPORTING PROJECT: Cribo Real Estate Ecosystem
+           3. SUPPORTING PROJECT: OS Mining — Web3 Hardware Hub
            ==================================================================== -->
-      <article class="supporting-project-card glass-panel" (click)="openModal(criboProject)">
+      <article class="supporting-project-card glass-panel" (click)="openModal(cryptoProject)">
         <div class="supporting-grid">
           <!-- Interactive Preview Area -->
           <div class="supporting-media-col" (click)="$event.stopPropagation()">
             <div class="supporting-frame">
               <div class="s-topbar">
                 <div class="s-tabs">
-                  <button class="s-tab-btn" [class.active]="criboActiveScreen() === 0" (click)="setCriboScreen(0, $event)">Agency Dashboard</button>
-                  <button class="s-tab-btn" [class.active]="criboActiveScreen() === 1" (click)="setCriboScreen(1, $event)">Architect Directory</button>
-                  <button class="s-tab-btn" [class.active]="criboActiveScreen() === 2" (click)="setCriboScreen(2, $event)">Property Portal</button>
+                  <button class="s-tab-btn" [class.active]="cryptoActiveScreen() === 0" (click)="setCryptoScreen(0, $event)">Storefront & Yield</button>
+                  <button class="s-tab-btn" [class.active]="cryptoActiveScreen() === 1" (click)="setCryptoScreen(1, $event)">Hardware Shop</button>
+                  <button class="s-tab-btn" [class.active]="cryptoActiveScreen() === 2" (click)="setCryptoScreen(2, $event)">Diagnostic Hub</button>
                 </div>
               </div>
               <div class="s-screen-viewport">
-                @if (criboActiveScreen() === 0) {
-                  <img src="assets/projects/cribo/Dashboard.png" alt="Cribo Dashboard" class="s-img" />
-                } @else if (criboActiveScreen() === 1) {
-                  <img src="assets/projects/cribo/Desktop - 9 (1).png" alt="Cribo Directory" class="s-img" />
+                @if (cryptoActiveScreen() === 0) {
+                  <img src="assets/projects/crypto/Home.png" alt="Crypto Mining Platform Home" class="s-img" />
+                } @else if (cryptoActiveScreen() === 1) {
+                  <img src="assets/projects/crypto/shop.png" alt="Mining Hardware Shop" class="s-img" />
                 } @else {
-                  <img src="assets/projects/cribo/Home page with banner change.png" alt="Cribo Home" class="s-img" />
+                  <img src="assets/projects/crypto/Repair.png" alt="Mining Diagnostic & Repair Hub" class="s-img" />
                 }
               </div>
             </div>
@@ -253,22 +253,22 @@
 
           <!-- Project Information -->
           <div class="supporting-info-col">
-            <span class="s-eyebrow">Real Estate & Marketplace</span>
-            <h3 class="s-title">Cribo Real Estate</h3>
-            <p class="s-one-liner">Modern property discovery, architect matching and renovation dashboard.</p>
+            <span class="s-eyebrow">Web3 & Hardware E-Commerce</span>
+            <h3 class="s-title">OS Mining — Miners Hub</h3>
+            <p class="s-one-liner">Specialized crypto mining hardware marketplace, live profit calculator, and global ASIC diagnostic portal.</p>
             
             <div class="s-role-line">
-              <span>Senior UI/UX Designer · Design Tokens · Mobile & Web</span>
+              <span>Lead UI/UX Designer · Hardware E-Commerce · Multi-Region Logistics</span>
             </div>
 
             <div class="s-tags-row">
-              <span class="clean-tag">Marketplace</span>
-              <span class="clean-tag">Design Tokens</span>
-              <span class="clean-tag">Responsive UI</span>
+              <span class="clean-tag">Hardware E-Commerce</span>
+              <span class="clean-tag">Profit Calculator</span>
+              <span class="clean-tag">Global Logistics</span>
             </div>
 
             <div class="s-cta-row">
-              <button class="btn-case-study" (click)="openModal(criboProject)">
+              <button class="btn-case-study" (click)="openModal(cryptoProject)">
                 <span>View Case Study</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <path d="M5 12h14M12 5l7 7-7 7"/>

@@ -24,7 +24,7 @@ export class ProjectGridComponent {
   rpaActiveScreen = signal<number>(0);
   lexAiStep = signal<number>(1);
   lexAiActiveScreen = signal<number>(0);
-  criboActiveScreen = signal<number>(0);
+  cryptoActiveScreen = signal<number>(0);
 
   // Getters for specific project data
   get bankingProject(): Project {
@@ -39,8 +39,8 @@ export class ProjectGridComponent {
     return this.projects.find(p => p.id === 'lexaid-ai') || this.projects[2];
   }
 
-  get criboProject(): Project {
-    return this.projects.find(p => p.id === 'cribo-real-estate') || this.projects[3];
+  get cryptoProject(): Project {
+    return this.projects.find(p => p.id === 'crypto-miners-hub') || this.projects[3];
   }
 
   // Interactive handlers
@@ -74,9 +74,9 @@ export class ProjectGridComponent {
     this.lexAiActiveScreen.set(idx);
   }
 
-  setCriboScreen(idx: number, e?: Event): void {
+  setCryptoScreen(idx: number, e?: Event): void {
     if (e) e.stopPropagation();
-    this.criboActiveScreen.set(idx);
+    this.cryptoActiveScreen.set(idx);
   }
 
   openModal(project: Project): void {

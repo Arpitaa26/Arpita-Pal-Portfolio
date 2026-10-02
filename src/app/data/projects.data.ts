@@ -204,61 +204,68 @@ export const PROJECTS_DATA: Project[] = [
     }
   },
   {
-    id: 'cribo-real-estate',
-    slug: 'cribo-real-estate',
-    title: 'Cribo Real Estate — Property Discovery & Booking Ecosystem',
-    subtitle: 'Modern Real Estate Marketplace & Agency Management Dashboard',
-    tagline: 'Reimagining Digital Real Estate Search with Interactive Map & Floorplan Previews',
+    id: 'crypto-miners-hub',
+    slug: 'crypto-miners-hub',
+    title: 'OS Mining — Crypto Mining Hardware & Service Hub',
+    subtitle: 'Hardware Marketplace, Real-Time Profitability Calculator & Global Repair Portal',
+    tagline: 'Streamlining ASIC Hardware Sourcing, Earnings Forecasting & Multi-Region Diagnostics',
     category: 'Product Design',
-    tags: ['Product Design', 'Visual Design', 'Mobile Responsive', 'Component Library', 'Design Tokens'],
+    tags: ['Product Design', 'E-Commerce', 'Web3 & Crypto', 'Profit Calculator', 'Figma', 'Responsive Design'],
     year: '2024',
-    role: 'Senior UI/UX Designer',
-    accentColor: '#10B981',
-    accentGradient: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+    role: 'Lead UI/UX Designer & Frontend',
+    client: 'OS Mining / Digifarm Group',
+    accentColor: '#F59E0B',
+    accentGradient: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
     featured: true,
-    coverImage: 'assets/projects/cribo/Home page with banner change.png',
+    coverImage: 'assets/projects/crypto/Home.png',
     screens: [
-      'assets/projects/cribo/Home page with banner change.png',
-      'assets/projects/cribo/Dashboard.png',
-      'assets/projects/cribo/Desktop - 9.png',
-      'assets/projects/cribo/Desktop - 11.png',
-      'assets/projects/cribo/Ad page.png'
+      'assets/projects/crypto/Home.png',
+      'assets/projects/crypto/shop.png',
+      'assets/projects/crypto/Repair.png',
+      'assets/projects/crypto/single product page.png',
+      'assets/projects/crypto/News.png',
+      'assets/projects/crypto/contact us.png'
     ],
-    overview: 'Cribo is a clean, content-first property portal featuring instant faceted filters, high-fidelity photo carousels, verified broker badges, and seamless interactive inspection booking.',
-    problem: 'Traditional property portals suffer from cluttered ad banners, outdated listings, poor mobile UX, and lack of verified property specifications.',
-    solution: 'Designed and built a modular property search interface with instant radius maps, price-per-sqft calculators, and amenity pills, optimized across all breakpoints.',
+    overview: 'OS Mining (Miners Hub) is a specialized Web3 hardware marketplace and enterprise mining service portal designed for individual and institutional cryptocurrency miners across the Middle East, Europe, and Asia-Pacific. The platform features real-time monthly earnings calculators, ASIC miner catalogs with detailed power/hashrate telemetry, automated repair ticketing, and multi-currency global support.',
+    problem: 'Prospective and enterprise crypto miners faced steep barriers when purchasing hardware: opaque profitability metrics, uncertain power consumption figures, complex warranty/repair procedures, and fragmented global shipping details.',
+    solution: 'Designed an intuitive end-to-end e-commerce experience featuring an interactive dynamic earnings slider (AED 1,000 to AED 100,000+), standardized ASIC technical cards (Hashrate, Power, Algorithm), a diagnostic repair scheduling module with global branch coverage, and transparent multi-currency pricing.',
     keyOutcomes: [
-      'Streamlined inspection booking and inquiry flows for prospective tenants',
-      'Consistent design system reused across consumer web and broker dashboard',
-      'Optimized responsive layout from mobile to ultra-wide displays'
+      'Interactive monthly earnings slider bridging customer investment goals with exact ASIC recommendations',
+      'Standardized technical spec sheets (TH/s, Wattage, SHA-256 algorithm) boosting buyer conversion',
+      'Dedicated diagnostic repair tracking portal reducing hardware servicing turnarounds across 6 global hubs',
+      'High-contrast dark-mode aesthetic with golden liquidity accents tailored for Web3 audiences'
     ],
     stats: [
-      { label: 'Booking Flow', value: 'Interactive' },
-      { label: 'Viewport UX', value: 'Responsive UI' },
-      { label: 'Agency Portal', value: 'Integrated Hub' }
+      { label: 'Platform Type', value: 'Web3 & E-Commerce' },
+      { label: 'Global Hubs', value: '6 Regions' },
+      { label: 'Calculator UX', value: 'Interactive' },
+      { label: 'Hardware Spec', value: 'ASIC & GPU' }
     ],
     sections: [
       {
-        title: 'Modern Discovery & Smart Filtering',
-        description: 'A modular property search interface with instant radius maps, price-per-sqft calculators, and amenity pills.',
-        image: 'assets/projects/cribo/Desktop - 9.png',
-        highlights: ['Instant filter updates without page reload', 'High-res image gallery preview cards', 'Verified property trust badges']
+        title: 'Interactive Earnings Calculator & Storefront',
+        subtitle: 'Dynamic Yield Projections & Hero Flow',
+        description: 'Designed an intuitive financial slider allowing customers to adjust expected monthly earnings to immediately receive estimated machine purchase requirements, ROI timelines, and power usage breakdowns.',
+        image: 'assets/projects/crypto/Home.png',
+        highlights: ['Dynamic purchase price projection', 'Frictionless quick-purchase CTAs', 'Clear 95% uptime & security trust badges']
       },
       {
-        title: 'Broker & Asset Management Dashboard',
-        description: 'A clean analytics portal for real estate agencies to track listing performance, lead funnels, and scheduled open-house visits.',
-        image: 'assets/projects/cribo/Dashboard.png',
-        highlights: ['Lead conversion analytics', 'Direct customer messaging module', 'Listing syndication manager']
+        title: 'High-Density Hardware Catalog & Diagnostics',
+        subtitle: 'Technical Filtering & Diagnostic Portal',
+        description: 'Created modular product grids categorized by manufacturer (Antminer, Whatsminer, Avalon) with instant at-a-glance hashrate metrics, alongside a worldwide repair booking service.',
+        image: 'assets/projects/crypto/Repair.png',
+        highlights: ['Hashrate (TH/s) & Power (Watts) comparison cards', 'Global repair centers in Dubai, USA, Australia, and UK', 'Integrated multi-currency checkout']
       }
     ],
     designSpecs: {
-      typography: ['Plus Jakarta Sans (Headings)', 'Inter (Body)'],
+      typography: ['Urbanist / Space Grotesk (Headings)', 'Inter (Body UI)', 'JetBrains Mono (Hashrate & Price Metrics)'],
       colors: [
-        { name: 'Emerald Forest', hex: '#10B981', role: 'Brand & Verified Badges' },
-        { name: 'Slate Dark', hex: '#0F172A', role: 'Header & Typography' }
+        { name: 'Amber Gold', hex: '#F59E0B', role: 'Primary CTAs, Brand Accents & Yield Sliders' },
+        { name: 'Obsidian Black', hex: '#0B0F19', role: 'Hero Backgrounds & Dark Canvas' },
+        { name: 'Pure White', hex: '#FFFFFF', role: 'High-Density Catalog Cards & Clarity' }
       ],
-      gridSystem: '12-Column Responsive Layout',
-      keyComponents: ['Property Card', 'Amenity Tag', 'Interactive Map Marker', 'Agent Booking Drawer']
+      gridSystem: '12-Column Responsive Layout with Fluid Card Breakpoints',
+      keyComponents: ['Earnings Calculator Slider', 'ASIC Spec Badge Card', 'Repair Status Table', 'Global Office Locator']
     }
   }
 ];
