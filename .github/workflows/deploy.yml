@@ -39,6 +39,8 @@ jobs:
       - name: Setup Single Page App Routing & Bypass Jekyll
         run: |
           cp dist/portfolio-app/browser/index.html dist/portfolio-app/browser/404.html
+          mkdir -p dist/portfolio-app/browser/all-projects
+          cp dist/portfolio-app/browser/index.html dist/portfolio-app/browser/all-projects/index.html
           touch dist/portfolio-app/browser/.nojekyll
 
       - name: Configure GitHub Pages
