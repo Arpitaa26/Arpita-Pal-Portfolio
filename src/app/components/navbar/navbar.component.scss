@@ -20,10 +20,10 @@
 
   &__container {
     height: 100%;
-    max-width: 1540px;
+    max-width: var(--container-max-width);
     width: 100%;
     margin: 0 auto;
-    padding: 0 clamp(1.25rem, 3vw, 3rem);
+    padding: 0 var(--container-padding);
     display: flex;
     align-items: center;
     justify-content: space-between;
