@@ -1,29 +1,4 @@
 <section class="project-cta-section" id="contact">
-  <!-- Tilted / Angled Infinite Marquee Ribbon -->
-  <div class="tilted-ribbon-wrapper">
-    <div class="ribbon-strip">
-      <div class="ribbon-marquee-track">
-        @for (item of marqueeItems; track $index) {
-          <span class="ribbon-item">
-            <svg class="star-icon" width="16" height="16" viewBox="0 0 24 24" fill="#FF6B00">
-              <path d="M12 0L14.8 9.2L24 12L14.8 14.8L12 24L9.2 14.8L0 12L9.2 9.2L12 0Z"/>
-            </svg>
-            <span class="item-text">{{ item }}</span>
-          </span>
-        }
-        <!-- Repeat for seamless continuous loop -->
-        @for (item of marqueeItems; track 'repeat-' + $index) {
-          <span class="ribbon-item">
-            <svg class="star-icon" width="16" height="16" viewBox="0 0 24 24" fill="#FF6B00">
-              <path d="M12 0L14.8 9.2L24 12L14.8 14.8L12 24L9.2 14.8L0 12L9.2 9.2L12 0Z"/>
-            </svg>
-            <span class="item-text">{{ item }}</span>
-          </span>
-        }
-      </div>
-    </div>
-  </div>
-
   <!-- Unified Contact & Project Discussion Card -->
   <div class="container cta-container">
     <div class="cta-banner-card glass-panel">

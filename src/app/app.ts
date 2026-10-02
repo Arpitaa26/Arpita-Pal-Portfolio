@@ -1,12 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { HeroComponent } from './components/hero/hero.component';
-import { ProjectGridComponent } from './components/project-grid/project-grid.component';
-import { AppsShowcaseComponent } from './components/apps-showcase/apps-showcase.component';
-import { SkillsComponent } from './components/skills/skills.component';
-import { AboutComponent } from './components/about/about.component';
-import { ProjectCtaComponent } from './components/project-cta/project-cta.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.component';
 
@@ -15,13 +10,8 @@ import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.com
   standalone: true,
   imports: [
     CommonModule,
+    RouterOutlet,
     NavbarComponent,
-    HeroComponent,
-    ProjectGridComponent,
-    AppsShowcaseComponent,
-    SkillsComponent,
-    AboutComponent,
-    ProjectCtaComponent,
     FooterComponent,
     ThemeToggleComponent
   ],

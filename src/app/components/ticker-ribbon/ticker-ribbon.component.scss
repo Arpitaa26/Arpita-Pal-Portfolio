@@ -1,0 +1,113 @@
+.banner-ticker-section {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 1.5rem 0 2rem;
+  z-index: 10;
+}
+
+.tilted-ribbon-wrapper {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  padding: 1rem 0;
+  user-select: none;
+}
+
+.ribbon-strip {
+  width: 115vw;
+  margin-left: -7.5vw;
+  background: #ffffff;
+  color: #0f172a;
+  transform: rotate(-1.8deg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 107, 0, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 0.95rem 0;
+  display: flex;
+  overflow: hidden;
+
+  [data-theme='light'] & {
+    background: #0f172a;
+    color: #f8fafc;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18);
+  }
+}
+
+.ribbon-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 2.75rem;
+  white-space: nowrap;
+  animation: marqueeRibbon 24s linear infinite;
+  will-change: transform;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+.ribbon-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-shrink: 0;
+
+  .star-icon {
+    flex-shrink: 0;
+    fill: #ff6b00;
+    filter: drop-shadow(0 0 4px rgba(255, 107, 0, 0.5));
+  }
+
+  .item-text {
+    font-family: var(--font-family-base);
+    font-size: clamp(1.2rem, 2vw, 1.55rem);
+    font-weight: 800;
+    letter-spacing: -0.015em;
+    color: #0f172a;
+    white-space: nowrap;
+
+    [data-theme='light'] & {
+      color: #ffffff;
+    }
+  }
+}
+
+@keyframes marqueeRibbon {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+@media (max-width: 768px) {
+  .banner-ticker-section {
+    padding: 1rem 0 1.5rem;
+  }
+
+  .ribbon-strip {
+    padding: 0.75rem 0;
+    transform: rotate(-1.5deg);
+  }
+
+  .ribbon-marquee-track {
+    gap: 1.75rem;
+  }
+
+  .ribbon-item {
+    gap: 0.85rem;
+
+    .star-icon {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}

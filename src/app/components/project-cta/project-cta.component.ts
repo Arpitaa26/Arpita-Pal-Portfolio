@@ -17,19 +17,6 @@ export class ProjectCtaComponent {
 
   contactEmail = 'apal59349@gmail.com';
 
-  marqueeItems: string[] = [
-    'UX Design',
-    'App Design',
-    'Dashboard',
-    'Wireframe',
-    'User Research',
-    'Design Systems',
-    'Frontend Architecture',
-    'Prototyping',
-    'WCAG Accessibility',
-    'Figma Tokens'
-  ];
-
   submitInquiry(e?: Event): void {
     if (e) e.preventDefault();
     const email = this.emailInput().trim();

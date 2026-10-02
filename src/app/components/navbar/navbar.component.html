@@ -12,20 +12,18 @@
       </div>
     </a>
 
-
-
     <!-- Desktop Navigation Links -->
     <nav class="nav-menu d-none-mobile" aria-label="Main Navigation">
       <ul class="nav-menu__list">
         @for (link of navLinks; track link.target) {
           <li class="nav-menu__item">
             <a
-              [href]="'#' + link.target"
+              [href]="link.isRoute ? link.routePath : '#' + link.target"
               class="nav-menu__link"
-              [class.active]="activeSection() === link.target"
-              (click)="scrollTo(link.target, $event)">
+              [class.active]="activeSection() === link.target || (link.isRoute && currentUrl().includes(link.target))"
+              (click)="handleNavClick(link, $event)">
               {{ link.label }}
-              @if (activeSection() === link.target) {
+              @if (activeSection() === link.target || (link.isRoute && currentUrl().includes(link.target))) {
                 <span class="active-dot"></span>
               }
             </a>
@@ -36,6 +34,37 @@
 
     <!-- Header Actions -->
     <div class="header-actions">
+      <!-- Social Media Links (Behance & LinkedIn) in Top Bar -->
+      <div class="header-social-group d-none-mobile">
+        <!-- Behance Profile Link -->
+        <a
+          [href]="behanceUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="nav-social-btn"
+          title="Behance — @arpitapal1"
+          aria-label="Arpita Pal's Behance Profile">
+          <svg class="nav-social-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7.64 12.06c.9 0 1.94-.15 1.94-1.48 0-1.07-.79-1.39-1.7-1.39H4.63v2.87h3.01zm.2 4.14c1.13 0 2.18-.28 2.18-1.74 0-1.34-1.05-1.66-2.26-1.66H4.63v3.4h3.21zM11.9 10.66c-.46-.77-1.29-1.17-2.32-1.28v-.03c1.07-.35 1.95-.9 1.95-2.22 0-2.37-2.02-2.73-4.14-2.73H1.5v15.2h6.29c2.37 0 4.54-.77 4.54-3.52 0-2.3-1.47-3.05-2.43-3.42v-.03c.8-.3 1.57-.96 2-1.97zm3.18-3.46h5.05V6.01h-5.05v1.19zm4.6 4.67c0-2.82-1.89-4.78-4.7-4.78-2.92 0-4.88 2.12-4.88 5.16 0 3.09 1.93 5.16 5.09 5.16 2.37 0 4.12-1.27 4.68-3.32h-2.39c-.35.8-1.19 1.25-2.2 1.25-1.46 0-2.45-.94-2.58-2.47h7c.02-.33.02-.68.02-1zm-6.98-.82c.18-1.4 1.1-2.22 2.31-2.22 1.23 0 2.1.81 2.24 2.22h-4.55z"/>
+          </svg>
+          <span class="social-label">Behance</span>
+        </a>
+
+        <!-- LinkedIn Profile Link -->
+        <a
+          [href]="linkedinUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="nav-social-btn"
+          title="LinkedIn — @arpitapal26"
+          aria-label="Arpita Pal's LinkedIn Profile">
+          <svg class="nav-social-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+          <span class="social-label">LinkedIn</span>
+        </a>
+      </div>
+
       <!-- Theme Switcher Button -->
       <button 
         type="button" 
@@ -98,21 +127,41 @@
         <span class="live-indicator"></span>
         <span>Product Designer & Frontend Engineer • Kolkata, WB</span>
       </div>
+
+      <!-- Mobile Nav Links -->
       <nav class="mobile-drawer__nav">
         <ul>
           @for (link of navLinks; track link.target) {
             <li>
               <a
-                [href]="'#' + link.target"
+                [href]="link.isRoute ? link.routePath : '#' + link.target"
                 class="mobile-drawer__link"
-                [class.active]="activeSection() === link.target"
-                (click)="scrollTo(link.target, $event)">
+                [class.active]="activeSection() === link.target || (link.isRoute && currentUrl().includes(link.target))"
+                (click)="handleNavClick(link, $event)">
                 {{ link.label }}
               </a>
             </li>
           }
         </ul>
       </nav>
+
+      <!-- Mobile Social Profiles Row -->
+      <div class="mobile-social-row">
+        <a [href]="behanceUrl" target="_blank" rel="noopener noreferrer" class="mobile-social-link" title="Behance">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M7.64 12.06c.9 0 1.94-.15 1.94-1.48 0-1.07-.79-1.39-1.7-1.39H4.63v2.87h3.01zm.2 4.14c1.13 0 2.18-.28 2.18-1.74 0-1.34-1.05-1.66-2.26-1.66H4.63v3.4h3.21zM11.9 10.66c-.46-.77-1.29-1.17-2.32-1.28v-.03c1.07-.35 1.95-.9 1.95-2.22 0-2.37-2.02-2.73-4.14-2.73H1.5v15.2h6.29c2.37 0 4.54-.77 4.54-3.52 0-2.3-1.47-3.05-2.43-3.42v-.03c.8-.3 1.57-.96 2-1.97zm3.18-3.46h5.05V6.01h-5.05v1.19zm4.6 4.67c0-2.82-1.89-4.78-4.7-4.78-2.92 0-4.88 2.12-4.88 5.16 0 3.09 1.93 5.16 5.09 5.16 2.37 0 4.12-1.27 4.68-3.32h-2.39c-.35.8-1.19 1.25-2.2 1.25-1.46 0-2.45-.94-2.58-2.47h7c.02-.33.02-.68.02-1zm-6.98-.82c.18-1.4 1.1-2.22 2.31-2.22 1.23 0 2.1.81 2.24 2.22h-4.55z"/>
+          </svg>
+          <span>Behance</span>
+        </a>
+
+        <a [href]="linkedinUrl" target="_blank" rel="noopener noreferrer" class="mobile-social-link" title="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+
       <div class="mobile-drawer__cta">
         <a href="assets/Arpita_Pal_Resume.pdf" download="Arpita_Pal_Resume.pdf" class="btn-secondary" style="width: 100%; margin-bottom: 0.75rem;">
           Download Resume (PDF)

@@ -1,0 +1,214 @@
+<div class="all-projects-page">
+  <!-- Top Background Ambient Glows -->
+  <div class="page-ambient-glow glow-1"></div>
+  <div class="page-ambient-glow glow-2"></div>
+
+  <div class="container page-container">
+    <!-- Header Navigation & Breadcrumbs -->
+    <header class="page-header">
+      <nav class="page-breadcrumbs" aria-label="Breadcrumb">
+        <a routerLink="/" class="back-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Back to Home</span>
+        </a>
+        <span class="crumb-separator">/</span>
+        <span class="current-crumb">All Projects</span>
+      </nav>
+
+      <div class="header-main-content">
+        <div class="badge-pill">
+          <span class="live-dot"></span>
+          <span>UI/UX & Frontend Archive</span>
+        </div>
+        <h1 class="page-title">
+          All Projects & <span class="text-gradient">Design Systems</span>
+        </h1>
+        <p class="page-subtitle">
+          Explore complete digital case studies, interactive UI/UX architectures, and production frontend engineering. New project slots are ready below for upcoming project showcases.
+        </p>
+      </div>
+
+      <!-- Controls: Search & Category Filter Pills -->
+      <div class="controls-toolbar glass-panel">
+        <div class="search-box">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input
+            type="text"
+            [value]="searchQuery()"
+            (input)="searchQuery.set($any($event.target).value)"
+            placeholder="Filter projects by title, stack, or tag..."
+            class="search-input" />
+          @if (searchQuery()) {
+            <button class="clear-search-btn" (click)="searchQuery.set('')" aria-label="Clear Search">✕</button>
+          }
+        </div>
+
+        <div class="filter-pills-row">
+          @for (cat of categories; track cat) {
+            <button
+              class="filter-pill-btn"
+              [class.active]="selectedCategory() === cat"
+              (click)="setCategory(cat)">
+              {{ cat }}
+            </button>
+          }
+        </div>
+      </div>
+    </header>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      @for (project of filteredProjects(); track project.id) {
+        <article
+          class="project-archive-card glass-panel"
+          [class.is-placeholder]="project.isPlaceholder"
+          (click)="onProjectClick(project)">
+          
+          <!-- Card Header & Badge -->
+          <div class="card-top-bar">
+            <span class="category-tag">{{ project.category }}</span>
+            <span class="status-indicator" [class.ready-badge]="project.isPlaceholder">
+              @if (project.isPlaceholder) {
+                <span class="pulse-indicator pulse-cyan"></span>
+                <span>Ready for Input</span>
+              } @else {
+                <span class="pulse-indicator pulse-emerald"></span>
+                <span>Case Study</span>
+              }
+            </span>
+          </div>
+
+          <!-- Card Media / Preview Visual -->
+          <div class="card-media-wrapper">
+            @if (!project.isPlaceholder && project.realProject) {
+              <img
+                [src]="project.realProject.coverImage"
+                [alt]="project.title"
+                class="card-img"
+                loading="lazy" />
+              <div class="media-hover-overlay">
+                <span class="overlay-cta">Explore Full Case Study →</span>
+              </div>
+            } @else {
+              <!-- Stylized Placeholder Wireframe Graphic -->
+              <div class="placeholder-graphic-canvas">
+                <div class="placeholder-wireframe-box">
+                  <div class="wireframe-header">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                    <span class="wireframe-title">{{ project.title.split('—')[0] }}</span>
+                  </div>
+                  <div class="wireframe-body">
+                    <div class="wireframe-sidebar"></div>
+                    <div class="wireframe-content">
+                      <div class="wireframe-line line-long"></div>
+                      <div class="wireframe-line line-medium"></div>
+                      <div class="wireframe-grid-cells">
+                        <div class="cell"></div>
+                        <div class="cell"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="slot-badge">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="16"></line>
+                    <line x1="8" y1="12" x2="16" y2="12"></line>
+                  </svg>
+                  <span>Upcoming Project Slot</span>
+                </div>
+              </div>
+            }
+          </div>
+
+          <!-- Card Content -->
+          <div class="card-body">
+            <div class="card-meta-line">
+              <span class="meta-role">{{ project.role }}</span>
+              <span class="meta-year">{{ project.year }}</span>
+            </div>
+
+            <h3 class="card-title">{{ project.title }}</h3>
+            <p class="card-subtitle">{{ project.subtitle }}</p>
+
+            <div class="card-tags-list">
+              @for (tag of project.tags; track tag) {
+                <span class="clean-tag">{{ tag }}</span>
+              }
+            </div>
+
+            <div class="card-action-row">
+              @if (!project.isPlaceholder) {
+                <span class="action-link-btn primary-action">
+                  <span>View Case Study</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </span>
+              } @else {
+                <span class="action-link-btn placeholder-action">
+                  <span>Slot {{ project.slotNumber - 4 }} · Ready to Populate</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M12 5v14M5 12h14"/>
+                  </svg>
+                </span>
+              }
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+
+    @if (filteredProjects().length === 0) {
+      <div class="empty-state glass-panel">
+        <p>No projects found matching "{{ searchQuery() }}" in "{{ selectedCategory() }}".</p>
+        <button class="btn-secondary" (click)="selectedCategory.set('All'); searchQuery.set('')">Reset Filters</button>
+      </div>
+    }
+  </div>
+
+  <!-- Deep Dive Case Study Modal Drawer for Real Projects -->
+  @if (activeModalProject()) {
+    <app-case-study-modal
+      [project]="activeModalProject()"
+      (close)="closeModal()">
+    </app-case-study-modal>
+  }
+
+  <!-- Placeholder Information Drawer / Modal -->
+  @if (selectedPlaceholder()) {
+    <div class="placeholder-modal-backdrop" (click)="closeModal()">
+      <div class="placeholder-modal glass-panel" (click)="$event.stopPropagation()">
+        <div class="modal-top">
+          <div class="badge-pill">
+            <span class="live-dot"></span>
+            <span>Project Slot Available</span>
+          </div>
+          <button class="modal-close-btn" (click)="closeModal()" aria-label="Close">✕</button>
+        </div>
+
+        <h3 class="modal-title">{{ selectedPlaceholder()?.title }}</h3>
+        <p class="modal-desc">{{ selectedPlaceholder()?.subtitle }}</p>
+
+        <div class="modal-info-box">
+          <h4>How to add this project:</h4>
+          <p>
+            Whenever you're ready, just share the project name, screens or screenshots, description, and link. I will populate this exact card into a full interactive showcase!
+          </p>
+        </div>
+
+        <div class="modal-actions">
+          <button class="btn-primary" (click)="closeModal()">Got it, thanks!</button>
+        </div>
+      </div>
+    </div>
+  }
+</div>
