@@ -27,7 +27,7 @@ export class HeroComponent {
   selectedCategory = signal<'all' | 'design' | 'frontend'>('all');
   isOrbitPaused = signal<boolean>(false);
 
-  // Round 3: Outer Orbit (Product Design & UX Strategy - 500px dia / 250px radius)
+  // Round 3: Outer Orbit (Product Design & UX Strategy - 420px dia / 210px radius)
   outerSkills: SkillNode[] = [
     {
       id: 'figma',
@@ -35,7 +35,7 @@ export class HeroComponent {
       shortName: 'Figma',
       category: 'design',
       orbit: 'outer',
-      angle: 0,
+      angle: 60,
       color: '#F24E1E',
       bgGlow: 'rgba(242, 78, 30, 0.25)',
       role: 'UI/UX & Prototyping',
@@ -47,7 +47,7 @@ export class HeroComponent {
       shortName: 'Research',
       category: 'design',
       orbit: 'outer',
-      angle: 90,
+      angle: 150,
       color: '#F59E0B',
       bgGlow: 'rgba(245, 158, 11, 0.25)',
       role: 'User Journey & IA',
@@ -59,7 +59,7 @@ export class HeroComponent {
       shortName: 'WCAG',
       category: 'design',
       orbit: 'outer',
-      angle: 180,
+      angle: 240,
       color: '#10B981',
       bgGlow: 'rgba(16, 185, 129, 0.25)',
       role: 'Accessibility Standards',
@@ -71,7 +71,7 @@ export class HeroComponent {
       shortName: 'Adobe',
       category: 'design',
       orbit: 'outer',
-      angle: 270,
+      angle: 330,
       color: '#FF61F6',
       bgGlow: 'rgba(255, 97, 246, 0.25)',
       role: 'Visual & Vector Craft',
@@ -79,7 +79,7 @@ export class HeroComponent {
     }
   ];
 
-  // Round 2: Middle Orbit (Architecture, UI Tokens & Web Standards - 360px dia / 180px radius)
+  // Round 2: Middle Orbit (Architecture, UI Tokens & Web Standards - 308px dia / 154px radius)
   middleSkills: SkillNode[] = [
     {
       id: 'scss',
@@ -87,7 +87,7 @@ export class HeroComponent {
       shortName: 'SCSS',
       category: 'frontend',
       orbit: 'middle',
-      angle: 45,
+      angle: 30,
       color: '#CC6699',
       bgGlow: 'rgba(204, 102, 153, 0.25)',
       role: 'Modern CSS & Tokens',
@@ -99,7 +99,7 @@ export class HeroComponent {
       shortName: 'Tokens',
       category: 'design',
       orbit: 'middle',
-      angle: 135,
+      angle: 120,
       color: '#EC4899',
       bgGlow: 'rgba(236, 72, 153, 0.25)',
       role: 'Tokens & Architecture',
@@ -111,7 +111,7 @@ export class HeroComponent {
       shortName: 'ES6+',
       category: 'frontend',
       orbit: 'middle',
-      angle: 225,
+      angle: 210,
       color: '#F7DF1E',
       bgGlow: 'rgba(247, 223, 30, 0.25)',
       role: 'Modern Web APIs',
@@ -123,7 +123,7 @@ export class HeroComponent {
       shortName: 'Wireframes',
       category: 'design',
       orbit: 'middle',
-      angle: 315,
+      angle: 300,
       color: '#8B5CF6',
       bgGlow: 'rgba(139, 92, 246, 0.25)',
       role: 'Information Architecture',
@@ -131,7 +131,7 @@ export class HeroComponent {
     }
   ];
 
-  // Round 1: Inner Orbit (Core Frameworks & Version Control - 220px dia / 110px radius)
+  // Round 1: Inner Orbit (Core Frameworks & Version Control - 196px dia / 98px radius)
   innerSkills: SkillNode[] = [
     {
       id: 'angular',
