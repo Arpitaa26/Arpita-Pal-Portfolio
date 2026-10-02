@@ -225,27 +225,27 @@
       </div>
 
       <!-- ====================================================================
-           3. SUPPORTING PROJECT: OS Mining — Web3 Hardware Hub
+           3. SUPPORTING PROJECT: esbs — Online Banking & Member Savings Portal
            ==================================================================== -->
-      <article class="supporting-project-card glass-panel" (click)="openModal(cryptoProject)">
+      <article class="supporting-project-card glass-panel" (click)="openModal(esbsProject)">
         <div class="supporting-grid">
           <!-- Interactive Preview Area -->
           <div class="supporting-media-col" (click)="$event.stopPropagation()">
             <div class="supporting-frame">
               <div class="s-topbar">
                 <div class="s-tabs">
-                  <button class="s-tab-btn" [class.active]="cryptoActiveScreen() === 0" (click)="setCryptoScreen(0, $event)">Storefront & Yield</button>
-                  <button class="s-tab-btn" [class.active]="cryptoActiveScreen() === 1" (click)="setCryptoScreen(1, $event)">Hardware Shop</button>
-                  <button class="s-tab-btn" [class.active]="cryptoActiveScreen() === 2" (click)="setCryptoScreen(2, $event)">Diagnostic Hub</button>
+                  <button class="s-tab-btn" [class.active]="esbsActiveScreen() === 0" (click)="setEsbsScreen(0, $event)">Member Dashboard</button>
+                  <button class="s-tab-btn" [class.active]="esbsActiveScreen() === 1" (click)="setEsbsScreen(1, $event)">Secure Portal Login</button>
+                  <button class="s-tab-btn" [class.active]="esbsActiveScreen() === 2" (click)="setEsbsScreen(2, $event)">Passcode & 2FA</button>
                 </div>
               </div>
               <div class="s-screen-viewport">
-                @if (cryptoActiveScreen() === 0) {
-                  <img src="assets/projects/crypto/Home.png" alt="Crypto Mining Platform Home" class="s-img" />
-                } @else if (cryptoActiveScreen() === 1) {
-                  <img src="assets/projects/crypto/shop.png" alt="Mining Hardware Shop" class="s-img" />
+                @if (esbsActiveScreen() === 0) {
+                  <img src="assets/projects/esbs/esbs_dashboard.png" alt="esbs Online Banking Dashboard" class="s-img" />
+                } @else if (esbsActiveScreen() === 1) {
+                  <img src="assets/projects/esbs/esbs_login.png" alt="esbs Secure Portal Login" class="s-img" />
                 } @else {
-                  <img src="assets/projects/crypto/Repair.png" alt="Mining Diagnostic & Repair Hub" class="s-img" />
+                  <img src="assets/projects/esbs/esbs_passcode.png" alt="esbs 2FA Passcode Verification" class="s-img" />
                 }
               </div>
             </div>
@@ -253,22 +253,22 @@
 
           <!-- Project Information -->
           <div class="supporting-info-col">
-            <span class="s-eyebrow">Web3 & Hardware E-Commerce</span>
-            <h3 class="s-title">OS Mining — Miners Hub</h3>
-            <p class="s-one-liner">Specialized crypto mining hardware marketplace, live profit calculator, and global ASIC diagnostic portal.</p>
+            <span class="s-eyebrow">FinTech & UK Building Society</span>
+            <h3 class="s-title">esbs — Online Member Portal</h3>
+            <p class="s-one-liner">End-to-end digital member portal for Earl Shilton Building Society featuring multi-account savings tracking, UK residency verification, and secure dual-factor onboarding.</p>
             
             <div class="s-role-line">
-              <span>Lead UI/UX Designer · Hardware E-Commerce · Multi-Region Logistics</span>
+              <span>Lead UI/UX Designer · UK Mutual Banking · Design Systems</span>
             </div>
 
             <div class="s-tags-row">
-              <span class="clean-tag">Hardware E-Commerce</span>
-              <span class="clean-tag">Profit Calculator</span>
-              <span class="clean-tag">Global Logistics</span>
+              <span class="clean-tag">Savings & Mortgages</span>
+              <span class="clean-tag">Dual-Channel 2FA</span>
+              <span class="clean-tag">FSCS Compliance</span>
             </div>
 
             <div class="s-cta-row">
-              <button class="btn-case-study" (click)="openModal(cryptoProject)">
+              <button class="btn-case-study" (click)="openModal(esbsProject)">
                 <span>View Case Study</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <path d="M5 12h14M12 5l7 7-7 7"/>

@@ -204,68 +204,70 @@ export const PROJECTS_DATA: Project[] = [
     }
   },
   {
-    id: 'crypto-miners-hub',
-    slug: 'crypto-miners-hub',
-    title: 'OS Mining — Crypto Mining Hardware & Service Hub',
-    subtitle: 'Hardware Marketplace, Real-Time Profitability Calculator & Global Repair Portal',
-    tagline: 'Streamlining ASIC Hardware Sourcing, Earnings Forecasting & Multi-Region Diagnostics',
+    id: 'esbs-portal',
+    slug: 'esbs-portal',
+    title: 'esbs — Online Banking & Member Savings Portal',
+    subtitle: 'Member Dashboard, UK Residency Gating & Multi-Factor Verification for Building Society',
+    tagline: 'Modernizing UK Mutual Savings & Mortgages with Accessible, Secure Member Journeys',
     category: 'Product Design',
-    tags: ['Product Design', 'E-Commerce', 'Web3 & Crypto', 'Profit Calculator', 'Figma', 'Responsive Design'],
-    year: '2024',
-    role: 'Lead UI/UX Designer & Frontend',
-    client: 'OS Mining / Digifarm Group',
-    accentColor: '#F59E0B',
-    accentGradient: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
+    tags: ['Product Design', 'FinTech', 'Building Society', 'Banking UX', 'Figma', 'Accessibility'],
+    year: '2024 - 2025',
+    role: 'Lead UI/UX Designer & Frontend Developer',
+    client: 'Earl Shilton Building Society (esbs)',
+    accentColor: '#002157',
+    accentGradient: 'linear-gradient(135deg, #002157 0%, #1E40AF 100%)',
     featured: true,
-    coverImage: 'assets/projects/crypto/Home.png',
+    coverImage: 'assets/projects/esbs/esbs_dashboard.png',
     screens: [
-      'assets/projects/crypto/Home.png',
-      'assets/projects/crypto/shop.png',
-      'assets/projects/crypto/Repair.png',
-      'assets/projects/crypto/single product page.png',
-      'assets/projects/crypto/News.png',
-      'assets/projects/crypto/contact us.png'
+      'assets/projects/esbs/esbs_dashboard.png',
+      'assets/projects/esbs/esbs_login.png',
+      'assets/projects/esbs/esbs_account_check.png',
+      'assets/projects/esbs/esbs_verify_choice.png',
+      'assets/projects/esbs/esbs_email_code.png',
+      'assets/projects/esbs/esbs_passcode.png',
+      'assets/projects/esbs/esbs_account_type.png',
+      'assets/projects/esbs/esbs_residency.png'
     ],
-    overview: 'OS Mining (Miners Hub) is a specialized Web3 hardware marketplace and enterprise mining service portal designed for individual and institutional cryptocurrency miners across the Middle East, Europe, and Asia-Pacific. The platform features real-time monthly earnings calculators, ASIC miner catalogs with detailed power/hashrate telemetry, automated repair ticketing, and multi-currency global support.',
-    problem: 'Prospective and enterprise crypto miners faced steep barriers when purchasing hardware: opaque profitability metrics, uncertain power consumption figures, complex warranty/repair procedures, and fragmented global shipping details.',
-    solution: 'Designed an intuitive end-to-end e-commerce experience featuring an interactive dynamic earnings slider (AED 1,000 to AED 100,000+), standardized ASIC technical cards (Hashrate, Power, Algorithm), a diagnostic repair scheduling module with global branch coverage, and transparent multi-currency pricing.',
+    overview: 'esbs (Earl Shilton Building Society) is a established UK mutual financial institution providing savings, mortgages, and community banking. This project delivered an end-to-end redesign of the member web portal—modernizing core onboarding flows, UK regulatory compliance checks (FSCS protection & UK residency verification), dual-channel 2FA authentication (Email/SMS OTP), and a responsive member dashboard for multi-account savings and mortgage tracking.',
+    problem: 'Legacy mutual building society portals often suffered from cumbersome account verification, high cognitive friction during onboarding, and disjointed interfaces that failed to cater to both digital-native and elderly members requiring transparent savings oversight.',
+    solution: 'Architected a frictionless multi-step onboarding journey with progressive disclosure, clear dual-channel 2FA options, intuitive account categorization (Individual vs Joint Accounts), and a high-legibility member dashboard featuring instant balance summaries, loyalty bond tracking, and streamlined move-money navigation.',
     keyOutcomes: [
-      'Interactive monthly earnings slider bridging customer investment goals with exact ASIC recommendations',
-      'Standardized technical spec sheets (TH/s, Wattage, SHA-256 algorithm) boosting buyer conversion',
-      'Dedicated diagnostic repair tracking portal reducing hardware servicing turnarounds across 6 global hubs',
-      'High-contrast dark-mode aesthetic with golden liquidity accents tailored for Web3 audiences'
+      'Streamlined member registration journey with step-by-step progressive disclosure',
+      'Unified Savings & Mortgages portfolio oversight in an accessible, high-contrast dashboard',
+      'Robust 2FA security validation compliant with UK Financial Services Compensation Scheme (FSCS) standards',
+      'Clear eligibility screening ensuring seamless verification for UK residents'
     ],
     stats: [
-      { label: 'Platform Type', value: 'Web3 & E-Commerce' },
-      { label: 'Global Hubs', value: '6 Regions' },
-      { label: 'Calculator UX', value: 'Interactive' },
-      { label: 'Hardware Spec', value: 'ASIC & GPU' }
+      { label: 'Regulatory', value: 'FSCS Compliant' },
+      { label: 'Platform', value: 'Web Portal' },
+      { label: 'Authentication', value: 'Dual-Channel 2FA' },
+      { label: 'Accessibility', value: 'WCAG 2.1 AA' }
     ],
     sections: [
       {
-        title: 'Interactive Earnings Calculator & Storefront',
-        subtitle: 'Dynamic Yield Projections & Hero Flow',
-        description: 'Designed an intuitive financial slider allowing customers to adjust expected monthly earnings to immediately receive estimated machine purchase requirements, ROI timelines, and power usage breakdowns.',
-        image: 'assets/projects/crypto/Home.png',
-        highlights: ['Dynamic purchase price projection', 'Frictionless quick-purchase CTAs', 'Clear 95% uptime & security trust badges']
+        title: 'Member Savings & Mortgages Dashboard',
+        subtitle: 'Consolidated Member Financial Overview',
+        description: 'Designed a high-clarity dashboard interface allowing members to toggle between active savings accounts and mortgage commitments, inspect loyalty bonds (e.g. 24M LTY Bnd), and manage transactions with quick action sidebars.',
+        image: 'assets/projects/esbs/esbs_dashboard.png',
+        highlights: ['Dynamic portfolio tab switching (Savings / Mortgages)', 'Clear interest rate & bond maturity tracking', 'Quick branch locator and direct messaging portal']
       },
       {
-        title: 'High-Density Hardware Catalog & Diagnostics',
-        subtitle: 'Technical Filtering & Diagnostic Portal',
-        description: 'Created modular product grids categorized by manufacturer (Antminer, Whatsminer, Avalon) with instant at-a-glance hashrate metrics, alongside a worldwide repair booking service.',
-        image: 'assets/projects/crypto/Repair.png',
-        highlights: ['Hashrate (TH/s) & Power (Watts) comparison cards', 'Global repair centers in Dubai, USA, Australia, and UK', 'Integrated multi-currency checkout']
+        title: 'Frictionless Onboarding & Multi-Factor Security',
+        subtitle: 'Step-by-Step UK Verification',
+        description: 'Engineered a clean step-by-step verification pipeline featuring account status checks, mobile/email passcode confirmation with timed validity counters, and clear UK residency confirmation compliant with mutual society guidelines.',
+        image: 'assets/projects/esbs/esbs_login.png',
+        highlights: ['Dual-channel OTP validation (Email & Mobile SMS)', 'Individual vs Joint account selection flow', 'FSCS badge certification & bank-grade trust markers']
       }
     ],
     designSpecs: {
-      typography: ['Urbanist / Space Grotesk (Headings)', 'Inter (Body UI)', 'JetBrains Mono (Hashrate & Price Metrics)'],
+      typography: ['Urbanist / Caros (Headings & Numbers)', 'Urbanist / Inter (Form Labels & Body UI)', 'JetBrains Mono (Account Numbers & Passcodes)'],
       colors: [
-        { name: 'Amber Gold', hex: '#F59E0B', role: 'Primary CTAs, Brand Accents & Yield Sliders' },
-        { name: 'Obsidian Black', hex: '#0B0F19', role: 'Hero Backgrounds & Dark Canvas' },
-        { name: 'Pure White', hex: '#FFFFFF', role: 'High-Density Catalog Cards & Clarity' }
+        { name: 'Heritage Deep Navy', hex: '#002157', role: 'Brand Identity, Sidebar & Primary Actions' },
+        { name: 'esbs Brand Accent', hex: '#E11D48', role: 'Identity Square & Status Accents' },
+        { name: 'Soft Canvas Tint', hex: '#DEE4FF', role: 'Dashboard Canvas & High-Legibility Background' }
       ],
       gridSystem: '12-Column Responsive Layout with Fluid Card Breakpoints',
-      keyComponents: ['Earnings Calculator Slider', 'ASIC Spec Badge Card', 'Repair Status Table', 'Global Office Locator']
+      keyComponents: ['Savings Portfolio Card', '2FA Passcode Input Group', 'Account Selector Radio Pill', 'FSCS Trust Seal Badge']
     }
   }
 ];
