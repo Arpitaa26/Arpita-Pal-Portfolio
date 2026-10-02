@@ -253,29 +253,4 @@
       </div>
     </div>
   </div>
-
-  <!-- Tilted / Angled Infinite Marquee Ribbon (After Hero Banner) -->
-  <div class="hero-ribbon-wrapper">
-    <div class="hero-ribbon-strip">
-      <div class="hero-ribbon-track">
-        @for (item of marqueeSkills; track $index) {
-          <span class="ribbon-skill-item">
-            <svg class="star-icon" width="16" height="16" viewBox="0 0 24 24" fill="#FF6B00">
-              <path d="M12 0L14.8 9.2L24 12L14.8 14.8L12 24L9.2 14.8L0 12L9.2 9.2L12 0Z"/>
-            </svg>
-            <span class="skill-name-text">{{ item }}</span>
-          </span>
-        }
-        <!-- Repeat for seamless infinite loop -->
-        @for (item of marqueeSkills; track 'repeat-' + $index) {
-          <span class="ribbon-skill-item">
-            <svg class="star-icon" width="16" height="16" viewBox="0 0 24 24" fill="#FF6B00">
-              <path d="M12 0L14.8 9.2L24 12L14.8 14.8L12 24L9.2 14.8L0 12L9.2 9.2L12 0Z"/>
-            </svg>
-            <span class="skill-name-text">{{ item }}</span>
-          </span>
-        }
-      </div>
-    </div>
-  </div>
 </section>
