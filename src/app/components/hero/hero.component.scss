@@ -266,21 +266,13 @@
   }
 
   @media (max-width: 580px) {
-    height: 390px;
-    min-height: 390px;
-
-    .orbit-ring, .orbit-center-hub {
-      zoom: 0.85;
-    }
+    height: 400px;
+    min-height: 400px;
   }
 
   @media (max-width: 440px) {
-    height: 340px;
-    min-height: 340px;
-
-    .orbit-ring, .orbit-center-hub {
-      zoom: 0.72;
-    }
+    height: 360px;
+    min-height: 360px;
   }
 }
 
@@ -372,19 +364,21 @@
   }
 }
 
-/* Individual Skill Node Pill (Enlarged Box Size, Comfortable Breathing Room) */
+/* Individual Skill Node Pill (Spacious Capsule, Wide Length, Text Centered Inside) */
 .skill-node-pill {
   position: absolute;
   transform: translate(-50%, -50%);
   display: inline-flex;
   align-items: center;
-  gap: 0.52rem;
-  padding: 0.44rem 0.95rem;
-  min-height: 35px;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.52rem 1.45rem;
+  min-width: 110px;
+  min-height: 38px;
   background: var(--bg-surface-elevated);
   border: 1.5px solid var(--border-subtle);
   border-radius: var(--radius-full);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.32), 0 0 12px var(--skill-glow, transparent);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), 0 0 12px var(--skill-glow, transparent);
   cursor: pointer;
   white-space: nowrap;
   transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
@@ -408,13 +402,13 @@
 
     svg {
       display: block;
-      width: 16px;
-      height: 16px;
+      width: 17px;
+      height: 17px;
     }
   }
 
   .node-label {
-    font-size: 0.8125rem;
+    font-size: 0.84rem;
     font-weight: 700;
     color: var(--text-primary);
     letter-spacing: -0.01em;
@@ -424,7 +418,6 @@
   }
 
   &:hover, &.highlighted {
-    transform: translate(-50%, -50%) scale(1.12) translateZ(0);
     z-index: 50;
     border-color: var(--skill-color);
     background: var(--bg-surface-hover);
