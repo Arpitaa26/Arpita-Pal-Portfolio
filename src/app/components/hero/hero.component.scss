@@ -134,7 +134,7 @@
    ========================================================================== */
 .hero__skills-orbit-stage {
   width: 100%;
-  max-width: 440px;
+  max-width: 510px;
   margin: 0 0 0 auto;
 
   @media (max-width: 1024px) {
@@ -238,8 +238,8 @@
 .orbit-canvas {
   position: relative;
   width: 100%;
-  height: 400px;
-  min-height: 400px;
+  height: 420px;
+  min-height: 420px;
   display: flex;
   align-items: center;
   justify-content: center;
