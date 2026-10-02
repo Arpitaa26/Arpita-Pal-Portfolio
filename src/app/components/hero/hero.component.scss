@@ -234,8 +234,8 @@
 .orbit-canvas {
   position: relative;
   width: 100%;
-  height: 520px;
-  min-height: 500px;
+  height: 580px;
+  min-height: 560px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -258,15 +258,33 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 280px;
-    height: 280px;
+    width: 340px;
+    height: 340px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 107, 0, 0.12) 0%, rgba(6, 182, 212, 0.08) 50%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 107, 0, 0.14) 0%, rgba(236, 72, 153, 0.08) 40%, rgba(6, 182, 212, 0.06) 70%, transparent 85%);
     pointer-events: none;
+  }
+
+  @media (max-width: 580px) {
+    height: 500px;
+    min-height: 480px;
+
+    .orbit-ring, .orbit-center-hub {
+      zoom: 0.82;
+    }
+  }
+
+  @media (max-width: 440px) {
+    height: 440px;
+    min-height: 420px;
+
+    .orbit-ring, .orbit-center-hub {
+      zoom: 0.68;
+    }
   }
 }
 
-/* Concentric Rings */
+/* Concentric Rings - 3 Dynamic Cosmic Rounds */
 .orbit-ring {
   position: absolute;
   top: 50%;
@@ -282,50 +300,47 @@
     opacity: 0.15;
   }
 
-  /* Outer Ring: 320px diameter (160px radius) - 100px clearance from 520px canvas edges */
+  /* Round 3: Outer Ring - 480px diameter (240px radius) */
   &--outer {
-    width: 320px;
-    height: 320px;
-    animation: spinOrbitClockwise 42s linear infinite;
-    border-color: rgba(255, 107, 0, 0.25);
+    width: 480px;
+    height: 480px;
+    animation: spinOrbitClockwise 48s linear infinite;
+    border-color: rgba(255, 107, 0, 0.28);
+    box-shadow: inset 0 0 40px rgba(255, 107, 0, 0.03);
 
     .skill-node-pill {
-      animation: counterSpinClockwise 42s linear infinite;
-    }
-
-    @media (max-width: 480px) {
-      width: 260px;
-      height: 260px;
-
-      .orbit-node-wrapper {
-        transform: rotate(var(--node-angle)) translate(130px) rotate(calc(-1 * var(--node-angle))) !important;
-      }
+      animation: counterSpinClockwise 48s linear infinite;
     }
   }
 
-  /* Inner Ring: 180px diameter (90px radius) - Synchronized with outer ring for zero pill collisions */
-  &--inner {
-    width: 180px;
-    height: 180px;
-    animation: spinOrbitClockwise 42s linear infinite;
-    border-color: rgba(6, 182, 212, 0.25);
+  /* Round 2: Middle Ring - 340px diameter (170px radius) */
+  &--middle {
+    width: 340px;
+    height: 340px;
+    animation: spinOrbitCounter 38s linear infinite;
+    border-color: rgba(236, 72, 153, 0.28);
+    box-shadow: inset 0 0 30px rgba(236, 72, 153, 0.03);
 
     .skill-node-pill {
-      animation: counterSpinClockwise 42s linear infinite;
+      animation: counterSpinCounter 38s linear infinite;
     }
+  }
 
-    @media (max-width: 480px) {
-      width: 150px;
-      height: 150px;
+  /* Round 1: Inner Ring - 220px diameter (110px radius, 76px clearance to hub) */
+  &--inner {
+    width: 220px;
+    height: 220px;
+    animation: spinOrbitClockwise 28s linear infinite;
+    border-color: rgba(6, 182, 212, 0.28);
+    box-shadow: inset 0 0 20px rgba(6, 182, 212, 0.04);
 
-      .orbit-node-wrapper {
-        transform: rotate(var(--node-angle)) translate(75px) rotate(calc(-1 * var(--node-angle))) !important;
-      }
+    .skill-node-pill {
+      animation: counterSpinClockwise 28s linear infinite;
     }
   }
 }
 
-/* Orbit Node Wrapper */
+/* Orbit Node Wrapper & Positioning */
 .orbit-node-wrapper {
   position: absolute;
   top: 50%;
@@ -336,13 +351,24 @@
   align-items: center;
   justify-content: center;
   pointer-events: auto;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+
+  &.node-faded {
+    opacity: 0.18;
+    filter: grayscale(0.85);
+    pointer-events: none;
+  }
 
   .orbit-ring--outer & {
-    transform: rotate(var(--node-angle)) translate(160px) rotate(calc(-1 * var(--node-angle)));
+    transform: rotate(var(--node-angle)) translate(240px) rotate(calc(-1 * var(--node-angle)));
+  }
+
+  .orbit-ring--middle & {
+    transform: rotate(var(--node-angle)) translate(170px) rotate(calc(-1 * var(--node-angle)));
   }
 
   .orbit-ring--inner & {
-    transform: rotate(var(--node-angle)) translate(90px) rotate(calc(-1 * var(--node-angle)));
+    transform: rotate(var(--node-angle)) translate(110px) rotate(calc(-1 * var(--node-angle)));
   }
 }
 

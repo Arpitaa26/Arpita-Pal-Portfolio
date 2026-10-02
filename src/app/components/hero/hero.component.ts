@@ -6,7 +6,7 @@ export interface SkillNode {
   name: string;
   shortName: string;
   category: 'design' | 'frontend' | 'tools';
-  orbit: 'outer' | 'inner';
+  orbit: 'outer' | 'middle' | 'inner';
   angle: number; // in degrees
   color: string;
   bgGlow: string;
@@ -27,7 +27,7 @@ export class HeroComponent {
   selectedCategory = signal<'all' | 'design' | 'frontend'>('all');
   isOrbitPaused = signal<boolean>(false);
 
-  // Outer Orbit Skills (Design, UX, IA, Accessibility)
+  // Round 3: Outer Orbit (Product Design & UX Strategy - 500px dia / 250px radius)
   outerSkills: SkillNode[] = [
     {
       id: 'figma',
@@ -37,21 +37,9 @@ export class HeroComponent {
       orbit: 'outer',
       angle: 0,
       color: '#F24E1E',
-      bgGlow: 'rgba(242, 78, 30, 0.2)',
+      bgGlow: 'rgba(242, 78, 30, 0.25)',
       role: 'UI/UX & Prototyping',
       detail: 'Design systems, auto-layout, interactive prototypes, variables & components.'
-    },
-    {
-      id: 'design-systems',
-      name: 'Design Systems',
-      shortName: 'Tokens',
-      category: 'design',
-      orbit: 'outer',
-      angle: 60,
-      color: '#EC4899',
-      bgGlow: 'rgba(236, 72, 153, 0.2)',
-      role: 'Tokens & Architecture',
-      detail: 'Figma-to-SCSS token sync, atomic component libraries, and documentation.'
     },
     {
       id: 'ux-research',
@@ -59,9 +47,9 @@ export class HeroComponent {
       shortName: 'Research',
       category: 'design',
       orbit: 'outer',
-      angle: 120,
+      angle: 90,
       color: '#F59E0B',
-      bgGlow: 'rgba(245, 158, 11, 0.2)',
+      bgGlow: 'rgba(245, 158, 11, 0.25)',
       role: 'User Journey & IA',
       detail: 'Usability testing, stakeholder interviews, heuristic evaluations & user flows.'
     },
@@ -73,21 +61,9 @@ export class HeroComponent {
       orbit: 'outer',
       angle: 180,
       color: '#10B981',
-      bgGlow: 'rgba(16, 185, 129, 0.2)',
+      bgGlow: 'rgba(16, 185, 129, 0.25)',
       role: 'Accessibility Standards',
       detail: 'Color contrast compliance, ARIA markup, keyboard navigation & screen readers.'
-    },
-    {
-      id: 'wireframing',
-      name: 'Wireframing',
-      shortName: 'Wireframes',
-      category: 'design',
-      orbit: 'outer',
-      angle: 240,
-      color: '#8B5CF6',
-      bgGlow: 'rgba(139, 92, 246, 0.2)',
-      role: 'Information Architecture',
-      detail: 'Rapid low-to-high fidelity wireframing, sitemaps, and interactive wireflows.'
     },
     {
       id: 'adobe-xd',
@@ -95,15 +71,67 @@ export class HeroComponent {
       shortName: 'Adobe',
       category: 'design',
       orbit: 'outer',
-      angle: 300,
+      angle: 270,
       color: '#FF61F6',
-      bgGlow: 'rgba(255, 97, 246, 0.2)',
+      bgGlow: 'rgba(255, 97, 246, 0.25)',
       role: 'Visual & Vector Craft',
       detail: 'Adobe XD, Illustrator vector graphics, and Photoshop raster assets.'
     }
   ];
 
-  // Inner Orbit Skills (Frontend Engineering, Angular, TypeScript, SCSS)
+  // Round 2: Middle Orbit (Architecture, UI Tokens & Web Standards - 360px dia / 180px radius)
+  middleSkills: SkillNode[] = [
+    {
+      id: 'scss',
+      name: 'SCSS / CSS3',
+      shortName: 'SCSS',
+      category: 'frontend',
+      orbit: 'middle',
+      angle: 45,
+      color: '#CC6699',
+      bgGlow: 'rgba(204, 102, 153, 0.25)',
+      role: 'Modern CSS & Tokens',
+      detail: 'Fluid typography clamp(), custom properties, responsive flexbox & grid systems.'
+    },
+    {
+      id: 'design-systems',
+      name: 'Design Systems',
+      shortName: 'Tokens',
+      category: 'design',
+      orbit: 'middle',
+      angle: 135,
+      color: '#EC4899',
+      bgGlow: 'rgba(236, 72, 153, 0.25)',
+      role: 'Tokens & Architecture',
+      detail: 'Figma-to-SCSS token sync, atomic component libraries, and documentation.'
+    },
+    {
+      id: 'javascript',
+      name: 'JavaScript',
+      shortName: 'ES6+',
+      category: 'frontend',
+      orbit: 'middle',
+      angle: 225,
+      color: '#F7DF1E',
+      bgGlow: 'rgba(247, 223, 30, 0.25)',
+      role: 'Modern Web APIs',
+      detail: 'DOM manipulation, asynchronous REST workflows, Fabric.js canvas & algorithms.'
+    },
+    {
+      id: 'wireframing',
+      name: 'Wireframing',
+      shortName: 'Wireframes',
+      category: 'design',
+      orbit: 'middle',
+      angle: 315,
+      color: '#8B5CF6',
+      bgGlow: 'rgba(139, 92, 246, 0.25)',
+      role: 'Information Architecture',
+      detail: 'Rapid low-to-high fidelity wireframing, sitemaps, and interactive wireflows.'
+    }
+  ];
+
+  // Round 1: Inner Orbit (Core Frameworks & Version Control - 220px dia / 110px radius)
   innerSkills: SkillNode[] = [
     {
       id: 'angular',
@@ -111,7 +139,7 @@ export class HeroComponent {
       shortName: 'Angular',
       category: 'frontend',
       orbit: 'inner',
-      angle: 30,
+      angle: 0,
       color: '#DD0031',
       bgGlow: 'rgba(221, 0, 49, 0.25)',
       role: 'Standalone & Signals',
@@ -135,35 +163,11 @@ export class HeroComponent {
       shortName: 'React',
       category: 'frontend',
       orbit: 'inner',
-      angle: 150,
+      angle: 180,
       color: '#06B6D4',
       bgGlow: 'rgba(6, 182, 212, 0.25)',
       role: 'UI Components & PWA',
       detail: 'React component lifecycles, hooks, responsive single-page applications.'
-    },
-    {
-      id: 'scss',
-      name: 'SCSS / CSS3',
-      shortName: 'SCSS',
-      category: 'frontend',
-      orbit: 'inner',
-      angle: 210,
-      color: '#CC6699',
-      bgGlow: 'rgba(204, 102, 153, 0.25)',
-      role: 'Modern CSS & Tokens',
-      detail: 'Fluid typography clamp(), custom properties, responsive flexbox & grid systems.'
-    },
-    {
-      id: 'javascript',
-      name: 'JavaScript',
-      shortName: 'ES6+',
-      category: 'frontend',
-      orbit: 'inner',
-      angle: 270,
-      color: '#F7DF1E',
-      bgGlow: 'rgba(247, 223, 30, 0.25)',
-      role: 'Modern Web APIs',
-      detail: 'DOM manipulation, asynchronous REST workflows, Fabric.js canvas & algorithms.'
     },
     {
       id: 'git',
@@ -171,7 +175,7 @@ export class HeroComponent {
       shortName: 'Git',
       category: 'frontend',
       orbit: 'inner',
-      angle: 330,
+      angle: 270,
       color: '#F05032',
       bgGlow: 'rgba(240, 80, 50, 0.25)',
       role: 'Version Control',

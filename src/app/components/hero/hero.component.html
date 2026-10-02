@@ -96,7 +96,7 @@
             <!-- Ambient Glow Radials -->
             <div class="orbit-canvas-glow"></div>
 
-            <!-- Outer Orbit Track (Design & UX Skills) -->
+            <!-- Round 3: Outer Orbit Track (Product Design & UX Strategy) -->
             <div 
               class="orbit-ring orbit-ring--outer" 
               [class.faded]="selectedCategory() === 'frontend'">
@@ -104,6 +104,7 @@
                 <div 
                   class="orbit-node-wrapper"
                   [style.--node-angle]="skill.angle + 'deg'"
+                  [class.node-faded]="selectedCategory() !== 'all' && selectedCategory() !== skill.category"
                   (mouseenter)="setHoveredSkill(skill)"
                   (mouseleave)="setHoveredSkill(null)">
                   <div 
@@ -112,7 +113,6 @@
                     [style.--skill-glow]="skill.bgGlow"
                     [class.highlighted]="hoveredSkill()?.id === skill.id">
                     
-                    <!-- Skill Icon -->
                     <span class="node-icon">
                       @if (skill.id === 'figma') {
                         <svg width="18" height="18" viewBox="0 0 38 57" fill="none">
@@ -121,13 +121,6 @@
                           <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262"/>
                           <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E"/>
                           <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF"/>
-                        </svg>
-                      } @else if (skill.id === 'design-systems') {
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                          <rect x="2" y="2" width="8" height="8" rx="2"></rect>
-                          <rect x="14" y="2" width="8" height="8" rx="2"></rect>
-                          <rect x="2" y="14" width="8" height="8" rx="2"></rect>
-                          <rect x="14" y="14" width="8" height="8" rx="2"></rect>
                         </svg>
                       } @else if (skill.id === 'ux-research') {
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
@@ -138,12 +131,6 @@
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                           <circle cx="12" cy="12" r="10"></circle>
                           <path d="M12 8v8M8 12h8"></path>
-                        </svg>
-                      } @else if (skill.id === 'wireframing') {
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                          <rect x="3" y="3" width="18" height="18" rx="2"></rect>
-                          <line x1="3" y1="9" x2="21" y2="9"></line>
-                          <line x1="9" y1="21" x2="9" y2="9"></line>
                         </svg>
                       } @else {
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
@@ -160,14 +147,14 @@
               }
             </div>
 
-            <!-- Inner Orbit Track (Frontend & Code Skills) -->
+            <!-- Round 2: Middle Orbit Track (Architecture, UI Tokens & Web Standards) -->
             <div 
-              class="orbit-ring orbit-ring--inner"
-              [class.faded]="selectedCategory() === 'design'">
-              @for (skill of innerSkills; track skill.id; let idx = $index) {
+              class="orbit-ring orbit-ring--middle">
+              @for (skill of middleSkills; track skill.id; let idx = $index) {
                 <div 
                   class="orbit-node-wrapper"
                   [style.--node-angle]="skill.angle + 'deg'"
+                  [class.node-faded]="selectedCategory() !== 'all' && selectedCategory() !== skill.category"
                   (mouseenter)="setHoveredSkill(skill)"
                   (mouseleave)="setHoveredSkill(null)">
                   <div 
@@ -176,7 +163,54 @@
                     [style.--skill-glow]="skill.bgGlow"
                     [class.highlighted]="hoveredSkill()?.id === skill.id">
                     
-                    <!-- Skill Icon -->
+                    <span class="node-icon">
+                      @if (skill.id === 'scss') {
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg>
+                      } @else if (skill.id === 'design-systems') {
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                          <rect x="2" y="2" width="8" height="8" rx="2"></rect>
+                          <rect x="14" y="2" width="8" height="8" rx="2"></rect>
+                          <rect x="2" y="14" width="8" height="8" rx="2"></rect>
+                          <rect x="14" y="14" width="8" height="8" rx="2"></rect>
+                        </svg>
+                      } @else if (skill.id === 'javascript') {
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.621-1.797-1.025-.192-.32-.192-.803.074-1.127.34-.415 1.098-.553 1.834-.391.564.125 1.02.43 1.34.823.167.203.3.364.385.45l2.25-1.455c-.26-.412-.55-.788-.937-1.134-1.004-.897-2.366-1.282-3.896-1.164-1.743.136-3.056.98-3.568 2.29-.533 1.363-.093 2.923 1.133 3.737 1.583 1.05 3.38 1.258 3.518 1.954.168.854-.624 1.31-1.802 1.33-1.442.025-2.222-.524-2.812-1.396l-2.316 1.414c.732 1.488 2.062 2.35 3.993 2.454 2.477.133 4.453-.943 4.797-3.078v-.004zm-11.453-7.534h-2.92v6.627c0 1.233-.06 2.046-.713 2.502-.607.424-1.536.424-2.12.193-.537-.213-.88-.588-1.037-.923l-2.25 1.364c.55 1.215 1.49 2.08 2.766 2.43 1.634.45 3.65.253 4.88-.607 1.107-.775 1.394-1.927 1.394-3.57v-8.016z"/>
+                        </svg>
+                      } @else {
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                          <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                          <line x1="3" y1="9" x2="21" y2="9"></line>
+                          <line x1="9" y1="21" x2="9" y2="9"></line>
+                        </svg>
+                      }
+                    </span>
+
+                    <span class="node-label">{{ skill.shortName }}</span>
+                  </div>
+                </div>
+              }
+            </div>
+
+            <!-- Round 1: Inner Orbit Track (Core Frameworks & Version Control) -->
+            <div 
+              class="orbit-ring orbit-ring--inner"
+              [class.faded]="selectedCategory() === 'design'">
+              @for (skill of innerSkills; track skill.id; let idx = $index) {
+                <div 
+                  class="orbit-node-wrapper"
+                  [style.--node-angle]="skill.angle + 'deg'"
+                  [class.node-faded]="selectedCategory() !== 'all' && selectedCategory() !== skill.category"
+                  (mouseenter)="setHoveredSkill(skill)"
+                  (mouseleave)="setHoveredSkill(null)">
+                  <div 
+                    class="skill-node-pill" 
+                    [style.--skill-color]="skill.color"
+                    [style.--skill-glow]="skill.bgGlow"
+                    [class.highlighted]="hoveredSkill()?.id === skill.id">
+                    
                     <span class="node-icon">
                       @if (skill.id === 'angular') {
                         <svg width="18" height="18" viewBox="0 0 250 250" fill="none">
@@ -194,14 +228,6 @@
                           <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(60 12 12)"></ellipse>
                           <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(120 12 12)"></ellipse>
                           <circle cx="12" cy="12" r="2" fill="currentColor"></circle>
-                        </svg>
-                      } @else if (skill.id === 'scss') {
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                        </svg>
-                      } @else if (skill.id === 'javascript') {
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                          <path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.621-1.797-1.025-.192-.32-.192-.803.074-1.127.34-.415 1.098-.553 1.834-.391.564.125 1.02.43 1.34.823.167.203.3.364.385.45l2.25-1.455c-.26-.412-.55-.788-.937-1.134-1.004-.897-2.366-1.282-3.896-1.164-1.743.136-3.056.98-3.568 2.29-.533 1.363-.093 2.923 1.133 3.737 1.583 1.05 3.38 1.258 3.518 1.954.168.854-.624 1.31-1.802 1.33-1.442.025-2.222-.524-2.812-1.396l-2.316 1.414c.732 1.488 2.062 2.35 3.993 2.454 2.477.133 4.453-.943 4.797-3.078v-.004zm-11.453-7.534h-2.92v6.627c0 1.233-.06 2.046-.713 2.502-.607.424-1.536.424-2.12.193-.537-.213-.88-.588-1.037-.923l-2.25 1.364c.55 1.215 1.49 2.08 2.766 2.43 1.634.45 3.65.253 4.88-.607 1.107-.775 1.394-1.927 1.394-3.57v-8.016z"/>
                         </svg>
                       } @else {
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
