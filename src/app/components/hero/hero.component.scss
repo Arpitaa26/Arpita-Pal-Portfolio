@@ -234,8 +234,8 @@
 .orbit-canvas {
   position: relative;
   width: 100%;
-  height: 500px;
-  min-height: 480px;
+  height: 520px;
+  min-height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -282,15 +282,15 @@
     opacity: 0.15;
   }
 
-  /* Outer Ring: 310px diameter (155px radius) - gives 95px safe padding inside 500px canvas */
+  /* Outer Ring: 320px diameter (160px radius) - 100px clearance from 520px canvas edges */
   &--outer {
-    width: 310px;
-    height: 310px;
-    animation: spinOrbitClockwise 34s linear infinite;
+    width: 320px;
+    height: 320px;
+    animation: spinOrbitClockwise 42s linear infinite;
     border-color: rgba(255, 107, 0, 0.25);
 
     .skill-node-pill {
-      animation: counterSpinClockwise 34s linear infinite;
+      animation: counterSpinClockwise 42s linear infinite;
     }
 
     @media (max-width: 480px) {
@@ -303,23 +303,23 @@
     }
   }
 
-  /* Inner Ring: 190px diameter (95px radius) */
+  /* Inner Ring: 180px diameter (90px radius) - Synchronized with outer ring for zero pill collisions */
   &--inner {
-    width: 190px;
-    height: 190px;
-    animation: spinOrbitCounter 26s linear infinite;
+    width: 180px;
+    height: 180px;
+    animation: spinOrbitClockwise 42s linear infinite;
     border-color: rgba(6, 182, 212, 0.25);
 
     .skill-node-pill {
-      animation: counterSpinCounter 26s linear infinite;
+      animation: counterSpinClockwise 42s linear infinite;
     }
 
     @media (max-width: 480px) {
-      width: 155px;
-      height: 155px;
+      width: 150px;
+      height: 150px;
 
       .orbit-node-wrapper {
-        transform: rotate(var(--node-angle)) translate(77.5px) rotate(calc(-1 * var(--node-angle))) !important;
+        transform: rotate(var(--node-angle)) translate(75px) rotate(calc(-1 * var(--node-angle))) !important;
       }
     }
   }
@@ -338,11 +338,11 @@
   pointer-events: auto;
 
   .orbit-ring--outer & {
-    transform: rotate(var(--node-angle)) translate(155px) rotate(calc(-1 * var(--node-angle)));
+    transform: rotate(var(--node-angle)) translate(160px) rotate(calc(-1 * var(--node-angle)));
   }
 
   .orbit-ring--inner & {
-    transform: rotate(var(--node-angle)) translate(95px) rotate(calc(-1 * var(--node-angle)));
+    transform: rotate(var(--node-angle)) translate(90px) rotate(calc(-1 * var(--node-angle)));
   }
 }
 
@@ -353,16 +353,23 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.35rem 0.75rem;
+  padding: 0.38rem 0.8rem;
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-full);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25), 0 0 12px var(--skill-glow, transparent);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3), 0 0 12px var(--skill-glow, transparent);
   cursor: pointer;
   white-space: nowrap;
   transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
   user-select: none;
   line-height: 1;
+  box-sizing: border-box;
+
+  [data-theme='light'] & {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  }
 
   .node-icon {
     display: inline-flex;
@@ -374,6 +381,8 @@
 
     svg {
       display: block;
+      width: 16px;
+      height: 16px;
     }
   }
 
@@ -382,8 +391,9 @@
     font-weight: 700;
     color: var(--text-primary);
     letter-spacing: -0.01em;
-    line-height: 1;
+    line-height: 1.2;
     white-space: nowrap;
+    display: inline-block;
   }
 
   &:hover, &.highlighted {

@@ -80,7 +80,7 @@ export class HeroComponent {
     {
       id: 'wireframing',
       name: 'Wireframing',
-      shortName: 'LoFi / HiFi',
+      shortName: 'Wireframes',
       category: 'design',
       orbit: 'outer',
       angle: 240,
