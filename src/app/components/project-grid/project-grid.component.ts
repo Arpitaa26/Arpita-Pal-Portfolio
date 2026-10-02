@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { Project } from '../../models/project.model';
 import { PROJECTS_DATA } from '../../data/projects.data';
 import { SectionHeadingComponent } from '../section-heading/section-heading.component';
@@ -8,7 +9,7 @@ import { CaseStudyModalComponent } from '../case-study-modal/case-study-modal.co
 @Component({
   selector: 'app-project-grid',
   standalone: true,
-  imports: [CommonModule, SectionHeadingComponent, CaseStudyModalComponent],
+  imports: [CommonModule, RouterLink, SectionHeadingComponent, CaseStudyModalComponent],
   templateUrl: './project-grid.component.html',
   styleUrls: ['./project-grid.component.scss']
 })
@@ -41,6 +42,18 @@ export class ProjectGridComponent {
 
   get esbsProject(): Project {
     return this.projects.find(p => p.id === 'esbs-portal') || this.projects[3];
+  }
+
+  get bigByteProject(): Project {
+    return this.projects.find(p => p.id === 'bigbyte') || this.projects[4];
+  }
+
+  get atgHotelsProject(): Project {
+    return this.projects.find(p => p.id === 'atg-hotels') || this.projects[5];
+  }
+
+  get empoweringProject(): Project {
+    return this.projects.find(p => p.id === 'empowering-sankalpa') || this.projects[6];
   }
 
   // Interactive handlers

@@ -269,5 +269,204 @@ export const PROJECTS_DATA: Project[] = [
       gridSystem: '12-Column Responsive Layout with Fluid Card Breakpoints',
       keyComponents: ['Savings Portfolio Card', '2FA Passcode Input Group', 'Account Selector Radio Pill', 'FSCS Trust Seal Badge']
     }
+  },
+  {
+    id: 'bigbyte',
+    slug: 'bigbyte',
+    title: 'BigByte — Enterprise IT Solutions & Cloud Consulting',
+    subtitle: 'Modern Corporate Digital Platform for Cloud Services, AI & Digital Transformation',
+    tagline: 'Architecting Scalable Corporate Web Presence for Cloud, AI & Enterprise IT Solutions',
+    category: 'Frontend',
+    tags: ['Web Design', 'UI/UX', 'Cloud Services', 'LLM & GenAI', 'HTML5/CSS3', 'Responsive Design'],
+    year: '2024',
+    role: 'Web Designer & Frontend Developer',
+    client: 'BigByte Innovations',
+    accentColor: '#2563EB',
+    accentGradient: 'linear-gradient(135deg, #2563EB 0%, #38BDF8 100%)',
+    featured: true,
+    coverImage: 'assets/projects/bigbyte/home_page_1.png',
+    screens: [
+      'assets/projects/bigbyte/home_page_1.png',
+      'assets/projects/bigbyte/company.png',
+      'assets/projects/bigbyte/llm_&_gen_ai.png',
+      'assets/projects/bigbyte/manufacturing.png',
+      'assets/projects/bigbyte/career.png',
+      'assets/projects/bigbyte/contact_us.png'
+    ],
+    overview: 'BigByte is a full-scale corporate web portal engineered for a modern enterprise IT consulting and cloud services provider. The platform showcases multi-vertical service offerings—including Cloud Migration, Big Data, Gen AI & LLM integration, Enterprise Modernization, Healthcare, and Smart Manufacturing—with high-conversion responsive landing pages and dynamic service filters.',
+    problem: 'Enterprise IT consulting firms often struggle to convey dense, high-tech service offerings (Cloud, AI, IoT, Big Data) in an approachable, visually organized structure that drives client engagement and recruitment.',
+    solution: 'Designed a modular, dark-accented modern corporate architecture featuring interactive service cards, structured case studies, dedicated industry vertical hubs, interactive career portals, and direct client consultation scheduling.',
+    keyOutcomes: [
+      'Multi-vertical service directory with dedicated landing experiences for Cloud, AI, and Manufacturing',
+      'Live GitHub Pages production deployment with responsive cross-browser performance',
+      'Streamlined lead generation and candidate career intake portals',
+      'Consistent design tokens and typography hierarchy across all corporate sub-pages'
+    ],
+    stats: [
+      { label: 'Industry Verticals', value: '6 Sectors' },
+      { label: 'Live Deployment', value: 'GitHub Pages' },
+      { label: 'Design Fidelity', value: 'High-Fidelity' },
+      { label: 'Device Support', value: '100% Responsive' }
+    ],
+    sections: [
+      {
+        title: 'Corporate Home & Multi-Vertical Showcase',
+        subtitle: 'High-Impact Brand Architecture',
+        description: 'Crafted the hero experience and service showcase displaying enterprise capabilities across AI, Cloud, and Big Data with interactive visual cards.',
+        image: 'assets/projects/bigbyte/home_page_1.png',
+        highlights: ['Dynamic hero with clear value propositions', 'Interactive multi-industry tabs', 'Partner ecosystem and trust verification']
+      },
+      {
+        title: 'GenAI & Specialized Solutions Hub',
+        subtitle: 'Deep-Tech Service Architecture',
+        description: 'Engineered specialized landing experiences explaining LLM integration, predictive telemetry, and enterprise automation with intuitive diagrammatic illustrations.',
+        image: 'assets/projects/bigbyte/llm_&_gen_ai.png',
+        highlights: ['Modern tech infographics', 'B2B inquiry funnel optimization', 'Unified design system styling']
+      }
+    ],
+    designSpecs: {
+      typography: ['Space Grotesk / Inter (Headings)', 'Inter (Body UI)', 'JetBrains Mono (Code & Analytics)'],
+      colors: [
+        { name: 'Cobalt Primary', hex: '#2563EB', role: 'Primary Brand Action & Hero Accents' },
+        { name: 'Sky Electric', hex: '#38BDF8', role: 'Cloud & AI Highlights' },
+        { name: 'Deep Space Canvas', hex: '#0B0F17', role: 'Dark Surface Background' }
+      ],
+      gridSystem: '12-Column Responsive Layout with Fluid Card Breakpoints',
+      keyComponents: ['Service Vertical Card', 'Client Testimonial Slider', 'Career Intake Form', 'Interactive Tech Diagram']
+    },
+    demoUrl: 'https://arpitaa26.github.io/bigbyte-main/',
+    githubUrl: 'https://github.com/Arpitaa26/bigbyte-main'
+  },
+  {
+    id: 'atg-hotels',
+    slug: 'atg-hotels',
+    title: 'ATG Hotels — Luxury Hospitality & Hotel Booking Platform',
+    subtitle: 'End-to-End Hotel Search, Room Reservation & Hospitality Guest Experience',
+    tagline: 'Elevating Hotel Discovery, Real-Time Availability & Seamless Guest Booking UX',
+    category: 'Product Design',
+    tags: ['Product Design', 'Hospitality UX', 'Hotel Booking', 'Figma', 'UI/UX', 'Frontend'],
+    year: '2024',
+    role: 'Lead UI/UX Designer & Frontend Developer',
+    client: 'ATG Hospitality Group',
+    accentColor: '#D97706',
+    accentGradient: 'linear-gradient(135deg, #D97706 0%, #F59E0B 100%)',
+    featured: true,
+    coverImage: 'assets/projects/atg-hotels/home_page.png',
+    screens: [
+      'assets/projects/atg-hotels/home_page.png',
+      'assets/projects/atg-hotels/hotel_search_page.png',
+      'assets/projects/atg-hotels/hotel_details_page.png',
+      'assets/projects/atg-hotels/about_us_page_1.png',
+      'assets/projects/atg-hotels/blog_page.png',
+      'assets/projects/atg-hotels/contact_us_page_1.png',
+      'assets/projects/atg-hotels/login_1.png',
+      'assets/projects/atg-hotels/signup_1.png'
+    ],
+    overview: 'ATG Hotels is an all-inclusive digital booking and guest management platform crafted for modern luxury hotels and boutique resorts. Featuring an intuitive date/guest search bar, high-resolution room visual galleries, amenity comparison matrix, transparent pricing breakdowns, and a seamless guest checkout funnel.',
+    problem: 'Travelers frequently abandon hotel bookings due to cluttered search filters, unclear room amenity differences, hidden pricing, and disjointed mobile booking flows.',
+    solution: 'Designed an aspirational, imagery-forward booking engine with progressive filter controls (Price, Star Rating, Amenities), modular room detail viewports with panoramic galleries, transparent guest billing summaries, and frictionless guest profile accounts.',
+    keyOutcomes: [
+      'Frictionless 3-step room reservation journey from search to confirmed booking',
+      'High-density room comparison cards highlighting amenities, views, and cancellation policies',
+      'Dedicated guest account portals for reservation history, loyalty rewards, and concierge requests',
+      'Luxury warm-palette aesthetic with high-contrast accessibility compliance'
+    ],
+    stats: [
+      { label: 'Booking Flow', value: '3 Steps' },
+      { label: 'Platform Type', value: 'Hospitality Web' },
+      { label: 'UI Patterns', value: 'Card-Based UX' },
+      { label: 'Device Support', value: 'Desktop & Mobile' }
+    ],
+    sections: [
+      {
+        title: 'Hero Booking Engine & Curated Collections',
+        subtitle: 'Discovery & Instant Filtering',
+        description: 'Designed a sticky, accessible search bar allowing users to filter by destination, check-in/out dates, and guest count with instantaneous search previews.',
+        image: 'assets/projects/atg-hotels/home_page.png',
+        highlights: ['Sticky date-range picker UX', 'Featured luxury collections showcase', 'Verified guest review ratings']
+      },
+      {
+        title: 'Detailed Room Specs & Booking Funnel',
+        subtitle: 'Transparent Amenities & Pricing',
+        description: 'Created comprehensive room viewports showcasing square footage, bed configurations, complimentary amenities, and clear price breakdowns without hidden fees.',
+        image: 'assets/projects/atg-hotels/hotel_details_page.png',
+        highlights: ['High-res gallery viewer', 'Interactive amenity checklist', 'Instant reservation checkout CTA']
+      }
+    ],
+    designSpecs: {
+      typography: ['Playfair Display / Urbanist (Headings)', 'Inter (Body UI)', 'JetBrains Mono (Rates & Dates)'],
+      colors: [
+        { name: 'Warm Amber Gold', hex: '#D97706', role: 'Brand Identity & Star Highlights' },
+        { name: 'Champagne Cream', hex: '#FEF3C7', role: 'Surface Tints' },
+        { name: 'Espresso Slate', hex: '#1C1917', role: 'Deep Luxury Canvas' }
+      ],
+      gridSystem: '12-Column Responsive Layout with Fluid Card Breakpoints',
+      keyComponents: ['Sticky Booking Filter Bar', 'Room Amenity Pill Matrix', 'Guest Review Carousel', 'Secure Checkout Drawer']
+    },
+    githubUrl: 'https://github.com/Arpitaa26/ATG-Hotels'
+  },
+  {
+    id: 'empowering-sankalpa',
+    slug: 'empowering-sankalpa',
+    title: 'Sankalpa — Empowering Women & Girls Worldwide',
+    subtitle: 'Non-Profit Community Platform, Global Impact Activities & Donation Portal',
+    tagline: 'Amplifying Voices, Education & Leadership for Women & Girls Globally',
+    category: 'Frontend',
+    tags: ['Web Design', 'NGO & Social Impact', 'Donation UX', 'Community Platform', 'Responsive Web'],
+    year: '2023 - 2024',
+    role: 'UI/UX Designer & Web Developer',
+    client: 'Sankalpa NGO',
+    accentColor: '#E11D48',
+    accentGradient: 'linear-gradient(135deg, #E11D48 0%, #FB7185 100%)',
+    featured: true,
+    coverImage: 'assets/projects/empowering/home_page.jpg',
+    screens: [
+      'assets/projects/empowering/home_page.jpg',
+      'assets/projects/empowering/activities.jpg',
+      'assets/projects/empowering/about_us.jpg',
+      'assets/projects/empowering/donate_now.jpg',
+      'assets/projects/empowering/contact_us.jpg'
+    ],
+    overview: 'Sankalpa is a non-profit global organization dedicated to empowering women and adolescent girls through vocational education, healthcare outreach, skill development, and community advocacy. This project delivered an emotionally resonant, accessible web platform featuring storytelling carousels, activity showcases, impact metrics, and a streamlined donation portal.',
+    problem: 'Non-profit initiatives often face trust and engagement barriers when their platforms fail to clearly demonstrate verified field impact, transparent donation allocation, and straightforward contribution options.',
+    solution: 'Architected an inspiring visual storytelling journey featuring real impact statistics, photojournalistic activity timelines, volunteer onboarding channels, and a secure multi-tier donation funnel.',
+    keyOutcomes: [
+      'Transparent impact dashboards illustrating community outreach metrics and beneficiary counts',
+      'Multi-tier donation interface with pre-selected amounts and custom contribution options',
+      'Detailed activities repository chronicling education workshops and health awareness camps',
+      'Warm, human-centric visual identity engineered for accessibility and trust'
+    ],
+    stats: [
+      { label: 'Impact Outreach', value: 'Global Community' },
+      { label: 'Platform Type', value: 'Non-Profit / NGO' },
+      { label: 'Donation UX', value: 'Multi-Tier Flow' },
+      { label: 'Accessibility', value: 'Inclusive Design' }
+    ],
+    sections: [
+      {
+        title: 'Impact Storytelling & Mission Showcase',
+        subtitle: 'Human-Centered Digital Advocacy',
+        description: 'Designed an evocative homepage featuring mission statements, beneficiary success stories, and real-time community milestone progress.',
+        image: 'assets/projects/empowering/home_page.jpg',
+        highlights: ['Inspiring visual hero with clear calls-to-action', 'Mission pillar breakdown (Education, Health, Advocacy)', 'Transparent operational reporting']
+      },
+      {
+        title: 'Activities Chronicle & Seamless Giving',
+        subtitle: 'Actionable Community Engagement',
+        description: 'Built intuitive activity cards detailing past and upcoming grassroots programs alongside a frictionless donation page.',
+        image: 'assets/projects/empowering/donate_now.jpg',
+        highlights: ['Interactive program archives', 'Tiered donation amounts with tangible impact descriptors', 'Volunteer and partner sign-up flows']
+      }
+    ],
+    designSpecs: {
+      typography: ['Urbanist / Playfair (Headings)', 'Inter (Body UI)', 'JetBrains Mono (Donation Counters)'],
+      colors: [
+        { name: 'Empowerment Rose', hex: '#E11D48', role: 'Brand Identity & Donate Action' },
+        { name: 'Warm Terracotta', hex: '#F97316', role: 'Community Secondary Accent' },
+        { name: 'Soft Linen Surface', hex: '#FFF7ED', role: 'Warm Canvas Background' }
+      ],
+      gridSystem: '12-Column Responsive Layout with Fluid Card Breakpoints',
+      keyComponents: ['Multi-Tier Donation Stepper', 'Grassroots Program Card', 'Impact Counter Hero', 'Volunteer Intake Form']
+    }
   }
 ];

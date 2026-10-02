@@ -520,6 +520,17 @@
   .card-action-row {
     padding-top: 1rem;
     border-top: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+
+    .card-ext-links {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
 
     .action-link-btn {
       display: inline-flex;
@@ -527,6 +538,7 @@
       gap: 0.45rem;
       font-size: 0.85rem;
       font-weight: 700;
+      text-decoration: none;
 
       &.primary-action {
         color: var(--primary-400);
@@ -536,12 +548,46 @@
         color: var(--accent-cyan);
       }
 
+      &.live-action {
+        color: #10b981;
+        padding: 0.28rem 0.65rem;
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        border-radius: var(--radius-full);
+        font-size: 0.75rem;
+        font-weight: 600;
+        transition: all var(--duration-fast) var(--ease-spring);
+
+        &:hover {
+          background: rgba(16, 185, 129, 0.22);
+          border-color: #10b981;
+          transform: translateY(-1px);
+        }
+      }
+
+      &.github-action {
+        color: var(--text-primary);
+        padding: 0.28rem 0.65rem;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-full);
+        font-size: 0.75rem;
+        font-weight: 600;
+        transition: all var(--duration-fast) var(--ease-spring);
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.14);
+          border-color: var(--border-strong);
+          transform: translateY(-1px);
+        }
+      }
+
       svg {
         transition: transform var(--duration-fast) var(--ease-spring);
       }
     }
 
-    &:hover .action-link-btn svg {
+    &:hover .action-link-btn.primary-action svg {
       transform: translateX(4px);
     }
   }

@@ -103,6 +103,49 @@
     font-size: var(--font-size-lg);
     color: var(--text-secondary);
     line-height: 1.5;
+    margin-bottom: 1.25rem;
+  }
+
+  .modal-links-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+
+    .modal-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.15rem;
+      border-radius: var(--radius-full);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all var(--duration-fast) var(--ease-spring);
+
+      &.btn-live {
+        background: var(--primary-gradient);
+        color: #ffffff;
+        box-shadow: 0 4px 15px rgba(255, 107, 0, 0.35);
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(255, 107, 0, 0.5);
+        }
+      }
+
+      &.btn-github {
+        background: var(--bg-surface-elevated);
+        border: 1px solid var(--border-subtle);
+        color: var(--text-primary);
+
+        &:hover {
+          background: var(--bg-surface-hover);
+          border-color: var(--border-strong);
+          transform: translateY(-2px);
+        }
+      }
+    }
   }
 }
 

@@ -928,3 +928,336 @@
     padding-top: 0.5rem;
   }
 }
+
+/* ==========================================================================
+   4. TERTIARY PROJECTS (3-Column Grid: BigByte, ATG Hotels, Sankalpa)
+   ========================================================================== */
+.tertiary-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tertiary-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface-elevated);
+  transition: all var(--duration-normal) var(--ease-spring);
+  cursor: pointer;
+
+  [data-theme='light'] & {
+    background: #ffffff;
+    border-color: #e2e8f0;
+    box-shadow: 0 4px 18px rgba(15, 23, 42, 0.05);
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-xl), 0 0 25px rgba(0, 0, 0, 0.25);
+
+    .t-viewport-img {
+      transform: scale(1.05);
+    }
+
+    .t-overlay {
+      opacity: 1;
+    }
+  }
+
+  .t-media-viewport {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    background: var(--bg-surface);
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-subtle);
+
+    .t-viewport-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform var(--duration-slow) var(--ease-smooth);
+    }
+
+    .t-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(11, 15, 23, 0.7);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity var(--duration-fast) var(--ease-smooth);
+
+      .t-overlay-text {
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: #ffffff;
+        padding: 0.45rem 1rem;
+        background: var(--primary-gradient);
+        border-radius: var(--radius-full);
+        box-shadow: 0 4px 14px rgba(255, 107, 0, 0.4);
+      }
+    }
+
+    .t-badge-group {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      right: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: none;
+      z-index: 2;
+
+      .t-cat-badge {
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        padding: 0.25rem 0.6rem;
+        border-radius: var(--radius-full);
+        background: rgba(15, 23, 42, 0.8);
+        backdrop-filter: blur(8px);
+        color: var(--text-secondary);
+        border: 1px solid var(--border-subtle);
+      }
+
+      .t-live-badge {
+        pointer-events: auto;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.725rem;
+        font-weight: 700;
+        color: #10b981;
+        padding: 0.25rem 0.65rem;
+        border-radius: var(--radius-full);
+        background: rgba(16, 185, 129, 0.15);
+        border: 1px solid rgba(16, 185, 129, 0.35);
+        backdrop-filter: blur(8px);
+        text-decoration: none;
+        transition: all var(--duration-fast) var(--ease-spring);
+
+        &:hover {
+          background: rgba(16, 185, 129, 0.28);
+          transform: translateY(-1px);
+        }
+
+        .pulse-emerald {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #10b981;
+          box-shadow: 0 0 6px #10b981;
+        }
+
+        &.t-github-badge {
+          color: var(--text-primary);
+          background: rgba(15, 23, 42, 0.85);
+          border-color: var(--border-subtle);
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.15);
+          }
+        }
+      }
+    }
+  }
+
+  .t-content {
+    padding: 1.25rem 1.35rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    .t-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+    }
+
+    .t-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.3;
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.01em;
+    }
+
+    .t-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 1.15rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .t-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: auto;
+      margin-bottom: 1.25rem;
+    }
+
+    .t-action-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--border-subtle);
+
+      .t-case-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.8125rem;
+        font-weight: 700;
+        color: var(--primary-400);
+
+        svg {
+          transition: transform var(--duration-fast) var(--ease-spring);
+        }
+      }
+
+      &:hover .t-case-btn svg {
+        transform: translateX(4px);
+      }
+
+      .t-ext-links {
+        display: flex;
+        gap: 0.35rem;
+
+        .ext-icon-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.3rem;
+          padding: 0.25rem 0.55rem;
+          border-radius: var(--radius-full);
+          font-size: 0.725rem;
+          font-weight: 600;
+          text-decoration: none;
+          transition: all var(--duration-fast) var(--ease-spring);
+
+          &.live {
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+
+            &:hover {
+              background: rgba(16, 185, 129, 0.22);
+              transform: translateY(-1px);
+            }
+          }
+
+          &.github {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border-subtle);
+
+            &:hover {
+              background: rgba(255, 255, 255, 0.14);
+              transform: translateY(-1px);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* ==========================================================================
+   5. ALL PROJECTS CALLOUT BANNER
+   ========================================================================== */
+.all-projects-banner {
+  padding: clamp(1.75rem, 3.5vw, 2.5rem);
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--border-strong);
+  background: var(--bg-surface-elevated);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+
+  [data-theme='light'] & {
+    background: #ffffff;
+    border-color: #e2e8f0;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  }
+
+  .banner-text {
+    flex: 1;
+    min-width: 280px;
+
+    .banner-heading {
+      font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-top: 0.75rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .banner-desc {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      max-width: 600px;
+    }
+  }
+
+  .banner-action {
+    .btn-all-projects {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.75rem;
+      border-radius: var(--radius-full);
+      background: var(--primary-gradient);
+      color: #ffffff;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 4px 18px rgba(255, 107, 0, 0.35);
+      transition: all var(--duration-fast) var(--ease-spring);
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 107, 0, 0.5);
+
+        svg {
+          transform: translateX(4px);
+        }
+      }
+
+      svg {
+        transition: transform var(--duration-fast) var(--ease-spring);
+      }
+    }
+  }
+}
+

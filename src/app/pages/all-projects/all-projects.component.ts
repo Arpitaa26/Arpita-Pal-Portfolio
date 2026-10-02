@@ -105,11 +105,53 @@ export class AllProjectsComponent {
       accentColor: '#002157',
       realProject: PROJECTS_DATA[3]
     },
+    {
+      id: 'bigbyte',
+      slotNumber: 5,
+      title: 'BigByte — Enterprise IT Solutions & Cloud Consulting',
+      subtitle: 'Modern Corporate Digital Platform for Cloud Services, AI & Digital Transformation',
+      category: 'Frontend Engineering',
+      tags: ['Web Design', 'UI/UX', 'Cloud Services', 'LLM & GenAI', 'HTML5/CSS3'],
+      role: 'Web Designer & Frontend Developer',
+      year: '2024',
+      status: 'Featured Project',
+      isPlaceholder: false,
+      accentColor: '#2563EB',
+      realProject: PROJECTS_DATA[4]
+    },
+    {
+      id: 'atg-hotels',
+      slotNumber: 6,
+      title: 'ATG Hotels — Luxury Hospitality & Hotel Booking Platform',
+      subtitle: 'End-to-End Hotel Search, Room Reservation & Hospitality Guest Experience',
+      category: 'UI/UX Design',
+      tags: ['Product Design', 'Hospitality UX', 'Hotel Booking', 'Figma', 'Frontend'],
+      role: 'Lead UI/UX Designer & Frontend Developer',
+      year: '2024',
+      status: 'Featured Project',
+      isPlaceholder: false,
+      accentColor: '#D97706',
+      realProject: PROJECTS_DATA[5]
+    },
+    {
+      id: 'empowering-sankalpa',
+      slotNumber: 7,
+      title: 'Sankalpa — Empowering Women & Girls Worldwide',
+      subtitle: 'Non-Profit Community Platform, Global Impact Activities & Donation Portal',
+      category: 'Frontend Engineering',
+      tags: ['Web Design', 'NGO & Social Impact', 'Donation UX', 'Responsive Web'],
+      role: 'UI/UX Designer & Web Developer',
+      year: '2023 - 2024',
+      status: 'Featured Project',
+      isPlaceholder: false,
+      accentColor: '#E11D48',
+      realProject: PROJECTS_DATA[6]
+    },
     // Placeholder projects for upcoming showcase
     {
       id: 'placeholder-project-1',
-      slotNumber: 5,
-      title: 'Project 1 — UI/UX Case Study',
+      slotNumber: 8,
+      title: 'Project 8 — UI/UX Case Study',
       subtitle: 'Slot ready for your upcoming project details, wireframes, and design workflow.',
       category: 'UI/UX Design',
       tags: ['UI/UX Design', 'User Research', 'Wireframing', 'Interactive Prototype'],
@@ -121,21 +163,8 @@ export class AllProjectsComponent {
     },
     {
       id: 'placeholder-project-2',
-      slotNumber: 6,
-      title: 'Project 2 — Frontend Application',
-      subtitle: 'Slot ready for your upcoming web application, code implementation, and interactive UI.',
-      category: 'Frontend Engineering',
-      tags: ['Angular / React', 'TypeScript', 'Responsive Web', 'State Management'],
-      role: 'Frontend Engineer',
-      year: '2025',
-      status: 'Ready for Project Details',
-      isPlaceholder: true,
-      accentColor: '#10B981'
-    },
-    {
-      id: 'placeholder-project-3',
-      slotNumber: 7,
-      title: 'Project 3 — Design System & Tokens',
+      slotNumber: 9,
+      title: 'Project 9 — Design System & Tokens',
       subtitle: 'Slot ready for your scalable design system, UI components, and token specifications.',
       category: 'Design Systems',
       tags: ['Design System', 'Figma Tokens', 'Atomic Design', 'Component Library'],
@@ -144,19 +173,6 @@ export class AllProjectsComponent {
       status: 'Ready for Project Details',
       isPlaceholder: true,
       accentColor: '#F59E0B'
-    },
-    {
-      id: 'placeholder-project-4',
-      slotNumber: 8,
-      title: 'Project 4 — Mobile & Web App Experience',
-      subtitle: 'Slot ready for your next client or corporate digital product showcase.',
-      category: 'Mobile & Web Apps',
-      tags: ['Mobile UX', 'Micro-Interactions', 'User Testing', 'App Architecture'],
-      role: 'Product Designer',
-      year: '2025',
-      status: 'Ready for Project Details',
-      isPlaceholder: true,
-      accentColor: '#EC4899'
     }
   ]);
 
