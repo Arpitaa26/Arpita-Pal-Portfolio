@@ -1,0 +1,234 @@
+<section class="project-cta-section" id="contact">
+  <!-- Tilted / Angled Infinite Marquee Ribbon -->
+  <div class="tilted-ribbon-wrapper">
+    <div class="ribbon-strip">
+      <div class="ribbon-marquee-track">
+        @for (item of marqueeItems; track $index) {
+          <span class="ribbon-item">
+            <svg class="star-icon" width="16" height="16" viewBox="0 0 24 24" fill="#FF6B00">
+              <path d="M12 0L14.8 9.2L24 12L14.8 14.8L12 24L9.2 14.8L0 12L9.2 9.2L12 0Z"/>
+            </svg>
+            <span class="item-text">{{ item }}</span>
+          </span>
+        }
+        <!-- Repeat for seamless continuous loop -->
+        @for (item of marqueeItems; track 'repeat-' + $index) {
+          <span class="ribbon-item">
+            <svg class="star-icon" width="16" height="16" viewBox="0 0 24 24" fill="#FF6B00">
+              <path d="M12 0L14.8 9.2L24 12L14.8 14.8L12 24L9.2 14.8L0 12L9.2 9.2L12 0Z"/>
+            </svg>
+            <span class="item-text">{{ item }}</span>
+          </span>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Unified Contact & Project Discussion Card -->
+  <div class="container cta-container">
+    <div class="cta-banner-card glass-panel">
+      <div class="cta-content-wrap">
+        <!-- Top Status Pill -->
+        <div class="cta-status-badge">
+          <span class="pulse-dot-orange"></span>
+          <span>Open to Full-Time Roles, Consulting & Contracts</span>
+        </div>
+
+        <!-- Headline & Subtitle -->
+        <h2 class="cta-headline">
+          Have an Awesome Project Idea? <span class="text-orange">Let's Discuss</span>
+        </h2>
+        <p class="cta-subtitle">
+          Have a project in mind or looking to hire? Feel free to reach out directly via email, connect on LinkedIn, or review my design portfolio and resume.
+        </p>
+
+        <!-- Interactive Email Input Pill Form -->
+        @if (!submitted()) {
+          <form class="email-pill-form" (submit)="submitInquiry($event)">
+            <div class="email-pill-input-box">
+              <div class="mail-icon-bubble">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </div>
+
+              <input
+                type="email"
+                [value]="emailInput()"
+                (input)="emailInput.set($any($event.target).value)"
+                placeholder="Enter Email Address"
+                class="pill-input"
+                required
+              />
+
+              <button type="submit" class="btn-pill-send" [disabled]="isSubmitting()">
+                @if (isSubmitting()) {
+                  <span>Sending...</span>
+                } @else {
+                  <span>Send</span>
+                }
+              </button>
+            </div>
+          </form>
+        } @else {
+          <div class="pill-success-banner">
+            <div class="success-check-icon">✓</div>
+            <div class="success-msg-wrap">
+              <span class="s-title">Request Received!</span>
+              <span class="s-sub">I'll get back to you at <strong>{{ emailInput() }}</strong> within 24 hours.</span>
+            </div>
+            <button class="btn-pill-reset" (click)="resetForm()">Send Another</button>
+          </div>
+        }
+
+        <!-- Social Proof Badges -->
+        <div class="social-proof-badges">
+          <div class="proof-badge">
+            <span class="badge-icon star-yellow">★</span>
+            <span class="badge-label"><strong>4.9/5</strong> Average Ratings</span>
+          </div>
+
+          <div class="proof-badge">
+            <span class="badge-icon trophy-orange">🏆</span>
+            <span class="badge-label"><strong>25+</strong> Winning Projects</span>
+          </div>
+
+          <div class="proof-badge">
+            <span class="badge-icon check-green">✔</span>
+            <span class="badge-label"><strong>Certified</strong> Product Designer</span>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="cta-inner-divider"></div>
+
+        <!-- Direct Contact Channels Grid inside the same box -->
+        <div class="direct-channels-grid">
+          <!-- 1. Email with 1-click Copy -->
+          <div class="channel-card highlight-channel">
+            <div class="channel-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <div class="channel-meta">
+              <span class="channel-lbl">Direct Email</span>
+              <a [href]="'mailto:' + contactEmail" class="channel-val">{{ contactEmail }}</a>
+            </div>
+            <button class="copy-pill-btn" (click)="copyEmail()" aria-label="Copy Email">
+              @if (emailCopied()) {
+                <span class="copied-text">✓ Copied</span>
+              } @else {
+                <span>Copy</span>
+              }
+            </button>
+          </div>
+
+          <!-- 2. LinkedIn Network -->
+          <a href="https://www.linkedin.com/in/arpitapal26/" target="_blank" rel="noopener noreferrer" class="channel-card link-card">
+            <div class="channel-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+            </div>
+            <div class="channel-meta">
+              <span class="channel-lbl">LinkedIn Network</span>
+              <span class="channel-val">linkedin.com/in/arpitapal26</span>
+            </div>
+            <svg class="channel-ext" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+
+          <!-- 3. Behance Portfolio -->
+          <a href="https://www.behance.net/arpitapal1" target="_blank" rel="noopener noreferrer" class="channel-card link-card">
+            <div class="channel-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22 7h-7v-2h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-4.227 0-6.625-2.92-6.625-6.883 0-4.148 2.673-6.945 6.6-6.945 3.992 0 6.07 2.871 6.07 6.643 0 .427-.047.818-.088 1.055h-9.524c.099 2.223 1.583 3.883 3.843 3.883 1.83 0 2.977-.852 3.518-1.753h1.307zm-8.683-5.244h6.541c-.087-1.745-1.229-3.056-3.235-3.056-2.02 0-3.155 1.343-3.306 3.056zm-10.043 5.244h-5v-14h5.275c3.082 0 4.725 1.595 4.725 3.91 0 1.625-.867 2.764-2.228 3.328 1.706.51 2.728 1.879 2.728 3.762 0 2.502-1.895 4-5.5 4zm-2.083-8.244h2.247c1.472 0 2.529-.637 2.529-1.936 0-1.229-.982-1.82-2.383-1.82h-2.393v3.756zm0 6.244h2.463c1.725 0 2.775-.724 2.775-2.122 0-1.464-1.127-2.122-2.775-2.122h-2.463v4.244z"/>
+              </svg>
+            </div>
+            <div class="channel-meta">
+              <span class="channel-lbl">Behance Portfolio</span>
+              <span class="channel-val">behance.net/arpitapal1</span>
+            </div>
+            <svg class="channel-ext" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+
+          <!-- 4. GitHub Repository -->
+          <a href="https://github.com/Arpitaa26" target="_blank" rel="noopener noreferrer" class="channel-card link-card">
+            <div class="channel-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+            </div>
+            <div class="channel-meta">
+              <span class="channel-lbl">GitHub Repository</span>
+              <span class="channel-val">github.com/Arpitaa26</span>
+            </div>
+            <svg class="channel-ext" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+
+          <!-- 5. Location & Work Mode -->
+          <div class="channel-card">
+            <div class="channel-icon-box">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <div class="channel-meta">
+              <span class="channel-lbl">Location & Work Mode</span>
+              <span class="channel-val">Kolkata, India · Global Remote / Relocation</span>
+            </div>
+          </div>
+
+          <!-- 6. Expected Response Time -->
+          <div class="channel-card">
+            <div class="channel-icon-box sla">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <div class="channel-meta">
+              <span class="channel-lbl">Expected Response Time</span>
+              <span class="channel-val sla-text">⚡ Within 24–48 Hours</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Row: Send Direct Email & Download Resume -->
+        <div class="cta-actions-row">
+          <a [href]="'mailto:' + contactEmail" class="btn-primary-orange direct-email-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>Send Direct Email</span>
+          </a>
+
+          <a href="assets/Arpita_Pal_Resume.pdf" download="Arpita_Pal_Resume.pdf" class="btn-secondary-white direct-resume-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Download Resume (PDF)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

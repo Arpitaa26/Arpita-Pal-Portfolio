@@ -1,0 +1,290 @@
+<section class="projects-section section-wrapper" id="work">
+  <div class="container">
+    <!-- Section Heading -->
+    <app-section-heading
+      tag="Selected Case Studies"
+      description="A curated selection of end-to-end product design case studies, design systems, and frontend applications across FinTech, Legal Tech, and Enterprise SaaS.">
+      <span title>
+        Selected <span class="text-gradient">Product Case Studies</span>
+      </span>
+    </app-section-heading>
+
+    <!-- Master Showcase Grid with Clear Visual Hierarchy -->
+    <div class="showcase-hierarchy-container">
+      
+      <!-- ====================================================================
+           1. FEATURED HEROIC PROJECT: Banking HUB
+           ==================================================================== -->
+      <article class="featured-project-card glass-panel" (click)="openModal(bankingProject)">
+        <div class="featured-grid">
+          <!-- Left: Real Interactive Product UI Viewport (Primary Visual Focus) -->
+          <div class="featured-media-col" (click)="$event.stopPropagation()">
+            <div class="interactive-browser-frame">
+              <!-- Top Bar & Live Tabs -->
+              <div class="frame-topbar">
+                <div class="window-dots">
+                  <span class="dot close"></span>
+                  <span class="dot min"></span>
+                  <span class="dot max"></span>
+                </div>
+
+                <div class="frame-tabs">
+                  <button 
+                    class="frame-tab-btn" 
+                    [class.active]="bankingTab() === 'overview'" 
+                    (click)="setBankingTab('overview', $event)">
+                    Dashboard
+                  </button>
+                  <button 
+                    class="frame-tab-btn" 
+                    [class.active]="bankingTab() === 'accounts'" 
+                    (click)="setBankingTab('accounts', $event)">
+                    Customers
+                  </button>
+                  <button 
+                    class="frame-tab-btn" 
+                    [class.active]="bankingTab() === 'transactions'" 
+                    (click)="setBankingTab('transactions', $event)">
+                    Products
+                  </button>
+                  <button 
+                    class="frame-tab-btn" 
+                    [class.active]="bankingTab() === 'analytics'" 
+                    (click)="setBankingTab('analytics', $event)">
+                    Staff Access
+                  </button>
+                </div>
+
+                <div class="frame-badge">
+                  <span class="pulse-dot"></span>
+                  <span>Consectus FinTech</span>
+                </div>
+              </div>
+
+              <!-- Interactive Dynamic UI Screen -->
+              <div class="frame-screen frame-screen--image">
+                @if (bankingTab() === 'overview') {
+                  <img src="assets/projects/banking/banking_dashboard.png" alt="Banking HUB Dashboard" class="featured-screen-img" />
+                } @else if (bankingTab() === 'accounts') {
+                  <img src="assets/projects/banking/banking_customer_management.png" alt="Banking HUB Customer Management" class="featured-screen-img" />
+                } @else if (bankingTab() === 'transactions') {
+                  <img src="assets/projects/banking/banking_product_management.png" alt="Banking HUB Product Management" class="featured-screen-img" />
+                } @else {
+                  <img src="assets/projects/banking/banking_staff_management.png" alt="Banking HUB Staff Management" class="featured-screen-img" />
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Simplified, Clean Project Information -->
+          <div class="featured-info-col">
+            <div class="project-eyebrow">
+              <span class="dot-accent"></span>
+              <span>Featured Project Case Study</span>
+            </div>
+
+            <h3 class="project-headline">{{ bankingProject.title.split('—')[0].trim() }}</h3>
+            <p class="project-one-liner">{{ bankingProject.subtitle }}</p>
+
+            <div class="project-role-focus">
+              <span class="role-lbl">Focus:</span>
+              <span class="role-val">Product Design · UX Architecture · Frontend (Consectus LTD)</span>
+            </div>
+
+            <div class="project-tags-clean">
+              <span class="clean-tag">FinTech</span>
+              <span class="clean-tag">Design Tokens</span>
+              <span class="clean-tag">WCAG 2.1 AA</span>
+            </div>
+
+            <div class="project-cta-wrap">
+              <button class="btn-case-study" (click)="openModal(bankingProject)">
+                <span>View Case Study</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ====================================================================
+           2. SECONDARY PROJECTS (2-Column Grid: RPA & LexAI)
+           ==================================================================== -->
+      <div class="secondary-projects-grid">
+        
+        <!-- CARD A: RPA Control Center -->
+        <article class="secondary-card glass-panel" (click)="openModal(rpaProject)">
+          <!-- Interactive Preview Area -->
+          <div class="card-preview-area card-preview-area--image" (click)="$event.stopPropagation()">
+            <div class="preview-header">
+              <span class="p-title">Live Telemetry & Workflow</span>
+              <div class="p-filters">
+                <button class="p-filter-btn" [class.active]="rpaActiveScreen() === 0" (click)="setRpaScreen(0, $event)">Dashboard</button>
+                <button class="p-filter-btn" [class.active]="rpaActiveScreen() === 1" (click)="setRpaScreen(1, $event)">Login</button>
+                <button class="p-filter-btn" [class.active]="rpaActiveScreen() === 2" (click)="setRpaScreen(2, $event)">Action Path</button>
+                <button class="p-filter-btn" [class.active]="rpaActiveScreen() === 3" (click)="setRpaScreen(3, $event)">Task Details</button>
+                <button class="p-filter-btn" [class.active]="rpaActiveScreen() === 4" (click)="setRpaScreen(4, $event)">Fleet</button>
+              </div>
+            </div>
+
+            <div class="card-image-viewport">
+              @if (rpaActiveScreen() === 0) {
+                <img src="assets/projects/rpa/rpa_dashboard.png" alt="RPA Dashboard Telemetry" class="card-viewport-img" />
+              } @else if (rpaActiveScreen() === 1) {
+                <img src="assets/projects/rpa/rpa_login.png" alt="RPA Secure Login" class="card-viewport-img" />
+              } @else if (rpaActiveScreen() === 2) {
+                <img src="assets/projects/rpa/rpa_action_path.png" alt="RPA Action Path Workflow" class="card-viewport-img" />
+              } @else if (rpaActiveScreen() === 3) {
+                <img src="assets/projects/rpa/rpa_task_details.png" alt="RPA Task Execution Details" class="card-viewport-img" />
+              } @else {
+                <img src="assets/projects/rpa/rpa_robot_availability.png" alt="RPA Robot Availability" class="card-viewport-img" />
+              }
+              <div class="viewport-badge-overlay">
+                <span class="view-chip">Consectus Portal</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Information -->
+          <div class="card-details-area">
+            <h3 class="card-project-title">RPA Control Center</h3>
+            <p class="card-one-liner">Real-time bot orchestration, health telemetry and incident diagnostics.</p>
+
+            <div class="card-role-line">
+              <span>UX Design · Data Visualization · Angular (Consectus LTD)</span>
+            </div>
+
+            <div class="card-tags-row">
+              <span class="clean-tag">Enterprise Automation</span>
+              <span class="clean-tag">Telemetry Dashboard</span>
+              <span class="clean-tag">Angular</span>
+            </div>
+
+            <div class="card-cta-row">
+              <span class="cta-link">View Case Study →</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- CARD B: LexAI Platform -->
+        <article class="secondary-card glass-panel" (click)="openModal(lexAiProject)">
+          <!-- Interactive Preview Area -->
+          <div class="card-preview-area card-preview-area--image" (click)="$event.stopPropagation()">
+            <div class="preview-header">
+              <span class="p-title">AI Legal Portal & Workflows</span>
+              <div class="p-filters">
+                <button class="p-filter-btn" [class.active]="lexAiActiveScreen() === 0" (click)="setLexAiScreen(0, $event)">Dashboard</button>
+                <button class="p-filter-btn" [class.active]="lexAiActiveScreen() === 1" (click)="setLexAiScreen(1, $event)">Login</button>
+                <button class="p-filter-btn" [class.active]="lexAiActiveScreen() === 2" (click)="setLexAiScreen(2, $event)">Eligibility</button>
+                <button class="p-filter-btn" [class.active]="lexAiActiveScreen() === 3" (click)="setLexAiScreen(3, $event)">Review</button>
+                <button class="p-filter-btn" [class.active]="lexAiActiveScreen() === 4" (click)="setLexAiScreen(4, $event)">Home</button>
+              </div>
+            </div>
+
+            <div class="card-image-viewport">
+              @if (lexAiActiveScreen() === 0) {
+                <img src="assets/projects/lexaid/lexai_dashboard.png" alt="LexAI Main Dashboard" class="card-viewport-img" />
+              } @else if (lexAiActiveScreen() === 1) {
+                <img src="assets/projects/lexaid/lexai_login.png" alt="LexAI Login Portal" class="card-viewport-img" />
+              } @else if (lexAiActiveScreen() === 2) {
+                <img src="assets/projects/lexaid/lexai_eligibility_1.png" alt="LexAI AI Eligibility Check" class="card-viewport-img" />
+              } @else if (lexAiActiveScreen() === 3) {
+                <img src="assets/projects/lexaid/lexai_eligibility_2.png" alt="LexAI Legal Case Review" class="card-viewport-img" />
+              } @else {
+                <img src="assets/projects/lexaid/lexai_home.png" alt="LexAI Law Website Home" class="card-viewport-img" />
+              }
+              <div class="viewport-badge-overlay">
+                <span class="view-chip">AsyLex Portal</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Information -->
+          <div class="card-details-area">
+            <h3 class="card-project-title">LexAI Legal Platform</h3>
+            <p class="card-one-liner">AI-assisted legal repository search, client intake and petition drafting.</p>
+
+            <div class="card-role-line">
+              <span>Lead Product Designer · AI UX Patterns (AsyLex)</span>
+            </div>
+
+            <div class="card-tags-row">
+              <span class="clean-tag">AI & SaaS</span>
+              <span class="clean-tag">Design Systems</span>
+              <span class="clean-tag">Legal Tech</span>
+            </div>
+
+            <div class="card-cta-row">
+              <span class="cta-link">View Case Study →</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- ====================================================================
+           3. SUPPORTING PROJECT: Cribo Real Estate Ecosystem
+           ==================================================================== -->
+      <article class="supporting-project-card glass-panel" (click)="openModal(criboProject)">
+        <div class="supporting-grid">
+          <!-- Interactive Preview Area -->
+          <div class="supporting-media-col" (click)="$event.stopPropagation()">
+            <div class="supporting-frame">
+              <div class="s-topbar">
+                <div class="s-tabs">
+                  <button class="s-tab-btn" [class.active]="criboActiveScreen() === 0" (click)="setCriboScreen(0, $event)">Agency Dashboard</button>
+                  <button class="s-tab-btn" [class.active]="criboActiveScreen() === 1" (click)="setCriboScreen(1, $event)">Architect Directory</button>
+                  <button class="s-tab-btn" [class.active]="criboActiveScreen() === 2" (click)="setCriboScreen(2, $event)">Property Portal</button>
+                </div>
+              </div>
+              <div class="s-screen-viewport">
+                @if (criboActiveScreen() === 0) {
+                  <img src="assets/projects/cribo/Dashboard.png" alt="Cribo Dashboard" class="s-img" />
+                } @else if (criboActiveScreen() === 1) {
+                  <img src="assets/projects/cribo/Desktop - 9 (1).png" alt="Cribo Directory" class="s-img" />
+                } @else {
+                  <img src="assets/projects/cribo/Home page with banner change.png" alt="Cribo Home" class="s-img" />
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Information -->
+          <div class="supporting-info-col">
+            <span class="s-eyebrow">Real Estate & Marketplace</span>
+            <h3 class="s-title">Cribo Real Estate</h3>
+            <p class="s-one-liner">Modern property discovery, architect matching and renovation dashboard.</p>
+            
+            <div class="s-role-line">
+              <span>Senior UI/UX Designer · Design Tokens · Mobile & Web</span>
+            </div>
+
+            <div class="s-tags-row">
+              <span class="clean-tag">Marketplace</span>
+              <span class="clean-tag">Design Tokens</span>
+              <span class="clean-tag">Responsive UI</span>
+            </div>
+
+            <div class="s-cta-row">
+              <button class="btn-case-study" (click)="openModal(criboProject)">
+                <span>View Case Study</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- Deep Dive Case Study Modal Drawer -->
+  <app-case-study-modal
+    [project]="activeModalProject()"
+    (close)="closeProjectModal()">
+  </app-case-study-modal>
+</section>

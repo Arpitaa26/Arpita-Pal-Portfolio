@@ -1,0 +1,151 @@
+<section class="apps-section section-wrapper" id="apps">
+  <div class="container">
+    <!-- Section Header -->
+    <app-section-heading
+      tag="Enterprise Mobile & Web Interface"
+      dotColor="#FF6B00"
+      description="Interactive mobile and responsive application interfaces engineered with precision, fluid micro-interactions, touch ergonomics, and WCAG 2.1 AA accessibility.">
+      <span title>
+        Interfaces I've <span class="text-gradient">Designed & Built</span>
+      </span>
+    </app-section-heading>
+
+    <!-- Main Showcase Card -->
+    <div 
+      class="showcase-card glass-panel"
+      (mouseenter)="onMouseEnter()"
+      (mouseleave)="onMouseLeave()">
+      
+      <!-- Top Card Header -->
+      <div class="showcase-top-bar">
+        <div class="top-bar-left">
+          <span class="live-dot" [class.paused]="!isAutoPlay() || isHovered()"></span>
+          <span class="app-brand-tag">BANKING HUB NATIVE APP</span>
+          <span class="screen-step-counter">{{ currentScreen.stepNumber }} / {{ screens.length < 10 ? '0' + screens.length : screens.length }}</span>
+        </div>
+
+        <div class="top-bar-right">
+          <button 
+            type="button"
+            class="auto-scroll-btn" 
+            [class.active]="isAutoPlay()"
+            (click)="toggleAutoPlay()"
+            [title]="isAutoPlay() ? 'Click to pause automatic cycling' : 'Click to enable automatic cycling'">
+            @if (isAutoPlay()) {
+              <span class="pulse-dot"></span>
+              <span>Auto-Scroll: ON</span>
+            } @else {
+              <span class="pause-dot"></span>
+              <span>Auto-Scroll: PAUSED</span>
+            }
+          </button>
+        </div>
+      </div>
+
+      <!-- Main 2-Column Responsive Body -->
+      <div class="showcase-main-body">
+        <!-- Left Column: Narrative, Scalable Ribbon & Controls -->
+        <div class="narrative-column">
+          <div class="narrative-meta">
+            <span class="meta-step-label">SCREEN {{ currentScreen.stepNumber }} OF {{ screens.length < 10 ? '0' + screens.length : screens.length }} • {{ currentScreen.category | uppercase }}</span>
+            <h3 class="narrative-headline">{{ currentScreen.headline }}</h3>
+            <p class="narrative-desc">{{ currentScreen.description }}</p>
+          </div>
+
+          <!-- Scalable Horizontal Flow Track Ribbon (Works smoothly for 9, 20, 50+ screens) -->
+          <div class="flow-ribbon-container">
+            <div class="flow-ribbon-header">
+              <span class="ribbon-title">Interactive Screen Flow ({{ screens.length }} Screens):</span>
+              <div class="ribbon-nav-arrows">
+                <button type="button" class="arrow-btn" (click)="scrollRibbon('left')" aria-label="Scroll left">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M15 18l-6-6 6-6"/>
+                  </svg>
+                </button>
+                <button type="button" class="arrow-btn" (click)="scrollRibbon('right')" aria-label="Scroll right">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M9 18l6-6-6-6"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Scrollable Track of Numbered Screen Chips -->
+            <div class="flow-ribbon-track" id="screenFlowRibbon">
+              @for (screen of screens; track screen.id; let idx = $index) {
+                <button
+                  type="button"
+                  [id]="'screen-tab-' + idx"
+                  class="ribbon-chip-btn"
+                  [class.active]="activeScreenIndex() === idx"
+                  (click)="setScreen(idx)">
+                  <span class="chip-num">{{ screen.stepNumber }}</span>
+                  <span class="chip-title">{{ screen.shortName }}</span>
+                </button>
+              }
+            </div>
+          </div>
+
+          <!-- Feature Highlights (Compact 3-Item Row) -->
+          <div class="highlights-grid">
+            @for (feat of currentScreen.features; track feat) {
+              <div class="highlight-pill">
+                <span class="pill-dot"></span>
+                <span class="pill-text">{{ feat }}</span>
+              </div>
+            }
+          </div>
+
+          <!-- Bottom Left: Stepper Dots -->
+          <div class="narrative-bottom-actions">
+            <div class="stepper-dots-wrap">
+              @for (screen of screens; track screen.id; let idx = $index) {
+                <button
+                  type="button"
+                  class="step-dot"
+                  [class.active]="activeScreenIndex() === idx"
+                  (click)="setScreen(idx)"
+                  [title]="'Jump to screen ' + screen.stepNumber + ': ' + screen.name">
+                </button>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Clean Phone Device Frame Mockup -->
+        <div class="device-column">
+          <div class="phone-wrapper">
+            <div class="phone-chassis">
+              <!-- Speaker Notch -->
+              <div class="phone-notch"></div>
+
+              <!-- Viewport Screen (Clickable to advance) -->
+              <div class="phone-screen-viewport" (click)="nextScreen()" title="Click screen to advance to next view">
+                <img 
+                  [src]="currentScreen.image" 
+                  [alt]="currentScreen.name" 
+                  class="phone-img-view" />
+              </div>
+
+              <!-- Bottom Home Indicator Bar -->
+              <div class="home-indicator-bar"></div>
+            </div>
+
+            <!-- Dedicated Single Next Screen Action Button directly below Phone -->
+            <button 
+              type="button" 
+              class="btn-single-next" 
+              (click)="nextScreen()" 
+              title="Advance to Next Screen">
+              <span>Next Screen</span>
+              <span class="next-preview-name">({{ nextScreenItem.shortName }})</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

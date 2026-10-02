@@ -1,0 +1,441 @@
+<section class="ds-section section-wrapper" id="design-system">
+  <div class="container">
+    <!-- Section Heading -->
+    <app-section-heading
+      tag="Design Systems & Architecture"
+      dotColor="#EC4899"
+      description="Bridging the gap between Figma design variables and frontend architecture through structured tokens, accessible component variants, and predictable states.">
+      <span title>
+        From Figma Tokens to <span class="text-gradient">Reusable UI Components</span>
+      </span>
+    </app-section-heading>
+
+    <!-- 🔄 VISUAL INTERACTIVE PIPELINE FLOW (Figma Token → Component → Variant → Live Interface) -->
+    <div class="pipeline-card glass-panel">
+      <div class="pipeline-header">
+        <div class="pipeline-meta">
+          <span class="pipeline-tag">Design-To-Code Architecture Pipeline</span>
+          <h3 class="pipeline-title">Visual Token Progression Model</h3>
+        </div>
+
+        <div class="pipeline-switcher">
+          <button 
+            class="pipe-btn" 
+            [class.active]="activePipeline() === 'color'"
+            (click)="setPipeline('color')">
+            Color Pipeline
+          </button>
+          <button 
+            class="pipe-btn" 
+            [class.active]="activePipeline() === 'spacing'"
+            (click)="setPipeline('spacing')">
+            Spacing Pipeline
+          </button>
+          <button 
+            class="pipe-btn" 
+            [class.active]="activePipeline() === 'typography'"
+            (click)="setPipeline('typography')">
+            Typography Pipeline
+          </button>
+        </div>
+      </div>
+
+      <!-- Pipeline Step Cards Grid -->
+      <div class="pipeline-steps-grid">
+        <!-- STEP 1: Figma Token -->
+        <div class="step-card">
+          <div class="step-num-badge">1. FIGMA TOKEN</div>
+          @if (activePipeline() === 'color') {
+            <div class="step-content">
+              <div class="step-visual color-preview-swatch">
+                <span class="swatch-sample" style="background: #3B82F6;"></span>
+              </div>
+              <div class="step-code">
+                <code>--color-primary-500</code>
+                <span class="step-sub">#3B82F6 (Figma Variable)</span>
+              </div>
+            </div>
+          } @else if (activePipeline() === 'spacing') {
+            <div class="step-content">
+              <div class="step-visual spacing-preview-swatch">
+                <div class="spacing-bar-demo" style="width: 24px;"></div>
+              </div>
+              <div class="step-code">
+                <code>--space-6</code>
+                <span class="step-sub">24px (4px Baseline Grid)</span>
+              </div>
+            </div>
+          } @else {
+            <div class="step-content">
+              <div class="step-visual typo-preview-swatch">
+                <span class="font-demo-glyph">Aa</span>
+              </div>
+              <div class="step-code">
+                <code>--font-display-2xl</code>
+                <span class="step-sub">Inter / 32px / 700 / -0.02em</span>
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="pipeline-arrow">→</div>
+
+        <!-- STEP 2: Component -->
+        <div class="step-card">
+          <div class="step-num-badge">2. ATOMIC COMPONENT</div>
+          @if (activePipeline() === 'color') {
+            <div class="step-content">
+              <div class="step-visual comp-box">
+                <span class="comp-tag">&lt;Button&gt;</span>
+              </div>
+              <div class="step-code">
+                <code>Button.component.ts</code>
+                <span class="step-sub">Standalone Angular / React</span>
+              </div>
+            </div>
+          } @else if (activePipeline() === 'spacing') {
+            <div class="step-content">
+              <div class="step-visual comp-box">
+                <span class="comp-tag">&lt;MetricCard&gt;</span>
+              </div>
+              <div class="step-code">
+                <code>Card.component.ts</code>
+                <span class="step-sub">CSS Grid & Flex System</span>
+              </div>
+            </div>
+          } @else {
+            <div class="step-content">
+              <div class="step-visual comp-box">
+                <span class="comp-tag">&lt;Heading&gt;</span>
+              </div>
+              <div class="step-code">
+                <code>Heading.component.ts</code>
+                <span class="step-sub">Polymorphic Level h1–h6</span>
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="pipeline-arrow">→</div>
+
+        <!-- STEP 3: Variant & State -->
+        <div class="step-card">
+          <div class="step-num-badge">3. VARIANT & STATES</div>
+          @if (activePipeline() === 'color') {
+            <div class="step-content">
+              <div class="step-visual variant-badges-col">
+                <span class="var-badge">Default</span>
+                <span class="var-badge active">Hover / Focus</span>
+                <span class="var-badge">Disabled</span>
+              </div>
+              <div class="step-code">
+                <code>variant="primary"</code>
+                <span class="step-sub">WCAG 2.1 Contrast 4.8:1</span>
+              </div>
+            </div>
+          } @else if (activePipeline() === 'spacing') {
+            <div class="step-content">
+              <div class="step-visual variant-badges-col">
+                <span class="var-badge">Compact: 12px</span>
+                <span class="var-badge active">Default: 24px</span>
+                <span class="var-badge">Spacious: 32px</span>
+              </div>
+              <div class="step-code">
+                <code>padding="normal"</code>
+                <span class="step-sub">Responsive @media queries</span>
+              </div>
+            </div>
+          } @else {
+            <div class="step-content">
+              <div class="step-visual variant-badges-col">
+                <span class="var-badge">Regular 400</span>
+                <span class="var-badge active">SemiBold 600</span>
+                <span class="var-badge">Bold 800</span>
+              </div>
+              <div class="step-code">
+                <code>weight="display-bold"</code>
+                <span class="step-sub">Fluid clamp(28px, 4vw, 36px)</span>
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="pipeline-arrow">→</div>
+
+        <!-- STEP 4: Live Interface -->
+        <div class="step-card highlight">
+          <div class="step-num-badge">4. LIVE INTERFACE</div>
+          @if (activePipeline() === 'color') {
+            <div class="step-content">
+              <div class="live-action-demo">
+                <button class="live-demo-btn">
+                  <span>Transfer $2,450</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+              </div>
+              <div class="step-code">
+                <strong class="live-tag">Production Banking HUB</strong>
+                <span class="step-sub">Sub-millisecond paint</span>
+              </div>
+            </div>
+          } @else if (activePipeline() === 'spacing') {
+            <div class="step-content">
+              <div class="live-card-demo">
+                <div class="mini-live-card">
+                  <span class="ml-lbl">Throughput</span>
+                  <span class="ml-val">1.2k/s</span>
+                </div>
+              </div>
+              <div class="step-code">
+                <strong class="live-tag">RPA Telemetry Dashboard</strong>
+                <span class="step-sub">Consistent 24px rhythm</span>
+              </div>
+            </div>
+          } @else {
+            <div class="step-content">
+              <div class="live-text-demo">
+                <div class="mini-hero-text">Banking HUB Console</div>
+              </div>
+              <div class="step-code">
+                <strong class="live-tag">LexAI & Enterprise Suites</strong>
+                <span class="step-sub">100% Crisp Font Rendering</span>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Interactive Playground Grid -->
+    <div class="ds-grid">
+      <!-- Left Column: Interactive Component Workbench -->
+      <div class="ds-card ds-workbench glass-panel">
+        <div class="ds-card__header">
+          <div class="ds-card__title-wrap">
+            <h3 class="ds-card__title">Component Playground & Variants</h3>
+            <span class="ds-card__subtitle">Interactive states, size scales, and WCAG accessibility</span>
+          </div>
+          <span class="badge-pill subtle">UI Architecture</span>
+        </div>
+
+        <div class="workbench-body">
+          <!-- Control Panels -->
+          <div class="controls-toolbar">
+            <!-- Variant Selector -->
+            <div class="control-row">
+              <span class="control-label">Variant:</span>
+              <div class="segmented-mini">
+                <button
+                  [class.active]="selectedVariant() === 'primary'"
+                  (click)="setVariant('primary')">Primary</button>
+                <button
+                  [class.active]="selectedVariant() === 'secondary'"
+                  (click)="setVariant('secondary')">Secondary</button>
+                <button
+                  [class.active]="selectedVariant() === 'ghost'"
+                  (click)="setVariant('ghost')">Ghost</button>
+                <button
+                  [class.active]="selectedVariant() === 'destructive'"
+                  (click)="setVariant('destructive')">Destructive</button>
+              </div>
+            </div>
+
+            <!-- Size Selector -->
+            <div class="control-row">
+              <span class="control-label">Size Scale:</span>
+              <div class="segmented-mini">
+                <button
+                  [class.active]="selectedSize() === 'sm'"
+                  (click)="setSize('sm')">SM (32px)</button>
+                <button
+                  [class.active]="selectedSize() === 'md'"
+                  (click)="setSize('md')">MD (40px)</button>
+                <button
+                  [class.active]="selectedSize() === 'lg'"
+                  (click)="setSize('lg')">LG (48px)</button>
+              </div>
+            </div>
+
+            <!-- State Selector -->
+            <div class="control-row">
+              <span class="control-label">State Machine:</span>
+              <div class="segmented-mini">
+                <button
+                  [class.active]="selectedState() === 'default'"
+                  (click)="setState('default')">Default</button>
+                <button
+                  [class.active]="selectedState() === 'hover'"
+                  (click)="setState('hover')">Hover</button>
+                <button
+                  [class.active]="selectedState() === 'active'"
+                  (click)="setState('active')">Active</button>
+                <button
+                  [class.active]="selectedState() === 'loading'"
+                  (click)="setState('loading')">Loading</button>
+                <button
+                  [class.active]="selectedState() === 'disabled'"
+                  (click)="setState('disabled')">Disabled</button>
+              </div>
+            </div>
+
+            <!-- Icon Toggle -->
+            <div class="control-row">
+              <span class="control-label">Icon Prop:</span>
+              <button class="toggle-btn" [class.on]="hasIcon()" (click)="toggleIcon()">
+                <span class="toggle-track"></span>
+                <span>{{ hasIcon() ? 'Enabled' : 'Disabled' }}</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Live Component Display Stage -->
+          <div class="workbench-stage">
+            <div class="stage-watermark">PREVIEW CANVAS</div>
+
+            <div class="stage-element-wrap">
+              <button
+                class="ds-btn"
+                [ngClass]="[
+                  'ds-btn--' + selectedVariant(),
+                  'ds-btn--' + selectedSize(),
+                  'state-' + selectedState()
+                ]"
+                [disabled]="selectedState() === 'disabled'">
+                
+                @if (selectedState() === 'loading') {
+                  <span class="ds-spinner"></span>
+                  <span>Processing...</span>
+                } @else {
+                  @if (hasIcon()) {
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                  }
+                  <span>Execute Action</span>
+                }
+              </button>
+            </div>
+
+            <!-- Interactive Spec Box -->
+            <div class="stage-specs">
+              <span class="spec-tag">Standards: <strong>WCAG 2.1 AA Compliant</strong></span>
+              <span class="spec-tag">Figma Node: <strong>#Component/Button/{{ selectedVariant() | titlecase }}</strong></span>
+            </div>
+          </div>
+
+          <!-- Interactive Form Controls Stage -->
+          <div class="form-controls-preview">
+            <div class="input-preview-group">
+              <div class="ds-label-row">
+                <label class="ds-label-title">Enterprise User Email</label>
+                @if (inputValidation() === 'valid') {
+                  <span class="status-badge-mini valid">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Token Validated</span>
+                  </span>
+                } @else if (inputValidation() === 'invalid') {
+                  <span class="status-badge-mini invalid">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                      <line x1="18" y1="6" x2="6" y2="18"></line>
+                      <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                    <span>Invalid Format</span>
+                  </span>
+                }
+              </div>
+
+              <div class="ds-input-wrap" [ngClass]="inputValidation()">
+                <input
+                  type="text"
+                  [value]="inputValue()"
+                  (input)="handleInputChange($event)"
+                  placeholder="Enter email address (e.g. arpita.pal@consectus.com)..."
+                  class="ds-input" />
+                <div class="input-icon-right">
+                  @if (inputValidation() === 'valid') {
+                    <span class="valid-icon">✓</span>
+                  } @else if (inputValidation() === 'invalid') {
+                    <span class="invalid-icon">!</span>
+                  }
+                </div>
+              </div>
+            </div>
+
+            <!-- Interactive Segmented Tabs -->
+            <div class="tabs-preview-group">
+              <div class="ds-label-row">
+                <span class="ds-label-title">Segmented Navigation Matrix</span>
+                <span class="ds-badge-tag">Interactive States</span>
+              </div>
+              <div class="ds-segmented">
+                @for (seg of segments; track seg) {
+                  <button
+                    class="ds-seg-btn"
+                    [class.active]="activeSegment() === seg"
+                    (click)="setSegment(seg)">
+                    {{ seg }}
+                  </button>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Design Token Inspector -->
+      <div class="ds-card ds-tokens glass-panel">
+        <div class="ds-card__header">
+          <div class="ds-card__title-wrap">
+            <h3 class="ds-card__title">Design Token Registry</h3>
+            <span class="ds-card__subtitle">Auto-generated from Figma Variables</span>
+          </div>
+          
+          <div class="token-cat-filter">
+            @for (cat of tokenCategories; track cat) {
+              <button
+                class="token-filter-btn"
+                [class.active]="activeTokenCategory() === cat"
+                (click)="setTokenCategory(cat)">
+                {{ cat }}
+              </button>
+            }
+          </div>
+        </div>
+
+        <div class="tokens-list">
+          @for (tok of filteredTokens(); track tok.name) {
+            <div class="token-row">
+              <!-- Visual Swatch / Preview -->
+              <div class="token-preview">
+                @if (tok.previewType === 'color') {
+                  <span class="color-swatch" [style.background-color]="tok.value"></span>
+                } @else if (tok.previewType === 'radius') {
+                  <span class="radius-swatch" [style.border-radius]="tok.value"></span>
+                } @else if (tok.previewType === 'spacing') {
+                  <span class="spacing-swatch" [style.width]="tok.value"></span>
+                } @else {
+                  <span class="shadow-swatch" [style.box-shadow]="tok.value"></span>
+                }
+              </div>
+
+              <!-- Token Info -->
+              <div class="token-details">
+                <div class="token-top">
+                  <span class="token-name">{{ tok.name }}</span>
+                  <span class="token-figma-badge">{{ tok.figmaName }}</span>
+                </div>
+                <div class="token-code-row">
+                  <code class="css-var-code">{{ tok.cssVariable }}</code>
+                  <span class="token-val">{{ tok.value }}</span>
+                </div>
+                <p class="token-desc">{{ tok.description }}</p>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

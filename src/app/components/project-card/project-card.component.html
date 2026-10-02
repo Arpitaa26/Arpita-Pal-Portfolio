@@ -1,0 +1,80 @@
+<article
+  class="project-card glass-panel"
+  [class.large]="isLarge"
+  [style.--accent-color]="project.accentColor"
+  (click)="onCardClick()"
+  tabindex="0"
+  (keydown.enter)="onCardClick()"
+  (keydown.space)="onCardClick(); $event.preventDefault()"
+  role="button"
+  [attr.aria-label]="'View Case Study for ' + project.title">
+  
+  <!-- Card Media / Mockup Preview Container -->
+  <div class="project-card__media">
+    <div class="media-overlay">
+      <div class="view-pill">
+        <span>Inspect Case Study</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Live Preview Image / SVG Mockup -->
+    <img
+      [src]="project.coverImage"
+      [alt]="project.title + ' UI Mockup'"
+      loading="lazy"
+      class="project-card__image" />
+
+    <!-- Screen count tag if multiple screens -->
+    @if (project.screens && project.screens.length > 1) {
+      <div class="screen-count-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="3" y1="9" x2="21" y2="9"></line>
+        </svg>
+        <span>{{ project.screens.length }} Screens</span>
+      </div>
+    }
+  </div>
+
+  <!-- Card Content Details -->
+  <div class="project-card__body">
+    <!-- Meta Pill Bar -->
+    <div class="project-card__meta">
+      <span class="category-chip" [style.color]="project.accentColor">
+        {{ project.category }}
+      </span>
+      <span class="year-chip">{{ project.year }}</span>
+    </div>
+
+    <!-- Title & Subtitle -->
+    <h3 class="project-card__title">
+      {{ project.title }}
+    </h3>
+    <p class="project-card__subtitle">
+      {{ project.subtitle }}
+    </p>
+
+    <!-- Key Metrics Highlight -->
+    @if (project.stats && project.stats.length > 0) {
+      <div class="project-card__stats">
+        @for (stat of project.stats.slice(0, 2); track stat.label) {
+          <div class="stat-pill">
+            <span class="stat-pill__val">{{ stat.value }}</span>
+            <span class="stat-pill__lbl">{{ stat.label }}</span>
+          </div>
+        }
+      </div>
+    }
+
+    <!-- Tags Row -->
+    <div class="project-card__tags">
+      @for (tag of project.tags; track tag) {
+        <span class="tag-item">{{ tag }}</span>
+      }
+    </div>
+  </div>
+</article>

@@ -1,0 +1,46 @@
+<section class="process-section section-wrapper" id="process">
+  <div class="container">
+    <!-- Section Heading -->
+    <app-section-heading
+      tag="Product Methodology"
+      dotColor="#10B981"
+      description="A structured, design-led engineering process that transforms vague requirements into resilient product experiences.">
+      <span title>
+        How I <span class="text-gradient">Design</span> & <br/>
+        <span class="text-gradient-cyan">Build Products</span>
+      </span>
+    </app-section-heading>
+
+    <!-- Process Flow Grid -->
+    <div class="process-grid">
+      @for (step of steps; track step.step) {
+        <div
+          class="process-card glass-panel"
+          [class.active]="activeStep() === step.step"
+          (click)="selectStep(step.step)"
+          [style.--step-accent]="step.accent">
+          
+          <div class="process-card__header">
+            <span class="step-badge" [style.color]="step.accent">{{ step.step }}</span>
+            <span class="phase-tag">{{ step.phase }}</span>
+          </div>
+
+          <h3 class="process-card__title">{{ step.title }}</h3>
+          <p class="process-card__desc">{{ step.description }}</p>
+
+          <div class="deliverables-box">
+            <span class="deliv-title">Core Deliverables:</span>
+            <ul class="deliv-list">
+              @for (deliv of step.deliverables; track deliv) {
+                <li>
+                  <span class="deliv-dot" [style.background-color]="step.accent"></span>
+                  <span>{{ deliv }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

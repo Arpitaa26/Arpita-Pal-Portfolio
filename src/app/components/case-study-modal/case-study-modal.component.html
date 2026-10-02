@@ -1,0 +1,157 @@
+@if (project) {
+  <div class="modal-backdrop" (click)="closeModal()">
+    <div class="modal-dialog glass-panel" (click)="$event.stopPropagation()" role="dialog" aria-modal="true">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="modal-header__meta">
+          <span class="badge-pill" [style.border-color]="project.accentColor + '40'" [style.color]="project.accentColor">
+            {{ project.category }}
+          </span>
+          <span class="modal-header__year">{{ project.year }}</span>
+          <span class="modal-header__role">• {{ project.role }}</span>
+        </div>
+        
+        <button class="modal-close-btn" (click)="closeModal()" aria-label="Close Case Study">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <div class="modal-hero">
+          <h2 class="modal-title">{{ project.title }}</h2>
+          <p class="modal-subtitle">{{ project.subtitle }}</p>
+        </div>
+
+        <!-- Featured Big Image Preview Gallery -->
+        <div class="modal-gallery">
+          <div class="modal-gallery__main">
+            <img
+              [src]="project.screens[activeImageIndex] || project.coverImage"
+              [alt]="project.title + ' Screen Preview'"
+              class="modal-gallery__image" />
+          </div>
+
+          @if (project.screens.length > 1) {
+            <div class="modal-gallery__thumbs">
+              @for (screen of project.screens; track screen; let idx = $index) {
+                <button
+                  class="thumb-btn"
+                  [class.active]="activeImageIndex === idx"
+                  (click)="setImage(idx)">
+                  <img [src]="screen" [alt]="project.title + ' Thumbnail ' + (idx + 1)" />
+                </button>
+              }
+            </div>
+          }
+        </div>
+
+        <!-- Stats Matrix / Key Highlights -->
+        @if (project.stats.length > 0) {
+          <div class="modal-stats">
+            @for (stat of project.stats; track stat.label) {
+              <div class="modal-stat-card">
+                <span class="modal-stat-card__lbl">{{ stat.label }}</span>
+                <span class="modal-stat-card__val" [style.color]="project.accentColor">{{ stat.value }}</span>
+              </div>
+            }
+          </div>
+        }
+
+        <!-- Overview, Problem & Solution -->
+        <div class="modal-narrative-grid">
+          <div class="narrative-card">
+            <h3 class="narrative-card__title">The Challenge & Problem</h3>
+            <p class="narrative-card__text">{{ project.problem }}</p>
+          </div>
+          <div class="narrative-card">
+            <h3 class="narrative-card__title">Design & Engineering Solution</h3>
+            <p class="narrative-card__text">{{ project.solution }}</p>
+          </div>
+        </div>
+
+        <!-- Key Outcomes -->
+        <div class="modal-outcomes">
+          <h3 class="modal-section-heading">Key Measurable Outcomes</h3>
+          <ul class="outcomes-list">
+            @for (outcome of project.keyOutcomes; track outcome) {
+              <li class="outcome-item">
+                <span class="outcome-icon" [style.color]="project.accentColor">✓</span>
+                <span>{{ outcome }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+
+        <!-- Deep Dive Sections -->
+        @if (project.sections && project.sections.length > 0) {
+          <div class="modal-sections">
+            <h3 class="modal-section-heading">UX Architecture & Technical Implementation</h3>
+            <div class="section-cards-list">
+              @for (sec of project.sections; track sec.title) {
+                <div class="section-deep-card">
+                  <div class="section-deep-card__info">
+                    <h4 class="section-deep-card__title">{{ sec.title }}</h4>
+                    @if (sec.subtitle) {
+                      <span class="section-deep-card__subtitle">{{ sec.subtitle }}</span>
+                    }
+                    <p class="section-deep-card__desc">{{ sec.description }}</p>
+                    @if (sec.highlights && sec.highlights.length > 0) {
+                      <ul class="highlights-list">
+                        @for (h of sec.highlights; track h) {
+                          <li>{{ h }}</li>
+                        }
+                      </ul>
+                    }
+                  </div>
+                  @if (sec.image) {
+                    <div class="section-deep-card__media">
+                      <img [src]="sec.image" [alt]="sec.title" />
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+        }
+
+        <!-- Design Specs & Design Tokens -->
+        @if (project.designSpecs) {
+          <div class="modal-specs glass-panel">
+            <h3 class="modal-section-heading">Figma Design System Specs</h3>
+            <div class="specs-grid">
+              <div class="spec-col">
+                <span class="spec-label">Typography Hierarchy</span>
+                <ul class="spec-list">
+                  @for (font of project.designSpecs.typography; track font) {
+                    <li>{{ font }}</li>
+                  }
+                </ul>
+              </div>
+              <div class="spec-col">
+                <span class="spec-label">Color Tokens</span>
+                <div class="color-chips">
+                  @for (c of project.designSpecs.colors; track c.name) {
+                    <div class="color-chip-item">
+                      <span class="color-dot" [style.background-color]="c.hex"></span>
+                      <span class="color-name">{{ c.name }} ({{ c.hex }})</span>
+                    </div>
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button class="btn-secondary" (click)="closeModal()">Close Case Study</button>
+        <a href="#contact" class="btn-primary" (click)="closeModal()">Discuss This Project</a>
+      </div>
+    </div>
+  </div>
+}

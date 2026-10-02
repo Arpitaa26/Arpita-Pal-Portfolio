@@ -1,0 +1,216 @@
+<section class="skills-section section-wrapper" id="skills">
+  <div class="container">
+    <!-- Section Heading -->
+    <app-section-heading
+      tag="Skills & Tech Stack"
+      dotColor="#FF6B00"
+      description="Core disciplines across Product & UX Design, Design Systems, Accessibility, and Modern Frontend Engineering with structured sub-skills.">
+      <span title>
+        Skills & <span class="text-gradient">Technical Expertise</span>
+      </span>
+    </app-section-heading>
+
+    <!-- Controls Bar: Category Tabs & Real-Time Search -->
+    <div class="skills-controls-bar">
+      <!-- Category Filter Pills -->
+      <div class="category-pills-wrap">
+        <button 
+          class="cat-pill-btn" 
+          [class.active]="selectedCategoryId() === 'all'"
+          (click)="setCategory('all')">
+          <span>All Core Skills ({{ allSkills.length }})</span>
+        </button>
+
+        @for (cat of categories; track cat.id) {
+          <button 
+            class="cat-pill-btn" 
+            [class.active]="selectedCategoryId() === cat.id"
+            (click)="setCategory(cat.id)"
+            [style.--cat-accent]="cat.accent">
+            <span class="cat-dot" [style.background]="cat.accent"></span>
+            <span>{{ cat.title }}</span>
+          </button>
+        }
+      </div>
+
+      <!-- Live Search Input -->
+      <div class="search-input-wrap">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="text" 
+          [value]="searchQuery()"
+          (input)="onSearchChange($event)"
+          placeholder="Search (e.g. Figma, Angular, SCSS, WCAG)..."
+          class="search-input" />
+        
+        @if (searchQuery()) {
+          <button class="clear-search-btn" (click)="clearSearch()">✕</button>
+        }
+      </div>
+    </div>
+
+    <!-- Main Two-Column Interactive Layout -->
+    <div class="skills-layout-grid">
+      <!-- Left Column: Compact Bento Skill Cards Grid -->
+      <div class="skills-cards-grid">
+        @for (skill of filteredSkills(); track skill.id) {
+          <div 
+            class="skill-bento-card glass-panel"
+            [class.selected]="selectedSkill().id === skill.id"
+            (click)="selectSkill(skill)"
+            [style.--skill-accent]="skill.accent">
+            
+            <div class="skill-card-top">
+              <div class="skill-icon-badge" [style.background]="skill.accent + '15'" [style.color]="skill.accent">
+                @if (skill.icon === 'figma') {
+                  <svg width="20" height="20" viewBox="0 0 38 57" fill="none">
+                    <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/>
+                    <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83"/>
+                    <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262"/>
+                    <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E"/>
+                    <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF"/>
+                  </svg>
+                } @else if (skill.icon === 'angular') {
+                  <svg width="20" height="20" viewBox="0 0 250 250" fill="none">
+                    <polygon points="125,30 125,30 125,30 31.9,63.2 46.1,186.3 125,230 125,230 125,230 203.9,186.3 218.1,63.2" fill="#DD0031"/>
+                    <polygon points="125,30 125,52.2 125,52.1 125,153.4 125,153.4 125,230 125,230 203.9,186.3 218.1,63.2" fill="#C3002F"/>
+                    <path d="M125,52.1L66.8,182.6H89.2L101,153.4H148.9L160.7,182.6H183.1L125,52.1ZM141.4,135.2H108.6L125,95.5L141.4,135.2Z" fill="#FFFFFF"/>
+                  </svg>
+                } @else if (skill.icon === 'palette') {
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+                } @else if (skill.icon === 'shield-check') {
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+                } @else if (skill.icon === 'code') {
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                } @else {
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+                }
+              </div>
+
+              <div class="skill-title-meta">
+                <h4 class="skill-name">{{ skill.name }}</h4>
+                <span class="skill-cat-label">{{ skill.category }}</span>
+              </div>
+
+              <span class="skill-badge-chip">{{ skill.badge }}</span>
+            </div>
+
+            <p class="skill-brief">{{ skill.description }}</p>
+
+            <!-- Sub-Skills Interactive Tag Cloud -->
+            <div class="skill-subskills-cloud">
+              <span class="subskills-title">Sub-Skills & Toolset:</span>
+              <div class="subskills-pills-row">
+                @for (sub of skill.subSkills; track sub) {
+                  <span class="subskill-chip">{{ sub }}</span>
+                }
+              </div>
+            </div>
+
+            <div class="skill-proficiency-strip">
+              <div class="prof-header">
+                <span class="prof-label">Production Proficiency</span>
+                <span class="prof-value">{{ skill.proficiency }}%</span>
+              </div>
+              <div class="prof-track">
+                <div class="prof-bar" [style.width]="skill.proficiency + '%'" [style.background]="skill.accent"></div>
+              </div>
+            </div>
+          </div>
+        }
+
+        @if (filteredSkills().length === 0) {
+          <div class="no-results-box glass-panel">
+            <p>No skills found matching "<strong>{{ searchQuery() }}</strong>"</p>
+            <button class="btn-secondary" (click)="clearSearch()">Reset Filter</button>
+          </div>
+        }
+      </div>
+
+      <!-- Right Column: Interactive Deep-Dive Inspector Stage -->
+      <div class="skill-inspector-col">
+        <div class="inspector-card glass-panel" [style.--active-accent]="selectedSkill().accent">
+          <div class="inspector-header">
+            <span class="inspector-tag">Deep Dive Insight</span>
+            <span class="inspector-cat">{{ selectedSkill().category }}</span>
+          </div>
+
+          <div class="inspector-hero">
+            <div class="hero-icon-lg" [style.background]="selectedSkill().accent + '20'" [style.color]="selectedSkill().accent">
+              <span class="pulse-ring" [style.border-color]="selectedSkill().accent + '50'"></span>
+              @if (selectedSkill().icon === 'figma') {
+                <svg width="32" height="32" viewBox="0 0 38 57" fill="none">
+                  <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" fill="#1ABCFE"/>
+                  <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" fill="#0ACF83"/>
+                  <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" fill="#FF7262"/>
+                  <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" fill="#F24E1E"/>
+                  <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" fill="#A259FF"/>
+                </svg>
+              } @else if (selectedSkill().icon === 'angular') {
+                <svg width="32" height="32" viewBox="0 0 250 250" fill="none">
+                  <polygon points="125,30 125,30 125,30 31.9,63.2 46.1,186.3 125,230 125,230 125,230 203.9,186.3 218.1,63.2" fill="#DD0031"/>
+                  <polygon points="125,30 125,52.2 125,52.1 125,153.4 125,153.4 125,230 125,230 203.9,186.3 218.1,63.2" fill="#C3002F"/>
+                  <path d="M125,52.1L66.8,182.6H89.2L101,153.4H148.9L160.7,182.6H183.1L125,52.1ZM141.4,135.2H108.6L125,95.5L141.4,135.2Z" fill="#FFFFFF"/>
+                </svg>
+              } @else {
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              }
+            </div>
+
+            <div class="hero-name-wrap">
+              <h3 class="hero-skill-title">{{ selectedSkill().name }}</h3>
+              <span class="hero-skill-badge">{{ selectedSkill().badge }}</span>
+            </div>
+          </div>
+
+          <div class="inspector-body">
+            <div class="info-block">
+              <h5 class="block-title">Core Capability</h5>
+              <p class="block-text">{{ selectedSkill().description }}</p>
+            </div>
+
+            <div class="info-block verified-block">
+              <div class="verified-header">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <h5 class="block-title" style="color: #10b981;">Production Proof & Impact</h5>
+              </div>
+              <p class="block-text verified-text">{{ selectedSkill().productionUse }}</p>
+            </div>
+
+            <div class="info-block">
+              <h5 class="block-title">Sub-Skills & Toolset Breakdown</h5>
+              <div class="feature-tags-grid">
+                @for (sub of selectedSkill().subSkills; track sub) {
+                  <div class="feature-tag-chip">
+                    <span class="chip-dot" [style.background]="selectedSkill().accent"></span>
+                    <span>{{ sub }}</span>
+                  </div>
+                }
+              </div>
+            </div>
+
+            <div class="score-breakdown-card">
+              <div class="score-row">
+                <span class="score-k">Mastery Index</span>
+                <span class="score-v">{{ selectedSkill().proficiency }} / 100</span>
+              </div>
+              <div class="score-row">
+                <span class="score-k">Industry Track</span>
+                <span class="score-v">Enterprise FinTech & SaaS</span>
+              </div>
+              <div class="score-row">
+                <span class="score-k">Design-to-Code Fidelity</span>
+                <span class="score-v" style="color: #10b981;">100% Pixel-Perfect</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

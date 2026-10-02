@@ -1,0 +1,126 @@
+<header class="navbar" [class.scrolled]="isScrolled()">
+  <div class="navbar__container">
+    <!-- Brand Logo & Identity -->
+    <a href="#hero" class="brand" (click)="scrollTo('hero', $event)">
+      <div class="brand__icon">
+        <span class="brand__letters">AP</span>
+        <div class="brand__dot"></div>
+      </div>
+      <div class="brand__text">
+        <span class="brand__name">Arpita Pal</span>
+        <span class="brand__title">Product Designer & Frontend Engineer</span>
+      </div>
+    </a>
+
+
+
+    <!-- Desktop Navigation Links -->
+    <nav class="nav-menu d-none-mobile" aria-label="Main Navigation">
+      <ul class="nav-menu__list">
+        @for (link of navLinks; track link.target) {
+          <li class="nav-menu__item">
+            <a
+              [href]="'#' + link.target"
+              class="nav-menu__link"
+              [class.active]="activeSection() === link.target"
+              (click)="scrollTo(link.target, $event)">
+              {{ link.label }}
+              @if (activeSection() === link.target) {
+                <span class="active-dot"></span>
+              }
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <!-- Theme Switcher Button -->
+      <button 
+        type="button" 
+        class="nav-theme-btn" 
+        (click)="themeService.toggleTheme()"
+        [attr.aria-label]="themeService.isDark() ? 'Switch to Light Theme' : 'Switch to Dark Theme'"
+        [attr.title]="themeService.isDark() ? 'Switch to Light Theme' : 'Switch to Dark Theme'">
+        @if (themeService.isDark()) {
+          <svg class="nav-theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        } @else {
+          <svg class="nav-theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+        }
+      </button>
+
+      <!-- Resume Download -->
+      <a href="assets/Arpita_Pal_Resume.pdf" download="Arpita_Pal_Resume.pdf" class="nav-btn nav-btn--secondary d-none-mobile">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        <span>Resume</span>
+      </a>
+
+      <a href="#contact" class="nav-btn nav-btn--primary d-none-mobile" (click)="scrollTo('contact', $event)">
+        <span>Get in Touch</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button
+        class="mobile-toggle"
+        (click)="toggleMobileMenu()"
+        [attr.aria-expanded]="mobileMenuOpen()"
+        aria-label="Toggle navigation menu">
+        <span class="hamburger-bar" [class.open]="mobileMenuOpen()"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="mobile-drawer" [class.open]="mobileMenuOpen()">
+    <div class="mobile-drawer__content">
+      <div class="mobile-drawer__status">
+        <span class="live-indicator"></span>
+        <span>Product Designer & Frontend Engineer • Kolkata, WB</span>
+      </div>
+      <nav class="mobile-drawer__nav">
+        <ul>
+          @for (link of navLinks; track link.target) {
+            <li>
+              <a
+                [href]="'#' + link.target"
+                class="mobile-drawer__link"
+                [class.active]="activeSection() === link.target"
+                (click)="scrollTo(link.target, $event)">
+                {{ link.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </nav>
+      <div class="mobile-drawer__cta">
+        <a href="assets/Arpita_Pal_Resume.pdf" download="Arpita_Pal_Resume.pdf" class="btn-secondary" style="width: 100%; margin-bottom: 0.75rem;">
+          Download Resume (PDF)
+        </a>
+        <a href="#contact" class="btn-primary" style="width: 100%;" (click)="scrollTo('contact', $event)">
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,141 @@
+<section class="about-section section-wrapper" id="about">
+  <div class="container">
+    <!-- Section Heading -->
+    <app-section-heading
+      tag="Work Experience & Track Record"
+      dotColor="#10B981"
+      description="Product Designer & Frontend Engineer with 3+ years of experience converting complex Figma designs into scalable, dynamic, and accessible Angular & React component architectures.">
+      <span title>
+        Work Experience & <span class="text-gradient">Background</span>
+      </span>
+    </app-section-heading>
+
+    <!-- Bio & Experience Layout Grid -->
+    <div class="about-grid">
+      <!-- Left Column: Quick Profile, Academic Credentials & Social Channels -->
+      <div class="about-card about-portrait glass-panel">
+        <div class="portrait-wrap">
+          <img src="assets/avatar/arpita.svg" alt="Arpita Pal - Product Designer & Frontend Engineer" class="avatar-svg" />
+        </div>
+
+        <div class="portrait-info">
+          <h3 class="portrait-name">Arpita Pal</h3>
+          <span class="portrait-title">Product Designer & Frontend Engineer</span>
+          <p class="portrait-location">📍 Kolkata, WB, India</p>
+          <div class="contact-links-stack">
+            <a href="mailto:apal59349@gmail.com" class="portrait-contact">apal59349@gmail.com</a>
+            <a href="tel:+917439064671" class="portrait-contact">+91-7439064671</a>
+          </div>
+        </div>
+
+        <!-- Direct Resume Download Button -->
+        <a href="assets/Arpita_Pal_Resume.pdf" download="Arpita_Pal_Resume.pdf" class="btn-primary resume-download-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          <span>Download Resume (PDF) →</span>
+        </a>
+
+        <!-- Social Channels -->
+        <div class="portrait-socials">
+          @for (link of socialLinks; track link.label) {
+            <a [href]="link.url" target="_blank" rel="noopener noreferrer" class="social-pill">
+              <span>{{ link.label }}</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+          }
+        </div>
+
+        <!-- Academic Credentials (Education) -->
+        <div class="edu-compact-box">
+          <span class="edu-compact-title">Education</span>
+          @for (edu of educationList; track edu.institution) {
+            <div class="edu-compact-item">
+              <div class="edu-top-row">
+                <strong class="edu-inst">{{ edu.institution }}</strong>
+                <span class="edu-g">{{ edu.grade }}</span>
+              </div>
+              <span class="edu-deg">{{ edu.degree }}</span>
+              <span class="edu-yr">{{ edu.period }}</span>
+            </div>
+          }
+        </div>
+
+        <!-- Languages & Interests -->
+        <div class="interests-compact-box">
+          <span class="edu-compact-title">Languages & Interests</span>
+          <div class="lang-pills-row">
+            @for (lang of interestsAndLanguages.languages; track lang.name) {
+              <span class="lang-chip">
+                <strong>{{ lang.name }}</strong> ({{ lang.level }})
+              </span>
+            }
+          </div>
+          <div class="interest-tags-row">
+            @for (item of interestsAndLanguages.interests; track item) {
+              <span class="interest-chip">{{ item }}</span>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Clean Experience Timeline based on Resume -->
+      <div class="about-card about-content glass-panel">
+        <div class="experience-header-row">
+          <div>
+            <h3 class="card-heading">Work Experience</h3>
+            <span class="card-subheading">Track Record across FinTech & Enterprise Products</span>
+          </div>
+          <span class="track-badge">3+ Years Experience</span>
+        </div>
+        
+        <!-- Timeline of Verified Roles -->
+        <div class="compact-timeline">
+          @for (exp of experiences; track exp.company) {
+            <div class="timeline-node">
+              <div class="node-year-badge">
+                <span class="ny-period">{{ exp.period }}</span>
+                <span class="ny-loc">{{ exp.location }}</span>
+              </div>
+              <div class="node-body">
+                <div class="node-meta">
+                  <div class="role-company-line">
+                    <h4 class="node-role">{{ exp.role }}</h4>
+                    <span class="node-company-sep">|</span>
+                    <span class="node-company">{{ exp.company }}</span>
+                  </div>
+                  <p class="node-summary">{{ exp.summary }}</p>
+                </div>
+
+                <!-- Structured Bullet Highlights from Resume -->
+                <div class="node-highlights-list">
+                  @for (hl of exp.highlights; track hl.title) {
+                    <div class="hl-point">
+                      <div class="hl-point-bullet"></div>
+                      <div class="hl-point-text">
+                        <strong class="hl-point-title">{{ hl.title }}:</strong>
+                        <span>{{ hl.desc }}</span>
+                      </div>
+                    </div>
+                  }
+                </div>
+
+                <!-- Tech & Competency Tags -->
+                <div class="node-tags">
+                  @for (s of exp.skills; track s) {
+                    <span class="ntag">{{ s }}</span>
+                  }
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

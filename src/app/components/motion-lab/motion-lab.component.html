@@ -1,0 +1,173 @@
+<section class="motion-section section-wrapper" id="motion-lab">
+  <div class="container">
+    <!-- Section Heading -->
+    <app-section-heading
+      tag="Interaction & Motion Lab"
+      dotColor="#06B6D4"
+      description="Exploring physics-based transitions, interactive 3D perspective transforms, dynamic progressive steppers, and low-latency feedback loops.">
+      <span title>
+        Micro-Interactions & <br/>
+        <span class="text-gradient-cyan">Physics-Driven Motion</span>
+      </span>
+    </app-section-heading>
+
+    <!-- Motion Experiments Grid -->
+    <div class="motion-grid">
+      <!-- Experiment 1: 3D Perspective Tilt Card -->
+      <div
+        class="motion-card glass-panel tilt-card"
+        (mousemove)="onCardMouseMove($event)"
+        (mouseleave)="onCardMouseLeave()"
+        [style.transform]="'perspective(1000px) rotateX(' + cardRotateX() + 'deg) rotateY(' + cardRotateY() + 'deg)'">
+        
+        <div class="motion-card__tag">
+          <span class="pulse-cyan"></span>
+          <span>Physics 3D Tilt</span>
+        </div>
+
+        <h3 class="motion-card__title">Interactive Tilt Canvas</h3>
+        <p class="motion-card__desc">
+          Hover across this surface to test GPU-accelerated 3D perspective orientation with zero frame-drops.
+        </p>
+
+        <div class="tilt-preview-badge">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="2">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+          <span>X: {{ cardRotateX() | number:'1.1-1' }}° • Y: {{ cardRotateY() | number:'1.1-1' }}°</span>
+        </div>
+      </div>
+
+      <!-- Experiment 2: Dynamic Multi-Step Progress Flow -->
+      <div class="motion-card glass-panel">
+        <div class="motion-card__tag">
+          <span class="pulse-emerald"></span>
+          <span>Progressive Stepper</span>
+        </div>
+
+        <h3 class="motion-card__title">Adaptive Multi-Step Flow</h3>
+        <p class="motion-card__desc">
+          Click next/prev to observe smooth progress line interpolation and spring-driven step transitions.
+        </p>
+
+        <!-- Stepper Component -->
+        <div class="stepper-interactive">
+          <div class="stepper-track-wrap">
+            <div
+              class="stepper-line-fill"
+              [style.width]="((currentStep() - 1) / 3 * 100) + '%'">
+            </div>
+            
+            <div class="step-nodes">
+              @for (step of [1, 2, 3, 4]; track step) {
+                <button
+                  class="step-node"
+                  [class.active]="currentStep() === step"
+                  [class.completed]="currentStep() > step"
+                  (click)="currentStep.set(step)">
+                  @if (currentStep() > step) { ✓ }
+                  @else { {{ step }} }
+                </button>
+              }
+            </div>
+          </div>
+
+          <div class="step-label-display">
+            <span class="step-index">Step {{ currentStep() }} of 4</span>
+            <span class="step-name">{{ stepNames[currentStep() - 1] }}</span>
+          </div>
+
+          <div class="stepper-actions">
+            <button class="btn-step" (click)="prevStep()">← Previous</button>
+            <button class="btn-step active" (click)="nextStep()">Next Step →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Experiment 3: Shimmer Skeleton vs. Resolved Data -->
+      <div class="motion-card glass-panel">
+        <div class="motion-card__tag">
+          <span class="pulse-rose"></span>
+          <span>State Shimmer</span>
+        </div>
+
+        <div class="motion-card__header-flex">
+          <div>
+            <h3 class="motion-card__title">Shimmer State Transition</h3>
+            <p class="motion-card__desc">Smooth cross-fade between skeleton placeholder and live data payload.</p>
+          </div>
+          <button class="icon-refresh-btn" (click)="refreshTelemetry()" title="Re-fetch Telemetry">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" [class.spinning]="isDataLoading()">
+              <path d="M23 4v6h-6"></path>
+              <path d="M1 20v-6h6"></path>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="shimmer-container">
+          @if (isDataLoading()) {
+            <div class="skeleton-wrap">
+              <div class="skeleton-line skeleton-title"></div>
+              <div class="skeleton-line skeleton-metric"></div>
+              <div class="skeleton-line skeleton-sub"></div>
+            </div>
+          } @else {
+            <div class="data-resolved-box">
+              <div class="resolved-top">
+                <span class="dot-green"></span>
+                <span>Active SAP Bot Worker #9</span>
+              </div>
+              <div class="resolved-val">{{ simulatedVouchers() | number }} Vouchers</div>
+              <span class="resolved-foot">Latency: 38ms • Zero Packet Loss</span>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Experiment 4: Contextual Dynamic Accordion Sheet -->
+      <div class="motion-card glass-panel">
+        <div class="motion-card__tag">
+          <span class="pulse-amber"></span>
+          <span>Contextual Sheet</span>
+        </div>
+
+        <h3 class="motion-card__title">Smooth Expandable Panel</h3>
+        <p class="motion-card__desc">
+          Click below to trigger a fluid CSS Grid auto-height transition without layout jumps.
+        </p>
+
+        <div class="sheet-interactive">
+          <button class="sheet-trigger" (click)="toggleDrawer()">
+            <div class="sheet-trigger__info">
+              <span class="sheet-title">Inspect WebSocket Stream Logs</span>
+              <span class="sheet-status">{{ isDrawerExpanded() ? 'Showing 4 events' : 'Click to expand' }}</span>
+            </div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" [class.rotated]="isDrawerExpanded()">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+
+          <div class="sheet-content" [class.expanded]="isDrawerExpanded()">
+            <div class="sheet-inner">
+              <div class="log-item">
+                <span class="log-time">19:14:01</span>
+                <span class="log-text">Token handoff verified with Figma API</span>
+              </div>
+              <div class="log-item">
+                <span class="log-time">19:14:02</span>
+                <span class="log-text">Angular 20 OnPush change detection cycle complete</span>
+              </div>
+              <div class="log-item">
+                <span class="log-time">19:14:03</span>
+                <span class="log-text">Frame time: 16.6ms (60 FPS solid)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

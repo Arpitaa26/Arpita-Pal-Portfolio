@@ -1,0 +1,673 @@
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-top: calc(var(--header-height) + clamp(2rem, 4vw, 3.5rem));
+  padding-bottom: clamp(3rem, 5vw, 5rem);
+  overflow: hidden;
+
+  &__glow {
+    position: absolute;
+    width: 480px;
+    height: 480px;
+    border-radius: 50%;
+    filter: blur(140px);
+    pointer-events: none;
+    z-index: 0;
+
+    &--primary {
+      top: 10%;
+      left: -5%;
+      background: var(--hero-glow-1);
+    }
+
+    &--cyan {
+      bottom: 5%;
+      right: -5%;
+      background: var(--hero-glow-2);
+    }
+  }
+
+  &__container {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: center;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    @media (max-width: 1024px) {
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  &__title {
+    font-size: clamp(2.5rem, 4.5vw, 3.75rem);
+    font-weight: var(--font-weight-extrabold);
+    line-height: 1.15;
+    letter-spacing: -0.035em;
+    color: var(--text-primary);
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    max-width: 720px;
+  }
+
+  &__description {
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    max-width: 620px;
+
+    strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+
+    @media (max-width: 1024px) {
+      justify-content: center;
+    }
+  }
+
+  &__stats {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-subtle);
+    width: 100%;
+    flex-wrap: wrap;
+
+    @media (max-width: 1024px) {
+      justify-content: center;
+    }
+  }
+
+  &__stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  &__stat-value {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    color: var(--text-primary);
+  }
+
+  &__stat-label {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+}
+
+/* ==========================================================================
+   Rotating Skills Orbit Stage & Planetary Matrix
+   ========================================================================== */
+.hero__skills-orbit-stage {
+  width: 100%;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.orbit-card {
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  background: var(--bg-surface);
+  transition: all var(--duration-normal) var(--ease-smooth);
+  display: flex;
+  flex-direction: column;
+
+  &.paused {
+    .orbit-ring, .skill-node-pill {
+      animation-play-state: paused !important;
+    }
+  }
+
+  &__header {
+    padding: 0.625rem 1rem;
+    background: var(--bg-surface-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+
+    .orbit-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.3rem 0.65rem;
+      border-radius: var(--radius-full);
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      font-family: var(--font-family-mono);
+      letter-spacing: 0.03em;
+
+      [data-theme='light'] & {
+        background: #f1f5f9;
+        border-color: #cbd5e1;
+        color: #334155;
+      }
+
+      .orbit-live-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #ff6b00;
+        box-shadow: 0 0 6px rgba(255, 107, 0, 0.6);
+      }
+    }
+  }
+
+  .orbit-filter-pills {
+    display: inline-flex;
+    align-items: center;
+    background: var(--bg-surface-elevated);
+    padding: 3px;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-subtle);
+    gap: 3px;
+
+    [data-theme='light'] & {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+  }
+
+  .orbit-pill-btn {
+    padding: 0.28rem 0.65rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    transition: all var(--duration-fast) var(--ease-smooth);
+
+    &:hover {
+      color: var(--text-primary);
+    }
+
+    &.active {
+      background: #ff6b00;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(255, 107, 0, 0.35);
+    }
+  }
+}
+
+/* Orbit Canvas Stage */
+.orbit-canvas {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(circle at center, var(--bg-surface-elevated) 0%, var(--bg-surface) 75%);
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &:hover {
+    .orbit-ring, .skill-node-pill {
+      animation-play-state: paused;
+    }
+  }
+
+  .orbit-canvas-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 107, 0, 0.12) 0%, rgba(6, 182, 212, 0.08) 50%, transparent 70%);
+    pointer-events: none;
+  }
+}
+
+/* Concentric Rings */
+.orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px dashed var(--border-strong);
+  transition: opacity var(--duration-normal) var(--ease-smooth);
+  pointer-events: none;
+  box-sizing: border-box;
+
+  &.faded {
+    opacity: 0.15;
+  }
+
+  /* Outer Ring: 370px diameter (185px radius) */
+  &--outer {
+    width: 370px;
+    height: 370px;
+    animation: spinOrbitClockwise 34s linear infinite;
+    border-color: rgba(255, 107, 0, 0.25);
+
+    .skill-node-pill {
+      animation: counterSpinClockwise 34s linear infinite;
+    }
+
+    @media (max-width: 480px) {
+      width: 310px;
+      height: 310px;
+
+      .orbit-node-wrapper {
+        transform: rotate(var(--node-angle)) translate(155px) rotate(calc(-1 * var(--node-angle))) !important;
+      }
+    }
+  }
+
+  /* Inner Ring: 230px diameter (115px radius) */
+  &--inner {
+    width: 230px;
+    height: 230px;
+    animation: spinOrbitCounter 26s linear infinite;
+    border-color: rgba(6, 182, 212, 0.25);
+
+    .skill-node-pill {
+      animation: counterSpinCounter 26s linear infinite;
+    }
+
+    @media (max-width: 480px) {
+      width: 190px;
+      height: 190px;
+
+      .orbit-node-wrapper {
+        transform: rotate(var(--node-angle)) translate(95px) rotate(calc(-1 * var(--node-angle))) !important;
+      }
+    }
+  }
+}
+
+/* Orbit Node Wrapper */
+.orbit-node-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+
+  .orbit-ring--outer & {
+    transform: rotate(var(--node-angle)) translate(185px) rotate(calc(-1 * var(--node-angle)));
+  }
+
+  .orbit-ring--inner & {
+    transform: rotate(var(--node-angle)) translate(115px) rotate(calc(-1 * var(--node-angle)));
+  }
+}
+
+/* Individual Skill Node Pill */
+.skill-node-pill {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.75rem;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25), 0 0 12px var(--skill-glow, transparent);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.25s var(--ease-spring), border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  user-select: none;
+
+  .node-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--skill-color);
+    flex-shrink: 0;
+  }
+
+  .node-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  &:hover, &.highlighted {
+    transform: scale(1.22) translateZ(0);
+    z-index: 50;
+    border-color: var(--skill-color);
+    background: var(--bg-surface-hover);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 20px var(--skill-color);
+
+    .node-label {
+      color: var(--skill-color);
+    }
+  }
+}
+
+/* Central Identity Core */
+.orbit-center-hub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  z-index: 10;
+  pointer-events: none;
+
+  .hub-avatar-card {
+    position: relative;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--bg-surface-elevated) 0%, var(--bg-surface) 100%);
+    border: 2px solid var(--border-strong);
+    box-shadow: 0 0 30px rgba(255, 107, 0, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  .hub-monogram {
+    font-size: 1.35rem;
+    font-weight: 900;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.03em;
+    user-select: none;
+  }
+
+  .hub-live-dot {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #10b981;
+    border: 2px solid var(--bg-surface);
+    box-shadow: 0 0 8px #10b981;
+  }
+
+  .hub-pulse-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 107, 0, 0.35);
+    animation: pulseCore 3s ease-out infinite;
+    pointer-events: none;
+    z-index: 1;
+
+    &--outer {
+      width: 112px;
+      height: 112px;
+      border-color: rgba(6, 182, 212, 0.25);
+      animation-delay: 1.5s;
+    }
+  }
+}
+
+/* Orbit Footer / Active Skill Inspector */
+.orbit-footer {
+  padding: 1rem 1.5rem;
+  background: var(--bg-surface-subtle);
+  border-top: 1px solid var(--border-subtle);
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+
+  .active-skill-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    animation: fadeIn 0.2s var(--ease-smooth);
+
+    .skill-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .skill-name {
+      font-size: 0.9375rem;
+      font-weight: 800;
+      color: var(--skill-accent, var(--primary-400));
+    }
+
+    .skill-role-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.06);
+      padding: 0.15rem 0.55rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .skill-detail {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+  }
+
+  .orbit-pills-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    width: 100%;
+
+    .pills-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-right: 0.25rem;
+    }
+
+    .stack-badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+      border: 1px solid currentColor;
+      background: var(--bg-surface-elevated);
+    }
+  }
+}
+
+/* ==========================================================================
+   Orbit Animations
+   ========================================================================== */
+@keyframes spinOrbitClockwise {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes counterSpinClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes spinOrbitCounter {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+@keyframes counterSpinCounter {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseCore {
+  0% {
+    transform: translate(-50%, -50%) scale(0.92);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.35);
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   TILTED / ANGLED INFINITE MARQUEE RIBBON (After Hero Banner)
+   ========================================================================== */
+.hero-ribbon-wrapper {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  margin-top: clamp(3rem, 5vw, 4.5rem);
+  margin-bottom: -1.5rem;
+  padding: 1.5rem 0;
+  z-index: 5;
+}
+
+.hero-ribbon-strip {
+  width: 110vw;
+  margin-left: -5vw;
+  background: #ffffff;
+  color: #111827;
+  transform: rotate(-2.2deg);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 25px rgba(255, 107, 0, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 1rem 0;
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+
+  [data-theme='light'] & {
+    background: #0f172a;
+    color: #f8fafc;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.2);
+  }
+}
+
+.hero-ribbon-track {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  white-space: nowrap;
+  animation: marqueeHeroRibbon 22s linear infinite;
+  will-change: transform;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+.ribbon-skill-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.25rem;
+
+  .star-icon {
+    flex-shrink: 0;
+    fill: #ff6b00;
+    filter: drop-shadow(0 0 4px rgba(255, 107, 0, 0.5));
+  }
+
+  .skill-name-text {
+    font-family: var(--font-family-base);
+    font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #0f172a;
+    text-transform: capitalize;
+
+    [data-theme='light'] & {
+      color: #ffffff;
+    }
+  }
+}
+
+@keyframes marqueeHeroRibbon {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+

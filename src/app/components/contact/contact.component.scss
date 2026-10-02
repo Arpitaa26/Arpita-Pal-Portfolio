@@ -1,0 +1,208 @@
+.contact-section {
+  position: relative;
+}
+
+.contact-card {
+  padding: clamp(2rem, 3.5vw, 3rem);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  box-shadow: var(--shadow-xl);
+}
+
+/* Header */
+.direct-info-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  .header-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: #10b981;
+    font-family: var(--font-family-mono);
+    background: rgba(16, 185, 129, 0.1);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius-full);
+    align-self: flex-start;
+
+    .live-dot-green {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+    }
+  }
+
+  .info-heading {
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+
+  .info-desc {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 720px;
+  }
+}
+
+/* Direct Channels Grid */
+.contact-channels-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.channel-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.35rem;
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  transition: all var(--duration-fast) var(--ease-smooth);
+  position: relative;
+
+  &.highlight-channel {
+    border-color: rgba(56, 189, 248, 0.3);
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.05) 0%, var(--bg-surface-elevated) 100%);
+  }
+
+  &.link-card {
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--primary-400);
+      background: var(--bg-surface-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+
+      .channel-ext {
+        color: var(--primary-400);
+        transform: translate(2px, -2px);
+      }
+    }
+  }
+
+  .channel-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-lg);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-400);
+    flex-shrink: 0;
+
+    &.sla {
+      color: #10b981;
+    }
+  }
+
+  .channel-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    flex: 1;
+    min-width: 0;
+
+    .channel-lbl {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .channel-val {
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-decoration: none;
+      word-break: break-all;
+      transition: color var(--duration-fast);
+
+      &.sla-text {
+        color: #10b981;
+      }
+    }
+  }
+
+  .channel-ext {
+    color: var(--text-muted);
+    transition: all var(--duration-fast) var(--ease-smooth);
+    flex-shrink: 0;
+  }
+
+  .copy-pill-btn {
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-surface);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--duration-fast) var(--ease-smooth);
+    flex-shrink: 0;
+
+    &:hover {
+      background: var(--primary-500);
+      color: #ffffff;
+      border-color: var(--primary-500);
+      box-shadow: 0 2px 10px rgba(59, 130, 246, 0.4);
+    }
+
+    .copied-text {
+      color: #10b981;
+      font-weight: 800;
+    }
+  }
+}
+
+/* Action Row */
+.contact-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border-subtle);
+
+  .direct-email-btn, .direct-resume-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.6rem;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    transition: all var(--duration-fast) var(--ease-smooth);
+
+    @media (max-width: 600px) {
+      width: 100%;
+    }
+  }
+}

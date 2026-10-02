@@ -1,0 +1,204 @@
+<section class="dtc-section section-wrapper" id="design-to-code">
+  <div class="container">
+    <!-- Section Heading -->
+    <app-section-heading
+      tag="Engineering Bridge"
+      dotColor="#8B5CF6"
+      description="The seamless pipeline translating Figma design intent into robust, accessible, and maintainable Angular frontend code without loss of fidelity.">
+      <span title>
+        From <span class="text-gradient">Figma Vectors</span> to <br/>
+        <span class="text-gradient-cyan">Production Angular Code</span>
+      </span>
+    </app-section-heading>
+
+    <!-- Pipeline Stage Selector Stepper -->
+    <div class="pipeline-stepper">
+      @for (stage of stages; track stage.key) {
+        <button
+          class="pipeline-card"
+          [class.active]="activeStage() === stage.key"
+          (click)="selectStage(stage.key)"
+          [style.--stage-accent]="stage.accent">
+          
+          <div class="pipeline-card__top">
+            <span class="stage-num" [style.color]="stage.accent">0{{ stage.id }}</span>
+            <span class="stage-badge">{{ stage.badge }}</span>
+          </div>
+
+          <h3 class="stage-title">{{ stage.title }}</h3>
+          <p class="stage-subtitle">{{ stage.subtitle }}</p>
+
+          <div class="stage-indicator">
+            <div class="indicator-bar"></div>
+          </div>
+        </button>
+      }
+    </div>
+
+    <!-- Live Stage Detailed Explorer Stage -->
+    <div class="dtc-viewer glass-panel">
+      <!-- Top Explorer Bar -->
+      <div class="dtc-viewer__bar">
+        <div class="viewer-tabs">
+          <button
+            class="v-tab"
+            [class.active]="activeStage() === 'figma'"
+            (click)="selectStage('figma')">1. Figma Specs</button>
+          <button
+            class="v-tab"
+            [class.active]="activeStage() === 'tokens'"
+            (click)="selectStage('tokens')">2. Design Tokens</button>
+          <button
+            class="v-tab"
+            [class.active]="activeStage() === 'angular'"
+            (click)="selectStage('angular')">3. Angular Implementation</button>
+          <button
+            class="v-tab"
+            [class.active]="activeStage() === 'rendered'"
+            (click)="selectStage('rendered')">4. Rendered Interface</button>
+        </div>
+
+        <span class="sync-pill">
+          <span class="dot-sync"></span>
+          <span>Synced with Figma Code Connect</span>
+        </span>
+      </div>
+
+      <!-- Stage 1: Figma Node Spec View -->
+      @if (activeStage() === 'figma') {
+        <div class="stage-view-content figma-view">
+          <div class="view-grid">
+            <div class="code-side">
+              <div class="code-header">
+                <span>figma.component.json (Figma REST API Payload)</span>
+              </div>
+              <pre class="code-block"><code>{{ figmaJsonCode }}</code></pre>
+            </div>
+
+            <div class="visual-side">
+              <div class="figma-canvas-box">
+                <div class="figma-badge-watermark">FIGMA AUTO-LAYOUT CANVAS</div>
+                
+                <div class="figma-mockup-item">
+                  <div class="mockup-header-bar">
+                    <span class="figma-tag">#Component/LegalCaseCard</span>
+                    <span class="figma-prop">variant=active</span>
+                  </div>
+                  <div class="mockup-inner-content">
+                    <div class="mockup-title">Refugee Case #CH-4481</div>
+                    <div class="mockup-status-pill">Pending Tribunal Review</div>
+                    <div class="mockup-action-btn">Draft Evidence Brief →</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Stage 2: Design Tokens Spec View -->
+      @if (activeStage() === 'tokens') {
+        <div class="stage-view-content tokens-view">
+          <div class="view-grid">
+            <div class="code-side">
+              <div class="code-header">
+                <span>design-tokens.tokens.json (W3C Standard)</span>
+              </div>
+              <pre class="code-block"><code>{{ tokensJsonCode }}</code></pre>
+            </div>
+
+            <div class="visual-side">
+              <div class="token-map-box">
+                <h4 class="token-map-title">Compiled SCSS Custom Properties</h4>
+                <div class="token-map-list">
+                  <div class="token-map-item">
+                    <span class="var-name">--case-card-bg</span>
+                    <span class="var-arrow">→</span>
+                    <span class="var-res">var(--bg-surface-elevated, #161D28)</span>
+                  </div>
+                  <div class="token-map-item">
+                    <span class="var-name">--case-card-radius</span>
+                    <span class="var-arrow">→</span>
+                    <span class="var-res">var(--radius-lg, 16px)</span>
+                  </div>
+                  <div class="token-map-item">
+                    <span class="var-name">--case-card-accent</span>
+                    <span class="var-arrow">→</span>
+                    <span class="var-res">var(--primary-500, #FF6B00)</span>
+                  </div>
+                  <div class="token-map-item">
+                    <span class="var-name">--case-card-shadow</span>
+                    <span class="var-arrow">→</span>
+                    <span class="var-res">var(--shadow-md)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Stage 3: Angular Component Implementation View -->
+      @if (activeStage() === 'angular') {
+        <div class="stage-view-content angular-view">
+          <div class="view-grid">
+            <div class="code-side">
+              <div class="code-header">
+                <span>case-card.component.ts (Angular 20 Standalone)</span>
+              </div>
+              <pre class="code-block"><code>{{ angularTsCode }}</code></pre>
+            </div>
+
+            <div class="visual-side">
+              <div class="arch-box">
+                <h4 class="arch-title">Component Engineering Features</h4>
+                <ul class="arch-list">
+                  <li><span class="chk">✓</span> <strong>OnPush Change Detection:</strong> Zero wasteful DOM reconciliations.</li>
+                  <li><span class="chk">✓</span> <strong>Strict TypeScript Typing:</strong> Explicit interfaces matching OpenAPI backend models.</li>
+                  <li><span class="chk">✓</span> <strong>SCSS Modular Scope:</strong> Encapsulated styles referencing global design tokens.</li>
+                  <li><span class="chk">✓</span> <strong>Full Keyboard & ARIA Support:</strong> Focus rings and semantic role bindings.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- Stage 4: Rendered Live Output View -->
+      @if (activeStage() === 'rendered') {
+        <div class="stage-view-content rendered-view">
+          <div class="view-grid">
+            <div class="code-side">
+              <div class="code-header">
+                <span>DOM Inspector & Computed Styles</span>
+              </div>
+              <pre class="code-block"><code>{{ renderedDomCode }}</code></pre>
+            </div>
+
+            <div class="visual-side">
+              <div class="live-rendered-box">
+                <div class="rendered-card">
+                  <div class="rendered-card__top">
+                    <span class="rendered-badge">Swiss Law Procedure</span>
+                    <span class="rendered-time">Hearing in 4 days</span>
+                  </div>
+                  <h3 class="rendered-title">Refugee Appeal #CH-4481</h3>
+                  <p class="rendered-desc">
+                    Comprehensive legal appeal referencing Swiss Asylum Act (AsylG Art. 3). All 12 evidentiary documents verified.
+                  </p>
+                  <button class="rendered-btn">
+                    <span>Draft Evidence Brief</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
