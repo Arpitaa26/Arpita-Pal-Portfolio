@@ -56,6 +56,22 @@ export class ProjectGridComponent {
     return this.projects.find(p => p.id === 'empowering-sankalpa') || this.projects[6];
   }
 
+  get pharmacyProject(): Project {
+    return this.projects.find(p => p.id === 'pharmacy-app') || this.projects[7];
+  }
+
+  get sidlabsProject(): Project {
+    return this.projects.find(p => p.id === 'sidlabs') || this.projects[8];
+  }
+
+  get criboProject(): Project {
+    return this.projects.find(p => p.id === 'cribo') || this.projects[9];
+  }
+
+  get wpayProject(): Project {
+    return this.projects.find(p => p.id === 'wpay-app') || this.projects[10];
+  }
+
   // Interactive handlers
   setBankingTab(tab: 'overview' | 'accounts' | 'transactions' | 'analytics', e?: Event): void {
     if (e) e.stopPropagation();

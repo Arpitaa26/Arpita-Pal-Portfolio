@@ -468,5 +468,265 @@ export const PROJECTS_DATA: Project[] = [
       gridSystem: '12-Column Responsive Layout with Fluid Card Breakpoints',
       keyComponents: ['Multi-Tier Donation Stepper', 'Grassroots Program Card', 'Impact Counter Hero', 'Volunteer Intake Form']
     }
+  },
+  {
+    id: 'pharmacy-app',
+    slug: 'pharmacy-app',
+    title: 'PharmaCare — Mobile Pharmacy & On-Demand Medicine Delivery',
+    subtitle: 'End-to-End iOS Healthcare Ordering, Prescription Routing & Delivery Tracking',
+    tagline: 'Instant Prescription Fulfillment, Medicine Delivery & Health Deals on Mobile',
+    category: 'Product Design',
+    tags: ['Mobile App Design', 'iOS & Android', 'Healthcare UX', 'Figma', 'E-Commerce UX'],
+    year: '2024 - 2025',
+    role: 'Lead Mobile UI/UX Designer',
+    client: 'HealthTech / PharmaCare',
+    accentColor: '#10B981',
+    accentGradient: 'linear-gradient(135deg, #10B981 0%, #059669 100%)',
+    featured: true,
+    coverImage: 'assets/projects/pharmacy-app/pharmacy_home.png',
+    screens: [
+      'assets/projects/pharmacy-app/pharmacy_home.png',
+      'assets/projects/pharmacy-app/pharmacy_deals.png',
+      'assets/projects/pharmacy-app/pharmacy_catalog.png',
+      'assets/projects/pharmacy-app/pharmacy_details.png',
+      'assets/projects/pharmacy-app/pharmacy_suite.png'
+    ],
+    overview: 'PharmaCare is a modern healthcare e-commerce and on-demand prescription delivery mobile application designed for iOS (iPhone 14 & 15 Pro Max). It features instant medicine search, home delivery and store pick-up toggles, categorized wellness discovery (Heart, Skincare, Vitamins, Pain Relief), flash promotional deals, and transparent delivery route tracking.',
+    problem: 'Patients requiring urgent prescription refills often encounter fragmented pharmacy directories, unclear delivery estimates, and complex checkout funnels on mobile devices.',
+    solution: 'Designed an intuitive, high-legibility mobile application following Apple Human Interface Guidelines. Incorporated prominent delivery mode switches, rapid category shortcuts, countdown promotional banners, detailed medicine dosage specs, and seamless cart management.',
+    keyOutcomes: [
+      'Streamlined 3-tap medicine order and delivery placement workflow',
+      'High-contrast clinical UI palette ensuring accessibility for elderly and urgent users',
+      'Dedicated Ramadan and flash deals showcase increasing cart completion rates',
+      'Clear dosage and usage instructions reducing user ordering errors'
+    ],
+    stats: [
+      { label: 'Device Platform', value: 'iOS & Android' },
+      { label: 'Checkout Journey', value: '3-Tap Flow' },
+      { label: 'Fidelity', value: 'Figma High-Res' },
+      { label: 'Delivery Modes', value: 'Home & Pickup' }
+    ],
+    sections: [
+      {
+        title: 'Mobile Home & Delivery Orchestration',
+        subtitle: 'Frictionless Health E-Commerce',
+        description: 'Engineered a clean mobile home screen featuring instant delivery address selection, dual-mode delivery toggles, and visual category tiles for over-the-counter and prescription essentials.',
+        image: 'assets/projects/pharmacy-app/pharmacy_home.png',
+        highlights: ['Home delivery vs Store pickup toggle', 'Live address selector with geocoding feedback', 'Category grid with high-fidelity healthcare iconography']
+      },
+      {
+        title: 'Catalog & Comprehensive Medicine Details',
+        subtitle: 'Dosage, Reviews & Rapid Reorder',
+        description: 'Designed product detail viewports highlighting ingredients, safety warnings, patient reviews, prescription verification requirements, and instant add-to-cart controls.',
+        image: 'assets/projects/pharmacy-app/pharmacy_details.png',
+        highlights: ['Dynamic quantity selector and pricing calculators', 'Clinical specifications and storage instructions', 'Related medicine recommendations']
+      }
+    ],
+    designSpecs: {
+      typography: ['Urbanist / Inter (Clinical Headings & Numbers)', 'SF Pro Display (iOS Body UI)'],
+      colors: [
+        { name: 'Pharma Mint Emerald', hex: '#10B981', role: 'Primary Action & Healthcare Brand' },
+        { name: 'Clinical Sun Amber', hex: '#F59E0B', role: 'Discount & Prescription Alerts' },
+        { name: 'Sterile Canvas White', hex: '#F0FDF4', role: 'Clean Background & Card Surfaces' }
+      ],
+      gridSystem: '4-Column Mobile Grid with 16px Margins (iOS HIG)',
+      keyComponents: ['Delivery Mode Pill Switcher', 'Prescription Upload Trigger', 'Medicine Spec Card', 'Bottom Navigation Dock']
+    }
+  },
+  {
+    id: 'sidlabs',
+    slug: 'sidlabs',
+    title: 'SidLabs — AI Venture Studio & Tech Incubator Platform',
+    subtitle: 'Digital Brand Identity, Venture Portfolio Showcase & Talent Recruitment Portal',
+    tagline: 'Where Bold Ideas Meet Innovation to Advance Human Intelligence',
+    category: 'Product Design',
+    tags: ['Venture Studio', 'AI UX Patterns', 'Figma', 'Design Systems', 'Corporate Web'],
+    year: '2024 - 2025',
+    role: 'Lead UI/UX Designer',
+    client: 'SidLabs Online LLP',
+    accentColor: '#0284C7',
+    accentGradient: 'linear-gradient(135deg, #0284C7 0%, #38BDF8 100%)',
+    featured: true,
+    coverImage: 'assets/projects/sidlabs/sidlabs_home.png',
+    screens: [
+      'assets/projects/sidlabs/sidlabs_home.png',
+      'assets/projects/sidlabs/sidlabs_careers.png',
+      'assets/projects/sidlabs/sidlabs_careers_detail.png',
+      'assets/projects/sidlabs/sidlabs_pitch.png',
+      'assets/projects/sidlabs/sidlabs_home_alt.png'
+    ],
+    overview: 'SidLabs is a forward-thinking AI venture studio and software development firm advancing digital innovation across global markets. This project delivered the comprehensive corporate web presence—including the studio landing experience, partner ecosystem showcase (OpenAI, Google Gemini, Amazon), venture incubator portfolio, career recruitment portal, and venture pitch submission funnel.',
+    problem: 'Venture studios often struggle to articulate dual-faceted value propositions: attracting visionary founders for incubation while simultaneously winning enterprise software development partnerships.',
+    solution: 'Crafted a modern tech brand architecture with bold typographic hierarchy, structured venture case studies (Chromodiversity, CARE Platform), transparent development framework timelines (Alcaline framework), and an interactive talent application board.',
+    keyOutcomes: [
+      'Unified venture studio and tech agency services into one cohesive brand story',
+      'High-conversion "Apply for Consulting" and "Pitch Your Idea" inquiry funnels',
+      'Comprehensive Careers job board with detailed role descriptions and filter tags',
+      'Trust badges with enterprise partner verification and executive testimonials'
+    ],
+    stats: [
+      { label: 'Studio Model', value: 'Venture Incubator' },
+      { label: 'Ecosystem', value: 'Global AI' },
+      { label: 'Case Studies', value: 'Multi-Venture' },
+      { label: 'Device Support', value: 'Desktop & Tablet' }
+    ],
+    sections: [
+      {
+        title: 'Brand Hero & Enterprise Trust Architecture',
+        subtitle: 'Strategic Positioning for AI Ventures',
+        description: 'Engineered an impactful hero section communicating core values, partner integrations (Google, OpenAI), client trust metrics, and recent venture case studies.',
+        image: 'assets/projects/sidlabs/sidlabs_home.png',
+        highlights: ['Bold value proposition hero', 'Client case study carousel (SCFC Canada, CARE)', 'Alcaline sprint development roadmap']
+      },
+      {
+        title: 'Venture Careers & Talent Intake Engine',
+        subtitle: 'Recruitment & Culture Platform',
+        description: 'Created an engaging career portal featuring filterable job listings, salary transparencies, company culture highlights, and simplified application forms.',
+        image: 'assets/projects/sidlabs/sidlabs_careers.png',
+        highlights: ['Interactive role filter by department & location', 'Transparent salary and benefits specifications', 'One-click candidate application modal']
+      }
+    ],
+    designSpecs: {
+      typography: ['Urbanist / Space Grotesk (Headings)', 'Inter (Body UI)', 'JetBrains Mono (Metrics)'],
+      colors: [
+        { name: 'SidLabs Deep Blue', hex: '#002E6E', role: 'Brand Identity & Primary CTAs' },
+        { name: 'Sky Electric Accent', hex: '#0284C7', role: 'Interactive Highlights & Badges' },
+        { name: 'Light Studio Canvas', hex: '#F8FAFC', role: 'Clean Reading Background' }
+      ],
+      gridSystem: '12-Column Responsive Layout with 24px Gutters',
+      keyComponents: ['Venture Case Study Card', 'Sprint Roadmap Stepper', 'Job Role Card', 'Consultation Drawer']
+    }
+  },
+  {
+    id: 'cribo',
+    slug: 'cribo',
+    title: 'Cribo — UK Flatshare, Student Housing & Rental Property Platform',
+    subtitle: 'London & UK Property Matching, Transit Proximity Search & Roommate Onboarding',
+    tagline: 'Empowering 100 Million Renters to Find Their Ideal Flatshare and Student Home',
+    category: 'Frontend',
+    tags: ['Web Design', 'Flatshare & Real Estate', 'UK Rental Portal', 'Responsive Web', 'SaaS'],
+    year: '2024',
+    role: 'UI/UX Designer & Frontend Developer',
+    client: 'Cribo UK / Veye Research',
+    accentColor: '#84CC16',
+    accentGradient: 'linear-gradient(135deg, #84CC16 0%, #22C55E 100%)',
+    featured: true,
+    coverImage: 'assets/projects/cribo/cribo_home.png',
+    screens: [
+      'assets/projects/cribo/cribo_home.png',
+      'assets/projects/cribo/cribo_dashboard.png',
+      'assets/projects/cribo/cribo_chat.png',
+      'assets/projects/cribo/cribo_upgrade.png',
+      'assets/projects/cribo/cribo_mobile.png'
+    ],
+    overview: 'Cribo is the UK leading flatshare and student housing platform, designed to simplify apartment hunting across London and university hubs. Built with Tube line and commute time filters, verified room listings, roommate matching chats, property management dashboards, and subscription tier upgrades.',
+    problem: 'Students and young professionals in the UK experience severe stress navigating fragmented rental listings, unverifiable roommates, and ambiguous commute times to their universities or offices.',
+    solution: 'Designed and engineered an intuitive web platform featuring London Tube-line search, travel-time radius filters, UK university student directories, real-time prospective flatmate chat, and a full landlord property dashboard.',
+    keyOutcomes: [
+      'Integrated London Tube-line and transit travel time search filters directly into hero',
+      'Interactive UK university directory connecting students with campus-adjacent housing',
+      'Production deployment on GitHub Pages with responsive mobile and desktop viewports',
+      'In-app roommate messaging and landlord listing management dashboard'
+    ],
+    stats: [
+      { label: 'Target Market', value: 'UK & London' },
+      { label: 'Live Deployment', value: 'GitHub Pages' },
+      { label: 'Search Filters', value: 'Tube & Commute' },
+      { label: 'Platform Scope', value: 'Web & Mobile' }
+    ],
+    sections: [
+      {
+        title: 'Hero Transit Search & Flatshare Discovery',
+        subtitle: 'London Commute-First Housing UX',
+        description: 'Architected the core search engine allowing users to toggle between Rooms, Flat Mates, and Team Ups, with instant filters for London Tube Lines and commute times.',
+        image: 'assets/projects/cribo/cribo_home.png',
+        highlights: ['Tube Line and Travel Time search tabs', 'Featured rental listings with price comparison', 'Search by accredited UK Universities']
+      },
+      {
+        title: 'Landlord Dashboard & Flatmate Messaging',
+        subtitle: 'Tenant & Property Management',
+        description: 'Built a feature-rich portal enabling landlords to monitor listing impressions, handle tenant applications, and chat directly with verified prospective flatmates.',
+        image: 'assets/projects/cribo/cribo_dashboard.png',
+        highlights: ['Real-time listing performance analytics', 'Direct peer-to-peer messaging inbox', 'Subscription tier management and premium badges']
+      }
+    ],
+    designSpecs: {
+      typography: ['Urbanist / Space Grotesk (Headings)', 'Inter (Body UI)', 'JetBrains Mono (Postcodes & Rents)'],
+      colors: [
+        { name: 'Cribo Lime Primary', hex: '#84CC16', role: 'Brand Identity & Active Triggers' },
+        { name: 'London Slate Dark', hex: '#1C2534', role: 'Primary Nav, Headings & Filters' },
+        { name: 'Warm Cream Tint', hex: '#F9FAFB', role: 'Card Backgrounds & Canvas' }
+      ],
+      gridSystem: '12-Column Responsive Layout with Fluid Card Breakpoints',
+      keyComponents: ['Transit Proximity Filter Bar', 'Flatshare Property Card', 'Roommate Chat Drawer', 'Landlord Analytics Ledger']
+    },
+    demoUrl: 'https://arpitaa26.github.io/cribo/',
+    githubUrl: 'https://github.com/Arpitaa26/cribo'
+  },
+  {
+    id: 'wpay-app',
+    slug: 'wpay-app',
+    title: 'Wpay — Mobile FinTech & Digital Wallet Experience',
+    subtitle: 'Instant P2P Transfers, Virtual Cards, Spending Analytics & Multi-Bank Top-Up',
+    tagline: 'Streamlined Mobile Banking, Virtual Card Management & Instant Money Movement',
+    category: 'Product Design',
+    tags: ['FinTech Mobile', 'Digital Wallet', 'Peer-to-Peer Transfer', 'Figma', 'iOS UX'],
+    year: '2024 - 2025',
+    role: 'Lead Mobile UI/UX Designer',
+    client: 'Wpay FinTech',
+    accentColor: '#10B981',
+    accentGradient: 'linear-gradient(135deg, #10B981 0%, #047857 100%)',
+    featured: true,
+    coverImage: 'assets/projects/wpay/wpay_home.png',
+    screens: [
+      'assets/projects/wpay/wpay_home.png',
+      'assets/projects/wpay/wpay_statistics.png',
+      'assets/projects/wpay/wpay_confirm_transfer.png',
+      'assets/projects/wpay/wpay_add_card.png',
+      'assets/projects/wpay/wpay_topup_bank.png',
+      'assets/projects/wpay/wpay_topup_receipt.png'
+    ],
+    overview: 'Wpay is an ultra-streamlined mobile digital wallet and financial management app. It provides instant peer-to-peer money transfers, virtual card provisioning, utility and merchant bill payments, weekly/monthly expenditure telemetry with visual donut charts, and step-by-step multi-bank top-up guides (ATM, m-Banking, Internet Banking).',
+    problem: 'Consumers often experience high friction and security anxiety when sending peer-to-peer payments or deciphering weekly spending breakdowns across clunky legacy mobile banking apps.',
+    solution: 'Engineered a warm, human-centric green visual identity with intuitive bottom sheet navigation, rapid card scanning and verification, visual transaction receipts, and granular budget analytics categorized by utility, food, and merchant purchases.',
+    keyOutcomes: [
+      'Frictionless peer-to-peer transfer confirmation with instant biometric check',
+      'Comprehensive monthly expense telemetry with interactive bar charts and category rings',
+      'Step-by-step bank top-up instructions tailored for BRI, DBS, and Citibank customers',
+      'Instant virtual card issuance and secure CVV verification'
+    ],
+    stats: [
+      { label: 'Platform Type', value: 'Mobile iOS / Android' },
+      { label: 'Transfer Flow', value: 'Instant P2P' },
+      { label: 'Top-Up Methods', value: 'Bank, ATM, Card' },
+      { label: 'Telemetry', value: 'Real-Time Charts' }
+    ],
+    sections: [
+      {
+        title: 'Home Dashboard & Rapid Money Actions',
+        subtitle: 'Digital Wallet Centralization',
+        description: 'Designed the primary mobile wallet dashboard showcasing live available balances, quick action pills (Transfer, Top Up, History), bill payment matrices, and partner discount deals.',
+        image: 'assets/projects/wpay/wpay_home.png',
+        highlights: ['Centralized balance with privacy visibility toggle', 'Grid for utility payments (Electricity, Internet, Mobile Credit)', 'Floating QR scan action for instant merchant checkout']
+      },
+      {
+        title: 'Monthly Expenditure Telemetry & Top-Up Receipt',
+        subtitle: 'Budget Transparency & Trust Markers',
+        description: 'Created spending analytics with weekly income vs expense bar charts alongside verified transaction receipts featuring downloadable voucher tokens.',
+        image: 'assets/projects/wpay/wpay_statistics.png',
+        highlights: ['Interactive weekly expenditure comparison graph', 'Category breakdown ring (Dining, Bills, Shopping)', 'Perforated digital receipt with virtual card stamp']
+      }
+    ],
+    designSpecs: {
+      typography: ['Urbanist / Plus Jakarta Sans (Headings & Balances)', 'Inter (Body UI)', 'JetBrains Mono (Card Numbers & Timestamps)'],
+      colors: [
+        { name: 'Wpay Emerald Green', hex: '#10B981', role: 'Primary Action & Wallet Brand' },
+        { name: 'Forest Deep Slate', hex: '#064E3B', role: 'Top Navigation & Card Headers' },
+        { name: 'Soft Mint Surface', hex: '#F0FDF4', role: 'Canvas Background & Action Highlights' }
+      ],
+      gridSystem: '4-Column Mobile Fluid Grid with 16px Padding (iOS HIG)',
+      keyComponents: ['Wallet Balance Hero Card', 'Perforated Receipt Ticket', 'Monthly Expense Bar Chart', 'Floating QR Action Dock']
+    },
+    githubUrl: 'https://github.com/Arpitaa26/b2b-payment-gateway'
   }
 ];

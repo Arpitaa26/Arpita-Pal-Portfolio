@@ -44,6 +44,7 @@ export class AllProjectsComponent {
     'UI/UX Design',
     'Frontend Engineering',
     'Design Systems',
+    'Mobile & Web Apps',
     'FinTech & Enterprise'
   ];
 
@@ -147,11 +148,67 @@ export class AllProjectsComponent {
       accentColor: '#E11D48',
       realProject: PROJECTS_DATA[6]
     },
+    {
+      id: 'pharmacy-app',
+      slotNumber: 8,
+      title: 'PharmaCare — Mobile Pharmacy & On-Demand Medicine Delivery',
+      subtitle: 'End-to-End iOS Healthcare Ordering, Prescription Routing & Delivery Tracking',
+      category: 'Mobile & Web Apps',
+      tags: ['Mobile App Design', 'iOS & Android', 'Healthcare UX', 'Figma', 'E-Commerce UX'],
+      role: 'Lead Mobile UI/UX Designer',
+      year: '2024 - 2025',
+      status: 'Featured Project',
+      isPlaceholder: false,
+      accentColor: '#10B981',
+      realProject: PROJECTS_DATA[7]
+    },
+    {
+      id: 'sidlabs',
+      slotNumber: 9,
+      title: 'SidLabs — AI Venture Studio & Tech Incubator Platform',
+      subtitle: 'Digital Brand Identity, Venture Portfolio Showcase & Talent Recruitment Portal',
+      category: 'UI/UX Design',
+      tags: ['Venture Studio', 'AI UX Patterns', 'Figma', 'Design Systems', 'Corporate Web'],
+      role: 'Lead UI/UX Designer',
+      year: '2024 - 2025',
+      status: 'Featured Project',
+      isPlaceholder: false,
+      accentColor: '#0284C7',
+      realProject: PROJECTS_DATA[8]
+    },
+    {
+      id: 'cribo',
+      slotNumber: 10,
+      title: 'Cribo — UK Flatshare, Student Housing & Rental Property Platform',
+      subtitle: 'London & UK Property Matching, Transit Proximity Search & Roommate Onboarding',
+      category: 'Frontend Engineering',
+      tags: ['Web Design', 'Flatshare & Real Estate', 'UK Rental Portal', 'Responsive Web', 'SaaS'],
+      role: 'UI/UX Designer & Frontend Developer',
+      year: '2024',
+      status: 'Featured Project',
+      isPlaceholder: false,
+      accentColor: '#84CC16',
+      realProject: PROJECTS_DATA[9]
+    },
+    {
+      id: 'wpay-app',
+      slotNumber: 11,
+      title: 'Wpay — Mobile FinTech & Digital Wallet Experience',
+      subtitle: 'Instant P2P Transfers, Virtual Cards, Spending Analytics & Multi-Bank Top-Up',
+      category: 'Mobile & Web Apps',
+      tags: ['FinTech Mobile', 'Digital Wallet', 'Peer-to-Peer Transfer', 'Figma', 'iOS UX'],
+      role: 'Lead Mobile UI/UX Designer',
+      year: '2024 - 2025',
+      status: 'Featured Project',
+      isPlaceholder: false,
+      accentColor: '#10B981',
+      realProject: PROJECTS_DATA[10]
+    },
     // Placeholder projects for upcoming showcase
     {
       id: 'placeholder-project-1',
-      slotNumber: 8,
-      title: 'Project 8 — UI/UX Case Study',
+      slotNumber: 12,
+      title: 'Project 12 — UI/UX Case Study',
       subtitle: 'Slot ready for your upcoming project details, wireframes, and design workflow.',
       category: 'UI/UX Design',
       tags: ['UI/UX Design', 'User Research', 'Wireframing', 'Interactive Prototype'],
@@ -163,8 +220,8 @@ export class AllProjectsComponent {
     },
     {
       id: 'placeholder-project-2',
-      slotNumber: 9,
-      title: 'Project 9 — Design System & Tokens',
+      slotNumber: 13,
+      title: 'Project 13 — Design System & Tokens',
       subtitle: 'Slot ready for your scalable design system, UI components, and token specifications.',
       category: 'Design Systems',
       tags: ['Design System', 'Figma Tokens', 'Atomic Design', 'Component Library'],
