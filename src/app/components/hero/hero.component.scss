@@ -36,8 +36,8 @@
 
   &__grid {
     display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    gap: clamp(2rem, 4vw, 4rem);
+    grid-template-columns: 1.08fr 1fr;
+    gap: clamp(1.5rem, 3vw, 3.5rem);
     align-items: center;
 
     @media (max-width: 1024px) {
@@ -234,8 +234,8 @@
 .orbit-canvas {
   position: relative;
   width: 100%;
-  height: 580px;
-  min-height: 560px;
+  height: 440px;
+  min-height: 440px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -258,28 +258,28 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 340px;
-    height: 340px;
+    width: 260px;
+    height: 260px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(255, 107, 0, 0.14) 0%, rgba(236, 72, 153, 0.08) 40%, rgba(6, 182, 212, 0.06) 70%, transparent 85%);
     pointer-events: none;
   }
 
   @media (max-width: 580px) {
-    height: 500px;
-    min-height: 480px;
+    height: 390px;
+    min-height: 390px;
 
     .orbit-ring, .orbit-center-hub {
-      zoom: 0.82;
+      zoom: 0.85;
     }
   }
 
   @media (max-width: 440px) {
-    height: 440px;
-    min-height: 420px;
+    height: 340px;
+    min-height: 340px;
 
     .orbit-ring, .orbit-center-hub {
-      zoom: 0.68;
+      zoom: 0.72;
     }
   }
 }
@@ -300,36 +300,36 @@
     opacity: 0.15;
   }
 
-  /* Round 3: Outer Ring - 480px diameter (240px radius) */
+  /* Round 3: Outer Ring - 324px diameter (162px radius, safe within card bounds) */
   &--outer {
-    width: 480px;
-    height: 480px;
+    width: 324px;
+    height: 324px;
     animation: spinOrbitClockwise 48s linear infinite;
     border-color: rgba(255, 107, 0, 0.28);
-    box-shadow: inset 0 0 40px rgba(255, 107, 0, 0.03);
+    box-shadow: inset 0 0 30px rgba(255, 107, 0, 0.03);
 
     .skill-node-pill {
       animation: counterSpinClockwise 48s linear infinite;
     }
   }
 
-  /* Round 2: Middle Ring - 340px diameter (170px radius) */
+  /* Round 2: Middle Ring - 236px diameter (118px radius) */
   &--middle {
-    width: 340px;
-    height: 340px;
+    width: 236px;
+    height: 236px;
     animation: spinOrbitCounter 38s linear infinite;
     border-color: rgba(236, 72, 153, 0.28);
-    box-shadow: inset 0 0 30px rgba(236, 72, 153, 0.03);
+    box-shadow: inset 0 0 25px rgba(236, 72, 153, 0.03);
 
     .skill-node-pill {
       animation: counterSpinCounter 38s linear infinite;
     }
   }
 
-  /* Round 1: Inner Ring - 220px diameter (110px radius, 76px clearance to hub) */
+  /* Round 1: Inner Ring - 148px diameter (74px radius, clear of AP hub) */
   &--inner {
-    width: 220px;
-    height: 220px;
+    width: 148px;
+    height: 148px;
     animation: spinOrbitClockwise 28s linear infinite;
     border-color: rgba(6, 182, 212, 0.28);
     box-shadow: inset 0 0 20px rgba(6, 182, 212, 0.04);
@@ -360,30 +360,31 @@
   }
 
   .orbit-ring--outer & {
-    transform: rotate(var(--node-angle)) translate(240px) rotate(calc(-1 * var(--node-angle)));
+    transform: rotate(var(--node-angle)) translate(162px) rotate(calc(-1 * var(--node-angle)));
   }
 
   .orbit-ring--middle & {
-    transform: rotate(var(--node-angle)) translate(170px) rotate(calc(-1 * var(--node-angle)));
+    transform: rotate(var(--node-angle)) translate(118px) rotate(calc(-1 * var(--node-angle)));
   }
 
   .orbit-ring--inner & {
-    transform: rotate(var(--node-angle)) translate(110px) rotate(calc(-1 * var(--node-angle)));
+    transform: rotate(var(--node-angle)) translate(74px) rotate(calc(-1 * var(--node-angle)));
   }
 }
 
-/* Individual Skill Node Pill */
+/* Individual Skill Node Pill (Enlarged Box Size, Comfortable Breathing Room) */
 .skill-node-pill {
   position: absolute;
   transform: translate(-50%, -50%);
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.38rem 0.8rem;
+  gap: 0.52rem;
+  padding: 0.44rem 0.95rem;
+  min-height: 35px;
   background: var(--bg-surface-elevated);
-  border: 1px solid var(--border-subtle);
+  border: 1.5px solid var(--border-subtle);
   border-radius: var(--radius-full);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3), 0 0 12px var(--skill-glow, transparent);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.32), 0 0 12px var(--skill-glow, transparent);
   cursor: pointer;
   white-space: nowrap;
   transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
@@ -413,17 +414,17 @@
   }
 
   .node-label {
-    font-size: 0.75rem;
+    font-size: 0.8125rem;
     font-weight: 700;
     color: var(--text-primary);
     letter-spacing: -0.01em;
-    line-height: 1.2;
+    line-height: 1;
     white-space: nowrap;
     display: inline-block;
   }
 
   &:hover, &.highlighted {
-    transform: translate(-50%, -50%) scale(1.15) translateZ(0);
+    transform: translate(-50%, -50%) scale(1.12) translateZ(0);
     z-index: 50;
     border-color: var(--skill-color);
     background: var(--bg-surface-hover);
@@ -435,7 +436,7 @@
   }
 }
 
-/* Central Identity Core */
+/* Central Identity Core (Compact, Clean Hub) */
 .orbit-center-hub {
   position: absolute;
   top: 50%;
@@ -444,20 +445,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 68px;
-  height: 68px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   z-index: 10;
   pointer-events: none;
 
   .hub-avatar-card {
     position: relative;
-    width: 68px;
-    height: 68px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--bg-surface-elevated) 0%, var(--bg-surface) 100%);
     border: 2px solid var(--border-strong);
-    box-shadow: 0 0 30px rgba(255, 107, 0, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 25px rgba(255, 107, 0, 0.3), inset 0 0 12px rgba(255, 255, 255, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -465,7 +466,7 @@
   }
 
   .hub-monogram {
-    font-size: 1.35rem;
+    font-size: 1.15rem;
     font-weight: 900;
     background: var(--primary-gradient);
     -webkit-background-clip: text;
@@ -476,10 +477,10 @@
 
   .hub-live-dot {
     position: absolute;
-    bottom: 2px;
-    right: 2px;
-    width: 13px;
-    height: 13px;
+    bottom: 1px;
+    right: 1px;
+    width: 11px;
+    height: 11px;
     border-radius: 50%;
     background: #10b981;
     border: 2px solid var(--bg-surface);
@@ -490,8 +491,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 90px;
-    height: 90px;
+    width: 66px;
+    height: 66px;
     border-radius: 50%;
     border: 1px solid rgba(255, 107, 0, 0.35);
     animation: pulseCore 3s ease-out infinite;
@@ -499,8 +500,8 @@
     z-index: 1;
 
     &--outer {
-      width: 112px;
-      height: 112px;
+      width: 82px;
+      height: 82px;
       border-color: rgba(6, 182, 212, 0.25);
       animation-delay: 1.5s;
     }
@@ -509,10 +510,10 @@
 
 /* Orbit Footer / Active Skill Inspector */
 .orbit-footer {
-  padding: 1rem 1.5rem;
+  padding: 0.75rem 1.25rem;
   background: var(--bg-surface-subtle);
   border-top: 1px solid var(--border-subtle);
-  min-height: 72px;
+  min-height: 62px;
   display: flex;
   align-items: center;
 
