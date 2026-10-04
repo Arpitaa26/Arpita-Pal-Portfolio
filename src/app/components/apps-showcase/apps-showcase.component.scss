@@ -512,6 +512,12 @@
     border-radius: 36px;
   }
 
+  @media (max-width: 360px) {
+    width: 220px;
+    height: 440px;
+    border-radius: 30px;
+  }
+
   .phone-notch {
     position: absolute;
     top: 7px;
@@ -523,6 +529,11 @@
     border-radius: 3px;
     z-index: 25;
     pointer-events: none;
+
+    @media (max-width: 360px) {
+      width: 44px;
+      height: 3px;
+    }
   }
 
   .phone-screen-viewport {
@@ -534,6 +545,14 @@
     border-radius: 36px;
     position: relative;
     cursor: pointer;
+
+    @media (max-width: 480px) {
+      border-radius: 30px;
+    }
+
+    @media (max-width: 360px) {
+      border-radius: 26px;
+    }
 
     .phone-img-view {
       width: 100%;

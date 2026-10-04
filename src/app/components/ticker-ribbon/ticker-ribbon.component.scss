@@ -1,29 +1,27 @@
 .banner-ticker-section {
   position: relative;
   width: 100%;
+  max-width: 100%;
   overflow: hidden;
   padding: 1.5rem 0 2rem;
   z-index: 10;
 }
 
 .tilted-ribbon-wrapper {
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
   overflow: hidden;
   padding: 1rem 0;
   user-select: none;
 }
 
 .ribbon-strip {
-  width: 115vw;
-  margin-left: -7.5vw;
+  width: 112%;
+  margin-left: -6%;
   background: #ffffff;
   color: #0f172a;
-  transform: rotate(-1.8deg);
+  transform: rotate(-1.6deg);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 107, 0, 0.12);
   border-top: 1px solid rgba(255, 255, 255, 0.85);
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);

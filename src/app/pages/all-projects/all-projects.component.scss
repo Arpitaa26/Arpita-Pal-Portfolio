@@ -140,6 +140,11 @@
   flex: 1;
   max-width: 450px;
 
+  @media (max-width: 900px) {
+    max-width: 100%;
+    width: 100%;
+  }
+
   .search-icon {
     position: absolute;
     left: 1rem;
@@ -188,6 +193,8 @@
   align-items: center;
   gap: 0.5rem;
   overflow-x: auto;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
   padding-bottom: 0.25rem;
   scrollbar-width: none;
 
@@ -204,6 +211,7 @@
     font-size: 0.8125rem;
     font-weight: 600;
     white-space: nowrap;
+    flex-shrink: 0;
     cursor: pointer;
     transition: all var(--duration-fast) var(--ease-spring);
 
@@ -225,10 +233,10 @@
 /* Projects Grid */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2rem);
 
-  @media (max-width: 480px) {
+  @media (max-width: 680px) {
     grid-template-columns: 1fr;
   }
 }

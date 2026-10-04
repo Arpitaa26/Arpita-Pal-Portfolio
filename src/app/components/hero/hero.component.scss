@@ -91,6 +91,16 @@
     @media (max-width: 1024px) {
       justify-content: center;
     }
+
+    @media (max-width: 440px) {
+      width: 100%;
+      gap: 0.65rem;
+
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+    }
   }
 
   &__stats {
@@ -104,6 +114,13 @@
 
     @media (max-width: 1024px) {
       justify-content: center;
+    }
+
+    @media (max-width: 640px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.15rem 1rem;
+      text-align: left;
     }
   }
 
@@ -137,8 +154,62 @@
   max-width: 510px;
   margin: 0 0 0 auto;
 
+  --orbit-outer-r: 170px;
+  --orbit-outer-d: 340px;
+  --orbit-middle-r: 120px;
+  --orbit-middle-d: 240px;
+  --orbit-inner-r: 70px;
+  --orbit-inner-d: 140px;
+  --orbit-canvas-h: 420px;
+  --orbit-pill-font: 0.72rem;
+  --orbit-pill-pad: 0.24rem 0.65rem;
+  --orbit-pill-icon: 13px;
+  --orbit-hub-size: 42px;
+
   @media (max-width: 1024px) {
     margin: 0 auto;
+  }
+
+  @media (max-width: 540px) {
+    --orbit-outer-r: 140px;
+    --orbit-outer-d: 280px;
+    --orbit-middle-r: 98px;
+    --orbit-middle-d: 196px;
+    --orbit-inner-r: 58px;
+    --orbit-inner-d: 116px;
+    --orbit-canvas-h: 360px;
+    --orbit-pill-font: 0.68rem;
+    --orbit-pill-pad: 0.2rem 0.55rem;
+    --orbit-pill-icon: 12px;
+    --orbit-hub-size: 38px;
+  }
+
+  @media (max-width: 440px) {
+    --orbit-outer-r: 118px;
+    --orbit-outer-d: 236px;
+    --orbit-middle-r: 82px;
+    --orbit-middle-d: 164px;
+    --orbit-inner-r: 48px;
+    --orbit-inner-d: 96px;
+    --orbit-canvas-h: 320px;
+    --orbit-pill-font: 0.64rem;
+    --orbit-pill-pad: 0.18rem 0.46rem;
+    --orbit-pill-icon: 11px;
+    --orbit-hub-size: 34px;
+  }
+
+  @media (max-width: 360px) {
+    --orbit-outer-r: 102px;
+    --orbit-outer-d: 204px;
+    --orbit-middle-r: 70px;
+    --orbit-middle-d: 140px;
+    --orbit-inner-r: 40px;
+    --orbit-inner-d: 80px;
+    --orbit-canvas-h: 290px;
+    --orbit-pill-font: 0.6rem;
+    --orbit-pill-pad: 0.15rem 0.38rem;
+    --orbit-pill-icon: 10px;
+    --orbit-hub-size: 30px;
   }
 }
 
@@ -238,8 +309,8 @@
 .orbit-canvas {
   position: relative;
   width: 100%;
-  height: 420px;
-  min-height: 420px;
+  height: var(--orbit-canvas-h);
+  min-height: var(--orbit-canvas-h);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -268,16 +339,6 @@
     background: radial-gradient(circle, rgba(255, 107, 0, 0.14) 0%, rgba(236, 72, 153, 0.08) 40%, rgba(6, 182, 212, 0.06) 70%, transparent 85%);
     pointer-events: none;
   }
-
-  @media (max-width: 580px) {
-    height: 370px;
-    min-height: 370px;
-  }
-
-  @media (max-width: 440px) {
-    height: 340px;
-    min-height: 340px;
-  }
 }
 
 /* Concentric Rings - 3 Dynamic Cosmic Rounds (Proportional & Fitted) */
@@ -296,10 +357,10 @@
     opacity: 0.15;
   }
 
-  /* Round 3: Outer Ring - 340px diameter (170px radius) */
+  /* Round 3: Outer Ring */
   &--outer {
-    width: 340px;
-    height: 340px;
+    width: var(--orbit-outer-d);
+    height: var(--orbit-outer-d);
     animation: spinOrbitClockwise 48s linear infinite;
     border-color: rgba(255, 107, 0, 0.28);
     box-shadow: inset 0 0 25px rgba(255, 107, 0, 0.03);
@@ -309,10 +370,10 @@
     }
   }
 
-  /* Round 2: Middle Ring - 240px diameter (120px radius) */
+  /* Round 2: Middle Ring */
   &--middle {
-    width: 240px;
-    height: 240px;
+    width: var(--orbit-middle-d);
+    height: var(--orbit-middle-d);
     animation: spinOrbitClockwise 48s linear infinite;
     border-color: rgba(236, 72, 153, 0.28);
     box-shadow: inset 0 0 20px rgba(236, 72, 153, 0.03);
@@ -322,10 +383,10 @@
     }
   }
 
-  /* Round 1: Inner Ring - 140px diameter (70px radius) */
+  /* Round 1: Inner Ring */
   &--inner {
-    width: 140px;
-    height: 140px;
+    width: var(--orbit-inner-d);
+    height: var(--orbit-inner-d);
     animation: spinOrbitClockwise 48s linear infinite;
     border-color: rgba(6, 182, 212, 0.28);
     box-shadow: inset 0 0 15px rgba(6, 182, 212, 0.04);
@@ -356,15 +417,15 @@
   }
 
   .orbit-ring--outer & {
-    transform: rotate(var(--node-angle)) translate(170px) rotate(calc(-1 * var(--node-angle)));
+    transform: rotate(var(--node-angle)) translate(var(--orbit-outer-r)) rotate(calc(-1 * var(--node-angle)));
   }
 
   .orbit-ring--middle & {
-    transform: rotate(var(--node-angle)) translate(120px) rotate(calc(-1 * var(--node-angle)));
+    transform: rotate(var(--node-angle)) translate(var(--orbit-middle-r)) rotate(calc(-1 * var(--node-angle)));
   }
 
   .orbit-ring--inner & {
-    transform: rotate(var(--node-angle)) translate(70px) rotate(calc(-1 * var(--node-angle)));
+    transform: rotate(var(--node-angle)) translate(var(--orbit-inner-r)) rotate(calc(-1 * var(--node-angle)));
   }
 }
 
@@ -376,8 +437,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.35rem;
-  padding: 0.24rem 0.65rem;
-  min-height: 26px;
+  padding: var(--orbit-pill-pad);
+  min-height: 24px;
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-full);
@@ -405,13 +466,13 @@
 
     svg {
       display: block;
-      width: 13px;
-      height: 13px;
+      width: var(--orbit-pill-icon);
+      height: var(--orbit-pill-icon);
     }
   }
 
   .node-label {
-    font-size: 0.72rem;
+    font-size: var(--orbit-pill-font);
     font-weight: 700;
     color: var(--text-primary);
     letter-spacing: -0.01em;
@@ -432,7 +493,7 @@
   }
 }
 
-/* Central Identity Core (Compact, Clean 42px Hub) */
+/* Central Identity Core (Dynamic Responsive Hub) */
 .orbit-center-hub {
   position: absolute;
   top: 50%;
@@ -441,16 +502,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: var(--orbit-hub-size);
+  height: var(--orbit-hub-size);
   border-radius: 50%;
   z-index: 10;
   pointer-events: none;
 
   .hub-avatar-card {
     position: relative;
-    width: 42px;
-    height: 42px;
+    width: var(--orbit-hub-size);
+    height: var(--orbit-hub-size);
     border-radius: 50%;
     background: linear-gradient(135deg, var(--bg-surface-elevated) 0%, var(--bg-surface) 100%);
     border: 2px solid var(--border-strong);
@@ -462,7 +523,7 @@
   }
 
   .hub-monogram {
-    font-size: 0.95rem;
+    font-size: calc(var(--orbit-hub-size) * 0.44);
     font-weight: 900;
     background: var(--primary-gradient);
     -webkit-background-clip: text;
@@ -475,8 +536,8 @@
     position: absolute;
     bottom: 1px;
     right: 1px;
-    width: 9px;
-    height: 9px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background: #10b981;
     border: 2px solid var(--bg-surface);
@@ -487,8 +548,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 54px;
-    height: 54px;
+    width: calc(var(--orbit-hub-size) * 1.3);
+    height: calc(var(--orbit-hub-size) * 1.3);
     border-radius: 50%;
     border: 1px solid rgba(255, 107, 0, 0.35);
     animation: pulseCore 3s ease-out infinite;
@@ -496,8 +557,8 @@
     z-index: 1;
 
     &--outer {
-      width: 68px;
-      height: 68px;
+      width: calc(var(--orbit-hub-size) * 1.6);
+      height: calc(var(--orbit-hub-size) * 1.6);
       border-color: rgba(6, 182, 212, 0.25);
       animation-delay: 1.5s;
     }

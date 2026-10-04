@@ -96,6 +96,14 @@
       border-radius: var(--radius-full);
       border: 1px solid var(--border-subtle);
       gap: 3px;
+      overflow-x: auto;
+      max-width: 100%;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
 
     .frame-tab-btn {
@@ -105,6 +113,8 @@
       font-weight: 600;
       color: var(--text-secondary);
       transition: all var(--duration-fast) var(--ease-smooth);
+      white-space: nowrap;
+      flex-shrink: 0;
 
       &:hover { color: var(--text-primary); }
 
@@ -149,6 +159,11 @@
       overflow: hidden;
       position: relative;
       background: var(--bg-surface-elevated);
+
+      @media (max-width: 640px) {
+        min-height: 220px;
+        height: clamp(220px, 50vw, 320px);
+      }
 
       .featured-screen-img {
         width: 100%;
@@ -584,6 +599,11 @@
       border: 1px solid var(--border-subtle);
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 
+      @media (max-width: 640px) {
+        height: clamp(220px, 48vw, 280px);
+        min-height: 200px;
+      }
+
       .card-viewport-img {
         width: 100%;
         height: 100%;
@@ -637,6 +657,14 @@
         border-radius: var(--radius-full);
         border: 1px solid var(--border-subtle);
         gap: 2px;
+        overflow-x: auto;
+        max-width: 100%;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
 
         .p-filter-btn {
           padding: 0.2rem 0.55rem;
@@ -644,6 +672,8 @@
           font-size: 0.6875rem;
           font-weight: 600;
           color: var(--text-secondary);
+          white-space: nowrap;
+          flex-shrink: 0;
 
           &.active {
             background: var(--primary-gradient);
@@ -1211,7 +1241,7 @@
 
   .banner-text {
     flex: 1;
-    min-width: 280px;
+    min-width: 0;
 
     .banner-heading {
       font-size: clamp(1.35rem, 2.5vw, 1.75rem);
@@ -1231,6 +1261,10 @@
   }
 
   .banner-action {
+    @media (max-width: 640px) {
+      width: 100%;
+    }
+
     .btn-all-projects {
       display: inline-flex;
       align-items: center;
@@ -1244,6 +1278,11 @@
       text-decoration: none;
       box-shadow: 0 4px 18px rgba(255, 107, 0, 0.35);
       transition: all var(--duration-fast) var(--ease-spring);
+
+      @media (max-width: 640px) {
+        width: 100%;
+        justify-content: center;
+      }
 
       &:hover {
         transform: translateY(-2px);

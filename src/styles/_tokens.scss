@@ -83,10 +83,10 @@
   --font-size-lg: 1.25rem;    /* 20px */
   --font-size-xl: 1.45rem;    /* 23.2px */
   --font-size-2xl: 1.75rem;   /* 28px */
-  --font-size-3xl: 2.15rem;   /* 34.4px */
-  --font-size-4xl: 2.5rem;    /* 40px */
-  --font-size-5xl: clamp(2.75rem, 5.5vw, 4.25rem);
-  --font-size-hero: clamp(3.25rem, 6.5vw, 5rem);
+  --font-size-3xl: clamp(1.65rem, 3.5vw, 2.15rem);
+  --font-size-4xl: clamp(1.85rem, 4.5vw, 2.5rem);
+  --font-size-5xl: clamp(2.15rem, 5.5vw, 4.25rem);
+  --font-size-hero: clamp(2.15rem, 5.5vw, 4.5rem);
 
   --font-weight-regular: 400;
   --font-weight-medium: 500;
@@ -125,7 +125,7 @@
 
   /* Layout */
   --container-max-width: 1280px;
-  --container-padding: clamp(2rem, 5vw, 4.5rem);
+  --container-padding: clamp(1rem, 3.5vw, 3.5rem);
   --header-height: 76px;
 }
 
