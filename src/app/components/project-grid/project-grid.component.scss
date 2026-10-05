@@ -12,13 +12,18 @@
    1. FEATURED HEROIC PROJECT CARD (Banking HUB)
    ========================================================================== */
 .featured-project-card {
-  padding: clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(1.25rem, 3vw, 2.5rem);
   border-radius: var(--radius-2xl);
   border: 1px solid var(--border-strong);
   background: var(--bg-surface);
   box-shadow: var(--shadow-xl);
   transition: all var(--duration-normal) var(--ease-smooth);
   cursor: pointer;
+
+  @media (max-width: 640px) {
+    padding: clamp(0.875rem, 3vw, 1.25rem);
+    border-radius: var(--radius-xl);
+  }
 
   [data-theme='light'] & {
     background: #ffffff;
@@ -43,12 +48,12 @@
 .featured-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: clamp(2rem, 4vw, 3.5rem);
+  gap: clamp(1.75rem, 3.5vw, 3.5rem);
   align-items: center;
 
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.75rem;
   }
 }
 
@@ -63,6 +68,10 @@
   display: flex;
   flex-direction: column;
 
+  @media (max-width: 640px) {
+    border-radius: var(--radius-lg);
+  }
+
   .frame-topbar {
     display: flex;
     align-items: center;
@@ -71,7 +80,56 @@
     background: var(--bg-surface-subtle);
     border-bottom: 1px solid var(--border-subtle);
     gap: 0.75rem;
-    flex-wrap: wrap;
+
+    @media (max-width: 640px) {
+      display: grid;
+      grid-template-columns: auto auto;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 0.75rem;
+
+      .window-dots {
+        grid-column: 1;
+        grid-row: 1;
+        align-self: center;
+      }
+
+      .frame-badge {
+        grid-column: 2;
+        grid-row: 1;
+        align-self: center;
+        justify-self: end;
+      }
+
+      .frame-tabs {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        padding: 3px;
+      }
+
+      .frame-tab-btn {
+        padding: 0.28rem 0.6rem;
+        font-size: 0.75rem;
+      }
+    }
+
+    @media (max-width: 380px) {
+      padding: 0.5rem 0.6rem;
+      gap: 0.4rem;
+
+      .frame-tab-btn {
+        padding: 0.22rem 0.48rem;
+        font-size: 0.7rem;
+      }
+
+      .frame-badge {
+        font-size: 0.7rem;
+      }
+    }
 
     .window-dots {
       display: flex;
@@ -154,22 +212,25 @@
 
     &--image {
       padding: 0;
-      min-height: 360px;
-      height: 380px;
+      min-height: 220px;
+      aspect-ratio: 16 / 10;
+      height: auto;
+      max-height: 380px;
       overflow: hidden;
       position: relative;
       background: var(--bg-surface-elevated);
 
       @media (max-width: 640px) {
-        min-height: 220px;
-        height: clamp(220px, 50vw, 320px);
+        min-height: 180px;
+        aspect-ratio: 16 / 10;
+        max-height: 280px;
       }
 
       .featured-screen-img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: top center;
+        object-position: top left;
         display: block;
         transition: transform var(--duration-normal) var(--ease-smooth);
       }
@@ -436,6 +497,10 @@
   flex-direction: column;
   gap: 1.25rem;
 
+  @media (max-width: 640px) {
+    gap: 0.875rem;
+  }
+
   .project-eyebrow {
     display: inline-flex;
     align-items: center;
@@ -455,53 +520,75 @@
   }
 
   .project-headline {
-    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-size: clamp(1.65rem, 5vw, 2.75rem);
     font-weight: 800;
     color: var(--text-primary);
     letter-spacing: -0.02em;
-    line-height: 1.15;
+    line-height: 1.18;
   }
 
   .project-one-liner {
-    font-size: 1.0625rem;
+    font-size: clamp(0.9375rem, 2.5vw, 1.0625rem);
     color: var(--text-secondary);
-    line-height: 1.6;
+    line-height: 1.55;
   }
 
   .project-role-focus {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.3rem 0.5rem;
     font-size: 0.875rem;
+    line-height: 1.5;
+
+    @media (max-width: 480px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.2rem;
+    }
 
     .role-lbl {
       color: var(--text-muted);
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
     }
     .role-val {
       color: var(--text-primary);
       font-weight: 600;
+      word-break: break-word;
     }
   }
 
   .project-tags-clean {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.45rem;
   }
 
   .project-cta-wrap {
     padding-top: 0.5rem;
+
+    @media (max-width: 480px) {
+      width: 100%;
+
+      .btn-case-study {
+        width: 100%;
+        justify-content: center;
+      }
+    }
   }
 }
 
 .clean-tag {
-  font-size: 0.8125rem;
+  font-size: 0.78125rem;
   font-weight: 600;
   color: var(--text-secondary);
   background: var(--bg-surface-subtle);
   border: 1px solid var(--border-subtle);
-  padding: 0.3rem 0.75rem;
+  padding: 0.25rem 0.7rem;
   border-radius: var(--radius-full);
 }
 
