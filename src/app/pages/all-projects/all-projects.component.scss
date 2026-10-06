@@ -4,6 +4,10 @@
   padding-top: calc(84px + 2.5rem);
   padding-bottom: 6rem;
   overflow: hidden;
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100%;
+  contain: paint;
 }
 
 /* Ambient Glows */
@@ -16,17 +20,17 @@
 
   &.glow-1 {
     top: 5%;
-    left: -10%;
-    width: 500px;
-    height: 500px;
+    left: 0;
+    width: min(500px, 80vw);
+    height: min(500px, 80vw);
     background: radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, transparent 70%);
   }
 
   &.glow-2 {
     top: 25%;
-    right: -10%;
-    width: 600px;
-    height: 600px;
+    right: 0;
+    width: min(500px, 80vw);
+    height: min(500px, 80vw);
     background: radial-gradient(circle, rgba(255, 107, 0, 0.15) 0%, transparent 70%);
   }
 }
@@ -237,7 +241,7 @@
   gap: clamp(1.25rem, 2.5vw, 2rem);
 
   @media (max-width: 680px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 

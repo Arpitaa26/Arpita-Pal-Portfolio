@@ -61,11 +61,14 @@
 /* Direct Channels Grid */
 .contact-channels-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -79,6 +82,9 @@
   border-radius: var(--radius-xl);
   transition: all var(--duration-fast) var(--ease-smooth);
   position: relative;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 
   &.highlight-channel {
     border-color: rgba(56, 189, 248, 0.3);

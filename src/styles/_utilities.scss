@@ -7,12 +7,18 @@
   margin-right: auto;
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .section-wrapper {
-  padding-top: clamp(3.5rem, 6vw, 6rem);
-  padding-bottom: clamp(3.5rem, 6vw, 6rem);
+  padding-top: clamp(3rem, 5vw, 5.5rem);
+  padding-bottom: clamp(3rem, 5vw, 5.5rem);
   position: relative;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: clip;
 }
 
 /* Glassmorphism Surface */

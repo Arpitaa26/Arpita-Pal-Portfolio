@@ -127,7 +127,7 @@
 
     @media (max-width: 640px) {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1.15rem 1rem;
       text-align: left;
     }
@@ -137,6 +137,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.15rem;
+    min-width: 0;
   }
 
   &__stat-value {
@@ -177,11 +178,11 @@
 
   @media (max-width: 1024px) {
     margin: 0 auto;
-    max-width: 460px;
+    max-width: min(460px, 100%);
   }
 
   @media (max-width: 768px) {
-    max-width: 420px;
+    max-width: 100%;
     --orbit-outer-r: 135px;
     --orbit-outer-d: 270px;
     --orbit-middle-r: 96px;
