@@ -12,7 +12,9 @@ html {
   text-rendering: optimizeLegibility;
   font-size: 16px;
   overflow-x: hidden;
-  max-width: 100%;
+  overflow-x: clip;
+  max-width: 100vw;
+  width: 100%;
 }
 
 body {
@@ -22,8 +24,9 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   width: 100%;
-  max-width: 100%;
+  max-width: 100vw;
   overflow-x: hidden;
+  overflow-x: clip;
   position: relative;
   selection-background-color: var(--primary-500);
   selection-color: #fff;

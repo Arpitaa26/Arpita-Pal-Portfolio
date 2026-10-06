@@ -10,6 +10,9 @@
   gap: 1.25rem;
   margin-bottom: clamp(2rem, 3.5vw, 3rem);
   flex-wrap: wrap;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 
   @media (max-width: 900px) {
     flex-direction: column;
@@ -25,7 +28,10 @@
   border: 1px solid var(--border-subtle);
   gap: 4px;
   overflow-x: auto;
+  width: 100%;
   max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 
@@ -134,23 +140,29 @@
 /* Two-Column Grid */
 .skills-layout-grid {
   display: grid;
-  grid-template-columns: 1.4fr 0.9fr;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.9fr);
   gap: clamp(1.5rem, 3vw, 2.5rem);
   align-items: start;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 
   @media (max-width: 1080px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
 /* Bento Cards Grid */
 .skills-cards-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 
   @media (max-width: 680px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 

@@ -3,6 +3,8 @@
   width: 100%;
   max-width: 100%;
   overflow: hidden;
+  overflow: clip;
+  contain: paint;
   padding: 1.5rem 0 2rem;
   z-index: 10;
 }
@@ -12,22 +14,32 @@
   max-width: 100%;
   position: relative;
   overflow: hidden;
+  overflow: clip;
+  contain: layout paint;
   padding: 1rem 0;
   user-select: none;
 }
 
 .ribbon-strip {
-  width: 112%;
-  margin-left: -6%;
+  width: 102%;
+  margin-left: -1%;
   background: #ffffff;
   color: #0f172a;
-  transform: rotate(-1.6deg);
+  transform: rotate(-1deg);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 107, 0, 0.12);
   border-top: 1px solid rgba(255, 255, 255, 0.85);
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   padding: 0.95rem 0;
   display: flex;
   overflow: hidden;
+  overflow: clip;
+  contain: paint;
+
+  @media (max-width: 640px) {
+    width: 100%;
+    margin-left: 0;
+    transform: rotate(0deg);
+  }
 
   [data-theme='light'] & {
     background: #0f172a;

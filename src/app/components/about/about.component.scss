@@ -4,21 +4,34 @@
 
 .about-grid {
   display: grid;
-  grid-template-columns: 380px 1fr;
+  grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
   gap: clamp(1.5rem, 3vw, 2.75rem);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 
   @media (max-width: 1080px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
 .about-card {
-  padding: clamp(1.75rem, 3vw, 2.5rem);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-2xl);
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 560px) {
+    padding: clamp(1rem, 3vw, 1.25rem);
+    border-radius: var(--radius-xl);
+  }
 
   [data-theme='light'] & {
     background: #ffffff;

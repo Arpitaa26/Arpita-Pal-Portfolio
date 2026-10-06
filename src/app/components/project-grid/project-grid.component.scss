@@ -916,13 +916,22 @@
    3. SUPPORTING PROJECT CARD (OS Mining)
    ========================================================================== */
 .supporting-project-card {
-  padding: clamp(1.25rem, 2.5vw, 2rem);
+  padding: clamp(1rem, 2.5vw, 2rem);
   border-radius: var(--radius-xl);
   border: 1px solid var(--border-subtle);
   background: var(--bg-surface);
   box-shadow: var(--shadow-md);
   transition: all var(--duration-normal) var(--ease-smooth);
   cursor: pointer;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  @media (max-width: 640px) {
+    padding: clamp(0.875rem, 3vw, 1.25rem);
+  }
 
   [data-theme='light'] & {
     background: #ffffff;
@@ -946,27 +955,62 @@
   grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
   gap: clamp(1.5rem, 3vw, 2.5rem);
   align-items: center;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 
   @media (max-width: 900px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
   }
 }
 
+.supporting-media-col {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.supporting-info-col {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
 .supporting-frame {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   overflow: hidden;
+  box-sizing: border-box;
 
   .s-topbar {
-    padding: 0.6rem 1rem;
+    padding: 0.6rem 0.85rem;
     background: var(--bg-surface-subtle);
     border-bottom: 1px solid var(--border-subtle);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
 
     .s-tabs {
       display: flex;
       gap: 0.4rem;
       overflow-x: auto;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
 
     .s-tab-btn {

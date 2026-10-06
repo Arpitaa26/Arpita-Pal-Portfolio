@@ -6,11 +6,15 @@
   padding-top: calc(var(--header-height) + clamp(2rem, 4vw, 3.5rem));
   padding-bottom: clamp(3rem, 5vw, 5rem);
   overflow: hidden;
+  overflow: clip;
+  contain: paint;
+  width: 100%;
+  max-width: 100%;
 
   &__glow {
     position: absolute;
-    width: 480px;
-    height: 480px;
+    width: min(480px, 90vw);
+    height: min(480px, 90vw);
     border-radius: 50%;
     filter: blur(140px);
     pointer-events: none;
@@ -18,13 +22,13 @@
 
     &--primary {
       top: 10%;
-      left: -5%;
+      left: 0;
       background: var(--hero-glow-1);
     }
 
     &--cyan {
       bottom: 5%;
-      right: -5%;
+      right: 0;
       background: var(--hero-glow-2);
     }
   }
@@ -32,16 +36,21 @@
   &__container {
     position: relative;
     z-index: 1;
+    width: 100%;
+    max-width: var(--container-max-width);
   }
 
   &__grid {
     display: grid;
-    grid-template-columns: 1.18fr 0.92fr;
+    grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.92fr);
     gap: clamp(1.5rem, 3vw, 2.75rem);
     align-items: center;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
 
     @media (max-width: 1024px) {
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr);
       gap: 2.5rem;
     }
   }
